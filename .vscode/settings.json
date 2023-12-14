@@ -1,0 +1,59 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/LICENSE": true,
+        "**/bin": true,
+        "**/.gitignore": true,
+        "**/setup.bat": true,
+        "**/.mypy_cache": true
+    },
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.rulers": [
+        200
+    ],
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}\\.venv\\Lib",
+        // "${workspaceFolder}\\typings\\scripts",
+        // "${workspaceFolder}\\typings\\scripts\\lib",
+    ],
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportShadowedImports": "none"
+    },
+    "flake8.path": [
+        "${workspaceFolder}\\.venv\\Scripts\\pflake8.exe"
+    ],
+    // mypy を有効化
+    "mypy-type-checker.args": [
+        // "--disallow-untyped-defs",
+        "--config-file=${workspaceFolder}\\pyproject.toml",
+    ],
+    "mypy-type-checker.path": [
+        "${workspaceFolder}/.venv/Scripts/mypy.exe"
+    ],
+    "mypy-type-checker.interpreter": [
+        "${workspaceFolder}/.venv/Scripts/python.exe"
+    ],
+    // python ファイル固有の設定
+    "[python]": {
+        // フォーマッターの black を有効化
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        // 保存時の import 文のソートを有効化
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        // 保存時のフォーマットを有効化
+        "editor.formatOnSave": true,
+    },
+    "terminal.integrated.env.windows": {
+        "PSExecutionPolicyPreference": "RemoteSigned"
+    },
+    "python.formatting.provider": "black"
+}
