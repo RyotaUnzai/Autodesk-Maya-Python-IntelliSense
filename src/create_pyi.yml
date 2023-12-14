@@ -1,0 +1,187 @@
+common:
+    ignore:
+        - blank
+        - cat_Animation
+        - cat_Effects
+        - cat_General
+        - cat_Language
+        - cat_Modeling
+        - cat_Rendering
+        - cat_System
+        - cat_Windows
+        - CommandsPython_index
+        - CommandsPython_index.html
+        - displayStats
+        - dynControl
+        - frame_search
+        - items
+        - index
+        - index_all
+        - index_overview
+        - index_substring
+        - letter_A
+        - letter_B
+        - letter_C
+        - letter_D
+        - letter_E
+        - letter_F
+        - letter_G
+        - letter_J
+        - letter_H
+        - letter_I
+        - letter_J
+        - letter_K
+        - letter_L
+        - letter_M
+        - letter_N
+        - letter_O
+        - letter_P
+        - letter_Q
+        - letter_R
+        - letter_S
+        - letter_T
+        - letter_U
+        - letter_V
+        - letter_W
+        - letter_X
+        - letter_Y
+        - letter_Z
+        - nav_Animation
+        - nav_Effects
+        - nav_General
+        - nav_Language
+        - nav_Modeling
+        - nav_Rendering
+        - nav_System
+        - nav_Windows
+        - reference
+        - selectedNodes
+        - show
+        - userCtx
+        - webBrowserPrefs
+    new types:
+    -   - boolean
+        - bool
+    -   - uint
+        - int
+    -   - linear
+        - int
+    -   - angle
+        - int
+    -   - time
+        - int
+    -   - floatrange
+        - float
+    -   - timerange
+        - str
+    -   - name
+        - str
+    -   - string
+        - str
+    -   - script
+        - str
+    maya argments:
+        int64: int64
+        angle: angle
+        floatrange: floatrange
+        linear: linear
+        boolean: boolean
+        float: float
+        timerange: timerange
+        script: script
+        int: int
+        time: time
+        name: name
+        string: string
+        string[]: list[string]
+        int[]: list[int]
+        '[int, [, string, ]]': list[int] | tuple[int, string] # nodeEditor
+        '[int, [, int, ]]': int | tuple[int, int] # nodeEditor
+        '[string, [, string, ]]': string | tuple[string, string]
+        '[string, string[]]': tuple[string, list[string]]
+        '[int, int]': tuple[int, int]
+        '[int, name]': tuple[int, name]
+        '[name, int]': tuple[name, int]
+        '[int, float]': tuple[int, float]
+        '[float, int]': tuple[float, int]
+        '[uint, uint]': tuple[uint, uint]
+        '[uint, float]': tuple[uint, float]
+        '[int, script]': tuple[int, script]
+        '[int, string]': tuple[int, string]
+        '[string, int]': tuple[string, int]
+        '[boolean, int]': tuple[boolean, int]
+        '[string, uint]': tuple[string, uint]
+        '[name, string]': tuple[name, string]
+        '[angle, angle]': tuple[angle, angle]
+        '[uint, string]': tuple[uint, string]
+        '[name, boolean]': tuple[name, boolean]
+        '[string, float]': tuple[string, float]
+        '[uint, boolean]': tuple[uint, boolean]
+        '[linear, linear]': tuple[linear, linear]
+        '[string, string]': tuple[string, string]
+        '[script, script]': tuple[script, script]
+        '[string, script]': tuple[string, script]
+        '[script, string]': tuple[script, string]
+        '[string, boolean]': tuple[string, boolean]
+        '[boolean, boolean]': tuple[boolean, boolean]
+        '[timerange, boolean]': tuple[timerange, boolean]
+        '[int, boolean]': tuple[int, boolean]
+        '[float, float]': tuple[float, float]
+        '[uint, linear]': tuple[uint, linear]
+        '[[, boolean, float, ]]': bool | list[boolean, float] # bakeResults
+        '[int, float, [, float, float, ]]': tuple[int, float] |tuple[int | float, ...] | tuple[tuple, ...] # polySplit
+        '[string, [, string, ], [, string, ]]': string | tuple[string, ...] # contentBrowser
+        '[string, int, float, float, float]': tuple[string, int, float, float, float] # treeView
+        '[[, float, float, float, ]]': tuple[int | tuple[float, ...], ...] # polyAppend
+        '[int, int, int]': tuple[int, int, int]
+        '[int, int, float]': tuple[int, int, float]
+        '[int, string, int]': tuple[int, string, int]
+        '[int, int, string]': tuple[int, int, string]
+        '[string, int, int]': tuple[string, int, int]
+        '[uint, uint, uint]': tuple[uint, uint, uint]
+        '[time, time, float]': tuple[time, time, float]
+        '[string, int, float]': tuple[string, int, float]
+        '[angle, angle, angle]': tuple[angle, angle, angle]
+        '[string, string, int]': tuple[string, string, int]
+        '[string, int, string]': tuple[string, int, string]
+        '[float, float, float]': tuple[float, float, float]
+        '[string, float, float]': tuple[string, float, float]
+        '[boolean, string, int]': tuple[boolean, string, int]
+        '[string, string, uint]': tuple[string, string, uint]
+        '[string, int, boolean]': tuple[string, int, boolean]
+        '[string, uint, boolean]': tuple[string, uint, boolean]
+        '[linear, linear, linear]': tuple[linear, linear, linear]
+        '[string, string, script]': tuple[string, string, script]
+        '[string, string, string]': tuple[string, string, string]
+        '[string, string, boolean]': tuple[string, string, boolean]
+        '[int, int, int, int]': tuple[int, int, int, int]
+        '[string, int, int, int]': tuple[string, int, int, int]
+        '[uint, uint, uint, uint]': tuple[uint, uint, uint, uint]
+        '[time, time, time, time]': tuple[time, time, time, time]
+        '[string, string, int, int]': tuple[string, string, int, int]
+        '[float, boolean, int, int]': tuple[float, boolean, int, int]
+        '[int, float, float, float]': tuple[int, float, float, float]
+        '[boolean, boolean, boolean]': tuple[boolean, boolean, boolean]
+        '[string, int, int, int, int]': tuple[string, int, int, int, int]
+        '[float, float, float, float]': tuple[float, float, float, float]
+        '[string, float, float, float]': tuple[string, float, float, float]
+        '[string, string, int, string]': tuple[string, string, int, string]
+        '[string, uint, string, float]': '[string, uint, string, float]'
+        '[linear, linear, linear, float]': tuple[linear, linear, linear, float]
+        '[string, string, string, string]': tuple[string, string, string, string]
+        '[linear, linear, linear, linear]': tuple[linear, linear, linear, linear]
+        '[boolean, boolean, boolean, boolean]': tuple[boolean, boolean, boolean, boolean]
+        '[int, int, int, int, int]': tuple[int, int, int, int, int]
+        '[uint, uint, uint, float, float]': tuple[uint, uint, uint, float, float]
+        '[string, float, float, float, float]': tuple[string, float, float, float, float]
+        '[linear, linear, linear, linear, linear]': tuple[linear, linear, linear, linear, linear]
+        '[boolean, string, string, string, string]': tuple[boolean, string, string, string, string]
+        '[string, string, string, string, string, string]': tuple[string, string, string, string, string, string]
+        '[int, int, int, int, int, int]': tuple[int, int, int, int, int, int]
+        '[int, int, float, float, float]': tuple[int, int, float, float, float]
+        '[string, uint, uint, uint, uint]': tuple[string, uint, uint, uint, uint]
+        '[string, string, string, string, string]': tuple[string, string, string, string, string]
+        '[boolean, boolean, boolean, boolean, boolean]': tuple[boolean, boolean, boolean, boolean, boolean]
+        '[int, boolean, string, string, string, string]': tuple[int, boolean, string, string, string, string]
+        '[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]': tuple[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]
+        '[boolean, boolean, boolean, boolean, boolean, boolean, boolean]': tuple[boolean, boolean, boolean, boolean, boolean, boolean, boolean]

@@ -1,0 +1,5 @@
+version: 2023
+python: "3.9.7"
+help url: help.autodesk.com/cloudhelp/2023/ENU/Maya-Tech-Docs/CommandsPython
+imports:
+  - from __future__ import annotations

@@ -1,0 +1,4 @@
+version: 2024
+python: "3.10.8"
+help url: help.autodesk.com/cloudhelp/2024/ENU/Maya-Tech-Docs/CommandsPython
+imports:
