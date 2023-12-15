@@ -21,8 +21,7 @@
     "python.envFile": "${workspaceFolder}/.env",
     "python.analysis.extraPaths": [
         "${workspaceFolder}\\.venv\\Lib",
-        // "${workspaceFolder}\\typings\\scripts",
-        // "${workspaceFolder}\\typings\\scripts\\lib",
+        "${workspaceFolder}\\maya2024\\typings"
     ],
     "python.analysis.diagnosticSeverityOverrides": {
         "reportShadowedImports": "none"

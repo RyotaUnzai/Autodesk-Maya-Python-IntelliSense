@@ -19,7 +19,7 @@ class CreateMayaCommandPYI:
     commands_data: dict[str, FunctionData]
     function_name: str
     argument_data: list[ArgumentData]
-    current_letter: str
+    current_letter: str | None = None
 
     def __init__(
         self,
