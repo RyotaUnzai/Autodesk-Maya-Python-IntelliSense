@@ -108,8 +108,15 @@ class CreateMayaCommandPYI:
 
     def create_initpy(self) -> None:
         import_text = ""
+        # https://github.com/tiangolo/typer/issues/142
+        definitions = ""
+        for definition in self.option.common.all_definition:
+            definitions += f'    "{definition}",\n'
+        import_text += f"__all__ = [\n{definitions}]\n\n\n"
         for first_letter in sorted(self.code_texts.keys()):
             import_text += f"from mayacmds_{first_letter} import *\n"
+        with open(self.maya_dir / "__init__.py", "w+", encoding="UTF-8") as file:
+            file.write("")
         with open(self.cmds_dir / "__init__.py", "w+", encoding="UTF-8") as file:
             v = autopep8.fix_code(import_text)
             file.write(v)

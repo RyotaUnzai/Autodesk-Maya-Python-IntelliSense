@@ -36,6 +36,7 @@ class Common(BaseModel):
     ignore: list[str]
     new_types: NewTypes = Field(alias="new types")
     maya_argments: dict = Field(alias="maya argments")
+    all_definition: list[str] = Field(alias="__all__")
 
     class Config:
         populate_by_name = True
