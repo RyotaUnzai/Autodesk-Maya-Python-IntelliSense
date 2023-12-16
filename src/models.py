@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
 from enum import Enum
 from pathlib import Path
+from typing import Optional
 
 from pydantic import BaseModel, Field, validator
 from typing_extensions import Self
@@ -43,11 +44,17 @@ class Common(BaseModel):
         return {"items": [NewType(name=item[0], type=item[1]) for item in v]}
 
 
+class Docs(BaseModel):
+    jp: str
+    en: str
+
+
 class Maya(BaseModel):
     version: int
     python: str
     help_url: Path = Field(alias="help url")
     imports: list[str]
+    documents: dict[str, Docs]
 
     class Config:
         populate_by_name = True
@@ -59,6 +66,13 @@ class Maya(BaseModel):
     @validator("help_url", pre=True)
     def create_help_url(cls, v) -> Path:
         return Path(v)
+
+    @validator("documents", pre=True)
+    def create_help_url(cls, v) -> Path:
+        docs: dict[str, Docs] = {}
+        for key, value in v.items():
+            docs[str(key)] = Docs(**value)
+        return docs
 
 
 class IntelliSenseOptionModel(BaseModel):
@@ -77,14 +91,16 @@ class HTags(Enum):
 
 
 class Arguments(BaseModel):
-    version: int | None
-    export_path: Path | None
+    version: Optional[str] = Field(alias="version", default=None)
+    export_path: Optional[Path] = Field(alias="export_path", default=None)
+    document_dir: Optional[Path] = Field(alias="document_dir", default=None)
+    language: Optional[str] = Field(alias="language", default=None)
 
     @classmethod
     def parse_args(cls) -> Self:
         parser = ArgumentParser()
         for k in cls.model_json_schema()["properties"].keys():
-            if k == "export_path":
+            if k in ["export_path", "document_dir"]:
                 parser.add_argument(f"-{k[0:1]}", f"--{k}", type=Path)
             else:
                 parser.add_argument(f"-{k[0:1]}", f"--{k}")

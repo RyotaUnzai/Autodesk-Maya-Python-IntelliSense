@@ -11,7 +11,7 @@ from models import ArgumentData, Arguments, FunctionData, HTags, IntelliSenseOpt
 
 
 class CreateMayaCommandPYI:
-    document_path: Path
+    document_root: Path
     export_path: Path
     code_text: str
     code_texts: dict[str, dict[str, str]]
@@ -23,14 +23,21 @@ class CreateMayaCommandPYI:
 
     def __init__(
         self,
-        document_path: str | Path,
+        document_root: str | Path,
         export_path: str | Path,
+        language: str,
+        version: str,
         option: IntelliSenseOptionModel,
     ) -> None:
-        self.document_path = Path(document_path)
+        self.option = option
+        if language == "jp":
+            path = self.option.maya.documents[str(version)].jp
+        else:
+            path = self.option.maya.documents[str(version)].en
+        self.document_root = Path(document_root) / path / "CommandsPython"
+
         self.export_path = Path(export_path)
         self.__init_export_dir()
-        self.option = option
         self.commands_data = {}
         self.__init_code_text()
 
@@ -352,10 +359,10 @@ URL:
         count = 0
         self.code_texts = {}
         length = 0
-        for iter in self.document_path.iterdir():
+        for iter in self.document_root.iterdir():
             length += 1
         count = 0
-        for iter in self.document_path.iterdir():
+        for iter in self.document_root.iterdir():
             print(f"{length-count}/{length}")
             self.function_name = iter.stem
             if iter.stem not in self.option.common.ignore:
@@ -383,11 +390,15 @@ if __name__ == "__main__":
 
     cwd = Path.cwd()
     create_pyi = cwd / "src" / "create_pyi.yml"
-    document_path = cwd / "mayaProductHelps" / "Autodesk Maya User Guide 2024.2 (ADE 2.1)=en" / "CommandsPython"
-    version: int = args.version or 2024
-    export_path = args.export_path or cwd / f"maya{version}" / "typings"
+    version: str = args.version or "2024"
+    export_dir = args.export_path or cwd / f"maya{int(float(version))}"
+    export_dir.mkdir(exist_ok=True)
+    export_path = export_dir / "typings"
+    export_path.mkdir(exist_ok=True)
+    language = args.language or "en"
+    document_dir = args.document_dir or cwd / "mayaProductHelps"  # / "Autodesk Maya User Guide 2024.2 (ADE 2.1)=en" / "CommandsPython"
 
-    maya = cwd / "src" / f"maya{version}.yml"
+    maya = cwd / "src" / f"maya{int(float(version))}.yml"
     with open(create_pyi, "r") as file:
         data = yaml.safe_load(file)
     with open(maya, "r") as file:
@@ -395,9 +406,12 @@ if __name__ == "__main__":
     data["maya"] = maya_data
 
     option = IntelliSenseOptionModel(**data)
+
     mayacmd = CreateMayaCommandPYI(
-        document_path=document_path,
+        document_root=document_dir,
         export_path=export_path,
+        language=language,
+        version=version,
         option=IntelliSenseOptionModel(**data),
     )
     mayacmd.run()
