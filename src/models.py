@@ -1,12 +1,9 @@
-import re
+from argparse import ArgumentParser
 from enum import Enum
-from pathlib import Path, WindowsPath
-from typing import Any
+from pathlib import Path
 
-import autopep8
-from bs4 import BeautifulSoup
 from pydantic import BaseModel, Field, validator
-from typing_extensions import Final, Self
+from typing_extensions import Self
 
 
 class FunctionData:
@@ -56,11 +53,11 @@ class Maya(BaseModel):
         populate_by_name = True
 
     @validator("imports", pre=True)
-    def create_imports_list(cls, v):
+    def create_imports_list(cls, v) -> list[str]:
         return v or []
 
     @validator("help_url", pre=True)
-    def create_help_url(cls, v):
+    def create_help_url(cls, v) -> Path:
         return Path(v)
 
 
@@ -77,3 +74,18 @@ class HTags(Enum):
     hExamples = "hExamples"
     hRelated = "hRelated"
     hNotes = "hNotes"
+
+
+class Arguments(BaseModel):
+    version: int | None
+    export_path: Path | None
+
+    @classmethod
+    def parse_args(cls) -> Self:
+        parser = ArgumentParser()
+        for k in cls.model_json_schema()["properties"].keys():
+            if k == "export_path":
+                parser.add_argument(f"-{k[0:1]}", f"--{k}", type=Path)
+            else:
+                parser.add_argument(f"-{k[0:1]}", f"--{k}")
+        return cls.model_validate(parser.parse_args().__dict__)

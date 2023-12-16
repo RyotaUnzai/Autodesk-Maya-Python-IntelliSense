@@ -7,7 +7,7 @@ import autopep8
 import yaml
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-from models import ArgumentData, FunctionData, HTags, IntelliSenseOptionModel
+from models import ArgumentData, Arguments, FunctionData, HTags, IntelliSenseOptionModel
 
 
 class CreateMayaCommandPYI:
@@ -267,10 +267,11 @@ URL:
             a_tags = code_tag.find_all("a")
             i_tags = code_tag.find_all("i")
             for a, i in zip(a_tags, i_tags):
+                flag = a.contents[0]
                 if i.text in self.option.common.maya_argments:
-                    self.resultArgs.append([a["href"][1:], self.option.common.maya_argments[i.text]])
+                    self.resultArgs.append([flag, self.option.common.maya_argments[i.text]])
                 else:
-                    self.resultArgs.append([a["href"][1:], i.text])
+                    self.resultArgs.append([flag, i.text])
         return self.resultArgs
 
     @property
@@ -378,20 +379,25 @@ URL:
 
 
 if __name__ == "__main__":
+    args = Arguments.parse_args()
+
     cwd = Path.cwd()
     create_pyi = cwd / "src" / "create_pyi.yml"
     document_path = cwd / "mayaProductHelps" / "Autodesk Maya User Guide 2024.2 (ADE 2.1)=en" / "CommandsPython"
-    version: int = 2024
+    version: int = args.version or 2024
+    export_path = args.export_path or cwd / f"maya{version}" / "typings"
+
     maya = cwd / "src" / f"maya{version}.yml"
     with open(create_pyi, "r") as file:
         data = yaml.safe_load(file)
     with open(maya, "r") as file:
         maya_data = yaml.safe_load(file)
     data["maya"] = maya_data
+
     option = IntelliSenseOptionModel(**data)
     mayacmd = CreateMayaCommandPYI(
         document_path=document_path,
-        export_path=Path.cwd() / "export",
+        export_path=export_path,
         option=IntelliSenseOptionModel(**data),
     )
     mayacmd.run()
