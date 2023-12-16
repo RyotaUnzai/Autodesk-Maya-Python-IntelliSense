@@ -1,0 +1,50 @@
+[project]
+name = "Autodesk-Maya-Python-IntelliSense"
+version = "2.0.0"
+requires-python = "==3.11.6"
+
+[tool.black]
+line-length = 200
+target-version = ['py311']
+force-exclude = '\.pyi$'
+exclude = '''
+(
+    .mypy_cache
+    | .pytest_cache
+    | .venv
+)
+'''
+
+[tool.flake8]
+ignore = "E203,W503,W504"
+max-line-length = 200
+exclude = "tests/*"
+max-complexity = 10
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+python_version = "3.11"
+mypy_path = "$MYPY_CONFIG_FILE_DIR/.venv/Lib,$MYPY_CONFIG_FILE_DIR/src,$MYPY_CONFIG_FILE_DIR/maya2024/typings"
+cache_dir = ".mypy_cache"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_untyped_calls = false
+implicit_reexport = true
+implicit_optional = true
+warn_redundant_casts = true
+
+[[tool.mypy.overrides]]
+module = ["autopep8", "yaml", "bs4"]
+ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+warn_untyped_fields = true
+
+[tool.pylint."messages control"]
+disable = "all"
+enable = "W0212"
