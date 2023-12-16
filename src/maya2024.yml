@@ -2,3 +2,19 @@ version: 2024
 python: "3.10.8"
 help url: help.autodesk.com/cloudhelp/2024/ENU/Maya-Tech-Docs/CommandsPython
 imports:
+documents:
+  2024:
+    en:
+      maya-user-guide-2024-eng
+    jp:
+      autodesk-maya-user-guide-2024-2.1-ja 
+  2024.1:
+    en:
+      Autodesk-Maya-User-Guide-2024=2=HTM(ADE 2.1)=en
+    jp:
+      Autodesk-Maya-User-Guide-2024=2=HTM(ADE 2.1)=ja
+  2024.2:
+    en:
+      Autodesk Maya User Guide 2024.2 (ADE 2.1)=en
+    jp:
+      Autodesk Maya User Guide 2024.2 (ADE 2.1)=ja
