@@ -238,7 +238,9 @@ URL:
         return matches.group(1) if matches else None
 
     def extract_next_p_content(self) -> None:
-        soup = BeautifulSoup(self.extract_between_specific_h2_tags('<h2><a name="hSynopsis">Synopsis</a></h2>'), "html.parser")
+        allSynopsis = self.extract_between_specific_h2_tags('<h2><a name="hSynopsis">Synopsis</a></h2>')
+        soup = BeautifulSoup(allSynopsis, "html.parser")
+        docs = soup.get_text()
         synopsis = soup.find("p", {"id": "synopsis"})
         self.description = ""
         current_element = synopsis
@@ -246,13 +248,15 @@ URL:
             self.description += str(current_element.get_text())
             current_element = current_element.find_next_sibling()
         note_text = "Note: Strings representing object names and arguments must be separated by commas. This is not depicted in the synopsis."
-        description_split = self.description.split(note_text)
-        mention = description_split[1].split("\n")[0]
-        command_description = description_split[1].replace(mention, f"\n{mention}")
+        # description_split = self.description.split(note_text)
+        # mention = description_split[1].split("\n")[0]
+        # command_description = description_split[1].replace(mention, f"\n{mention}")
+        synopsis_description, command_description = docs.split(note_text)
+
         self.description = f"""Synopsis:
 ---
 ---
-{description_split[0]}
+{synopsis_description}
 {note_text}
 {command_description}"""
 
