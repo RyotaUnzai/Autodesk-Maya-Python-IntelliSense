@@ -165,7 +165,7 @@ class CreateMayaCommandPYI:
             hExamples_content_text = hExamples_content.get_text(strip=True)
             if not self.is_only_whitespace(hExamples_content_text):
                 hExamples_content_text = hExamples_content_text.replace("# ", "").replace("#", "---\n")
-                return f"\n{self.translater.EXAMPLE_WORD}:\n---\n{hExamples_content_text}\n\n---"
+                return f"\n{self.translater.EXAMPLE_WORD}:\n---\n```\n{hExamples_content_text}\n```\n\n---"
         return ""
 
     def create_docstrings_flags_texts(self) -> str:
