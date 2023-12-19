@@ -7,8 +7,8 @@ import autopep8
 import yaml
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-from models import ArgumentData, Arguments, FunctionData, HTags, IntelliSenseOptionModel
 import translater
+from models import ArgumentData, Arguments, FunctionData, HTags, IntelliSenseOptionModel
 
 
 class CreateMayaCommandPYI:
