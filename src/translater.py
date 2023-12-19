@@ -1,16 +1,41 @@
 from abc import ABC, abstractmethod
 
-AbstractField = lambda: property(abstractmethod(lambda s: s))
-
 
 class Translater(ABC):
-    SYNOPSIS_WORD: str = AbstractField()
-    SYNOPSIS_NOTE_TEXT: str = AbstractField()
-    FLAGS_WORD: str = AbstractField()
-    RETURN_WORD: str = AbstractField()
-    RETURN_NONE_WORD: str = AbstractField()
-    EXAMPLE_WORD: str = AbstractField()
-    PROPERTIES_WORD: str = AbstractField()
+    @property
+    @abstractmethod
+    def SYNOPSIS_WORD(self) -> str:
+        pass
+
+    @property
+    @abstractmethod
+    def SYNOPSIS_NOTE_TEXT(self) -> str:
+        pass
+
+    @property
+    @abstractmethod
+    def FLAGS_WORD(self) -> str:
+        pass
+
+    @property
+    @abstractmethod
+    def RETURN_WORD(self) -> str:
+        pass
+
+    @property
+    @abstractmethod
+    def RETURN_NONE_WORD(self) -> str:
+        pass
+
+    @property
+    @abstractmethod
+    def EXAMPLE_WORD(self) -> str:
+        pass
+
+    @property
+    @abstractmethod
+    def PROPERTIES_WORD(self) -> str:
+        pass
 
     @abstractmethod
     def property_mode(self, prop: str) -> str:
@@ -48,3 +73,5 @@ class Jp(Translater):
             return "編集"
         elif prop == "multiuse":
             return "複数"
+        else:
+            return prop
