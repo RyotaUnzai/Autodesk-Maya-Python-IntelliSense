@@ -357,7 +357,7 @@ URL:
             else:
                 print(f"error: {self.function_name}")
         else:
-            self.return_typeHint = self.translator.RETURN_NONE_WORD
+            self.return_typeHint = "None"
         self.docstrings_text = ""
         if returns_texts != []:
             self.docstrings_text = f"{self.translator.RETURN_WORD}:\n---\n\n"
