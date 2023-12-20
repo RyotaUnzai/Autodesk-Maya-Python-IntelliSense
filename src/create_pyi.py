@@ -125,7 +125,7 @@ class CreateMayaCommandPYI:
             definitions += f'    "{definition}",\n'
         import_text += f"__all__ = [\n{definitions}]\n\n\n"
         for first_letter in sorted(self.code_texts.keys()):
-            import_text += f"from mayacmds_{first_letter} import *\n"
+            import_text += f"from .mayacmds_{first_letter} import *\n"
         with open(self.maya_dir / "__init__.py", "w+", encoding="UTF-8") as file:
             file.write("")
         with open(self.cmds_dir / "__init__.py", "w+", encoding="UTF-8") as file:
@@ -334,7 +334,12 @@ URL:
         self.return_typeHint = ""
         returns_texts: list[list[str, str]] = []
         returns = []
-        if return_content.text != self.translator.RETURN_NONE_WORD:
+        try:
+            return_content_text = return_content.text
+        except AttributeError:
+            return_content_text = None
+
+        if return_content_text != self.translator.RETURN_NONE_WORD:
             soup = BeautifulSoup(str(return_content), "html.parser")
             tables = soup.find("table")
             if tables:
@@ -388,6 +393,8 @@ URL:
                 self.commands_data[self.function_name].description = self.description
                 self.code_texts[self.first_letter][self.function_name] = self.create_function_text()
             count += 1
+        self.current_letter = self.first_letter
+        self.export_pyi()
 
     def run(self) -> None:
         self.create_code_text()
@@ -399,7 +406,7 @@ if __name__ == "__main__":
 
     cwd = Path.cwd()
     create_pyi = cwd / "src" / "create_pyi.yml"
-    version: str = args.version or "2024"
+    version: str = args.version or "2023.3"
     export_dir = args.export_path or cwd / f"maya{int(float(version))}"
     export_dir.mkdir(exist_ok=True)
     export_path = export_dir / "typings"
@@ -424,3 +431,5 @@ if __name__ == "__main__":
         option=IntelliSenseOptionModel(**data),
     )
     mayacmd.run()
+
+    # python src\create_pyi.py
