@@ -7,7 +7,7 @@ import autopep8
 import yaml
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-import translater
+import translator
 from models import ArgumentData, Arguments, FunctionData, HTags, IntelliSenseOptionModel
 
 
@@ -21,7 +21,7 @@ class CreateMayaCommandPYI:
     function_name: str
     argument_data: list[ArgumentData]
     current_letter: str | None = None
-    translater: translater.Translater
+    translator: translator.Translator
 
     def __init__(
         self,
@@ -34,10 +34,10 @@ class CreateMayaCommandPYI:
         self.option = option
         if language == "jp":
             path = self.option.maya.documents[str(version)].jp
-            self.translater = translater.Jp()
+            self.translator = translator.Jp()
         else:
             path = self.option.maya.documents[str(version)].en
-            self.translater = translater.En()
+            self.translator = translator.En()
         self.document_root = Path(document_root) / path / "CommandsPython"
 
         self.export_path = Path(export_path)
@@ -165,21 +165,21 @@ class CreateMayaCommandPYI:
             hExamples_content_text = hExamples_content.get_text(strip=True)
             if not self.is_only_whitespace(hExamples_content_text):
                 hExamples_content_text = hExamples_content_text.replace("# ", "").replace("#", "---\n")
-                return f"\n{self.translater.EXAMPLE_WORD}:\n---\n```\n{hExamples_content_text}\n```\n\n---"
+                return f"\n{self.translator.EXAMPLE_WORD}:\n---\n```\n{hExamples_content_text}\n```\n\n---"
         return ""
 
     def create_docstrings_flags_texts(self) -> str:
-        text = f"\n{self.translater.FLAGS_WORD}:\n---\n\n"
+        text = f"\n{self.translator.FLAGS_WORD}:\n---\n\n"
         for argData in self.argument_data:
             types = ""
             for p in argData.properties:
-                prop = self.translater.property_mode(p)
+                prop = self.translator.property_mode(p)
                 types += f"{prop}, "
             types = types[:-2]
             text += f"""
 ---
 {argData.longName}: {argData.type}
-    {self.translater.PROPERTIES_WORD}: {types}
+    {self.translator.PROPERTIES_WORD}: {types}
     {argData.docs}
 """
         return text
@@ -243,7 +243,7 @@ URL:
         return matches.group(1) if matches else None
 
     def extract_next_p_content(self) -> None:
-        allSynopsis = self.extract_between_specific_h2_tags(f'<h2><a name="hSynopsis">{self.translater.SYNOPSIS_WORD}</a></h2>')
+        allSynopsis = self.extract_between_specific_h2_tags(f'<h2><a name="hSynopsis">{self.translator.SYNOPSIS_WORD}</a></h2>')
         soup = BeautifulSoup(allSynopsis, "html.parser")
         docs = soup.get_text()
         synopsis = soup.find("p", {"id": "synopsis"})
@@ -252,13 +252,13 @@ URL:
         while current_element and current_element.name != "h2":
             self.description += str(current_element.get_text())
             current_element = current_element.find_next_sibling()
-        note_text = self.translater.SYNOPSIS_NOTE_TEXT
+        note_text = self.translator.SYNOPSIS_NOTE_TEXT
         # description_split = self.description.split(note_text)
         # mention = description_split[1].split("\n")[0]
         # command_description = description_split[1].replace(mention, f"\n{mention}")
         synopsis_description, command_description = docs.split(note_text)
 
-        self.description = f"""{self.translater.SYNOPSIS_WORD}:
+        self.description = f"""{self.translator.SYNOPSIS_WORD}:
 ---
 ---
 {synopsis_description}
@@ -334,7 +334,7 @@ URL:
         self.return_typeHint = ""
         returns_texts: list[list[str, str]] = []
         returns = []
-        if return_content.text != self.translater.RETURN_NONE_WORD:
+        if return_content.text != self.translator.RETURN_NONE_WORD:
             soup = BeautifulSoup(str(return_content), "html.parser")
             tables = soup.find("table")
             if tables:
@@ -357,10 +357,10 @@ URL:
             else:
                 print(f"error: {self.function_name}")
         else:
-            self.return_typeHint = self.translater.RETURN_NONE_WORD
+            self.return_typeHint = self.translator.RETURN_NONE_WORD
         self.docstrings_text = ""
         if returns_texts != []:
-            self.docstrings_text = f"{self.translater.RETURN_WORD}:\n---\n\n"
+            self.docstrings_text = f"{self.translator.RETURN_WORD}:\n---\n\n"
             for returns_text in returns_texts:
                 self.docstrings_text += f"\n    {returns_text[0]}: {returns_text[1]}"
 

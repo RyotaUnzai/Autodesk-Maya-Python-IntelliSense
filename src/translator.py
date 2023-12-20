@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class Translater(ABC):
+class Translator(ABC):
     @property
     @abstractmethod
     def SYNOPSIS_WORD(self) -> str:
@@ -42,7 +42,7 @@ class Translater(ABC):
         pass
 
 
-class En(Translater):
+class En(Translator):
     SYNOPSIS_WORD: str = "Synopsis"
     SYNOPSIS_NOTE_TEXT: str = "Note: Strings representing object names and arguments must be separated by commas. This is not depicted in the synopsis."
     FLAGS_WORD: str = "Flags"
@@ -55,7 +55,7 @@ class En(Translater):
         return prop
 
 
-class Jp(Translater):
+class Jp(Translator):
     SYNOPSIS_WORD: str = "概要"
     SYNOPSIS_NOTE_TEXT: str = "注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。"
     FLAGS_WORD: str = "フラグ"
