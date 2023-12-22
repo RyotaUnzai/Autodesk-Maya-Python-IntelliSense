@@ -86,5 +86,95 @@
                 "color": "terminal.ansiBlue"
             }
         },
+        {
+            "type": "shell",
+            "label": "Maya2023.2 JP",
+            "command": "python",
+            "args": [
+                "src\\create_pyi.py",
+                "-v",
+                "\"2023.2\"",
+                "-l",
+                "\"jp\""
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Maya2023.2 EN",
+            "command": "python",
+            "args": [
+                "src\\create_pyi.py",
+                "-v",
+                "\"2023.2\"",
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Maya2023.1 JP",
+            "command": "python",
+            "args": [
+                "src\\create_pyi.py",
+                "-v",
+                "\"2023.1\"",
+                "-l",
+                "\"jp\""
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Maya2023.1 EN",
+            "command": "python",
+            "args": [
+                "src\\create_pyi.py",
+                "-v",
+                "\"2023.1\"",
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Maya2023 JP",
+            "command": "python",
+            "args": [
+                "src\\create_pyi.py",
+                "-v",
+                "\"2023\"",
+                "-l",
+                "\"jp\""
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Maya2023 EN",
+            "command": "python",
+            "args": [
+                "src\\create_pyi.py",
+                "-v",
+                "\"2023\"",
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
     ]
 }

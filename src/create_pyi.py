@@ -22,6 +22,8 @@ class CreateMayaCommandPYI:
     argument_data: list[ArgumentData]
     current_letter: str | None = None
     translator: translator.Translator
+    version: str
+    language: str
 
     def __init__(
         self,
@@ -31,12 +33,14 @@ class CreateMayaCommandPYI:
         version: str,
         option: IntelliSenseOptionModel,
     ) -> None:
+        self.language = language
+        self.version = str(version)
         self.option = option
         if language == "jp":
-            path = self.option.maya.documents[str(version)].jp
+            path = self.option.maya.documents[self.version].jp
             self.translator = translator.Jp()
         else:
-            path = self.option.maya.documents[str(version)].en
+            path = self.option.maya.documents[self.version].en
             self.translator = translator.En()
         self.document_root = Path(document_root) / path / "CommandsPython"
 
@@ -334,10 +338,7 @@ URL:
         self.return_typeHint = ""
         returns_texts: list[list[str, str]] = []
         returns = []
-        try:
-            return_content_text = return_content.text
-        except AttributeError:
-            return_content_text = None
+        return_content_text = return_content.text
 
         if return_content_text != self.translator.RETURN_NONE_WORD:
             soup = BeautifulSoup(str(return_content), "html.parser")
@@ -397,8 +398,17 @@ URL:
         self.export_pyi()
 
     def run(self) -> None:
+        self.versionCompatible()
         self.create_code_text()
         self.create_initpy()
+
+    def versionCompatible(self) -> None:
+        if self.version == "2023.3" and self.language == "jp":
+            import shutil
+
+            source = self.document_root.parent.parent.with_name("contents") / self.version / "workspaceControlState.content"
+            target = self.document_root / "workspaceControlState.html"
+            shutil.copy(target.as_posix(), source.as_posix())
 
 
 if __name__ == "__main__":
@@ -407,11 +417,11 @@ if __name__ == "__main__":
     cwd = Path.cwd()
     create_pyi = cwd / "src" / "create_pyi.yml"
     version: str = args.version or "2023.3"
-    export_dir = args.export_path or cwd / f"maya{int(float(version))}"
+    language = args.language or "en"
+    export_dir = args.export_path or cwd / f"{language}_maya{version}"
     export_dir.mkdir(exist_ok=True)
     export_path = export_dir / "typings"
     export_path.mkdir(exist_ok=True)
-    language = args.language or "en"
     document_dir = args.document_dir or cwd / "mayaProductHelps"  # / "Autodesk Maya User Guide 2024.2 (ADE 2.1)=en" / "CommandsPython"
 
     maya = cwd / "src" / f"maya{int(float(version))}.yml"
@@ -431,5 +441,3 @@ if __name__ == "__main__":
         option=IntelliSenseOptionModel(**data),
     )
     mayacmd.run()
-
-    # python src\create_pyi.py
