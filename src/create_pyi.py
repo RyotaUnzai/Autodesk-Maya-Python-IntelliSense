@@ -22,6 +22,8 @@ class CreateMayaCommandPYI:
     argument_data: list[ArgumentData]
     current_letter: str | None = None
     translator: translator.Translator
+    version: str
+    language: str
 
     def __init__(
         self,
@@ -31,12 +33,14 @@ class CreateMayaCommandPYI:
         version: str,
         option: IntelliSenseOptionModel,
     ) -> None:
+        self.language = language
+        self.version = str(version)
         self.option = option
         if language == "jp":
-            path = self.option.maya.documents[str(version)].jp
+            path = self.option.maya.documents[self.version].jp
             self.translator = translator.Jp()
         else:
-            path = self.option.maya.documents[str(version)].en
+            path = self.option.maya.documents[self.version].en
             self.translator = translator.En()
         self.document_root = Path(document_root) / path / "CommandsPython"
 
@@ -125,7 +129,7 @@ class CreateMayaCommandPYI:
             definitions += f'    "{definition}",\n'
         import_text += f"__all__ = [\n{definitions}]\n\n\n"
         for first_letter in sorted(self.code_texts.keys()):
-            import_text += f"from mayacmds_{first_letter} import *\n"
+            import_text += f"from .mayacmds_{first_letter} import *\n"
         with open(self.maya_dir / "__init__.py", "w+", encoding="UTF-8") as file:
             file.write("")
         with open(self.cmds_dir / "__init__.py", "w+", encoding="UTF-8") as file:
@@ -334,7 +338,9 @@ URL:
         self.return_typeHint = ""
         returns_texts: list[list[str, str]] = []
         returns = []
-        if return_content.text != self.translator.RETURN_NONE_WORD:
+        return_content_text = return_content.text
+
+        if return_content_text != self.translator.RETURN_NONE_WORD:
             soup = BeautifulSoup(str(return_content), "html.parser")
             tables = soup.find("table")
             if tables:
@@ -388,10 +394,21 @@ URL:
                 self.commands_data[self.function_name].description = self.description
                 self.code_texts[self.first_letter][self.function_name] = self.create_function_text()
             count += 1
+        self.current_letter = self.first_letter
+        self.export_pyi()
 
     def run(self) -> None:
+        self.versionCompatible()
         self.create_code_text()
         self.create_initpy()
+
+    def versionCompatible(self) -> None:
+        if self.version == "2023.3" and self.language == "jp":
+            import shutil
+
+            source = self.document_root.parent.parent.with_name("contents") / self.version / "workspaceControlState.content"
+            target = self.document_root / "workspaceControlState.html"
+            shutil.copy(target.as_posix(), source.as_posix())
 
 
 if __name__ == "__main__":
@@ -399,12 +416,12 @@ if __name__ == "__main__":
 
     cwd = Path.cwd()
     create_pyi = cwd / "src" / "create_pyi.yml"
-    version: str = args.version or "2024"
-    export_dir = args.export_path or cwd / f"maya{int(float(version))}"
+    version: str = args.version or "2023.3"
+    language = args.language or "en"
+    export_dir = args.export_path or cwd / f"{language}_maya{version}"
     export_dir.mkdir(exist_ok=True)
     export_path = export_dir / "typings"
     export_path.mkdir(exist_ok=True)
-    language = args.language or "en"
     document_dir = args.document_dir or cwd / "mayaProductHelps"  # / "Autodesk Maya User Guide 2024.2 (ADE 2.1)=en" / "CommandsPython"
 
     maya = cwd / "src" / f"maya{int(float(version))}.yml"

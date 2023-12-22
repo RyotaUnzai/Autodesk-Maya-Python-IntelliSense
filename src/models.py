@@ -96,6 +96,9 @@ class Arguments(BaseModel):
     document_dir: Optional[Path] = Field(alias="document_dir", default=None)
     language: Optional[str] = Field(alias="language", default=None)
 
+    class Config:
+        populate_by_name = True
+
     @classmethod
     def parse_args(cls) -> Self:
         parser = ArgumentParser()
@@ -105,3 +108,10 @@ class Arguments(BaseModel):
             else:
                 parser.add_argument(f"-{k[0:1]}", f"--{k}")
         return cls.model_validate(parser.parse_args().__dict__)
+
+    @validator("language", pre=True)
+    def create_imports_list(cls, v: str) -> str:
+        try:
+            return v.lower()
+        except AttributeError:
+            return None

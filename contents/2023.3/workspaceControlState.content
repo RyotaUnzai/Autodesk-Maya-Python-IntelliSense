@@ -1,0 +1,526 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>workspaceControlState command</title>
+    <meta name="section" content="Commands">
+    <meta name="module" content="MEL and expressions">
+    <script src="../style/tech.js">.</script>
+    <script src="../style/document.js">.</script>
+    <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-workspaceControlState">
+</head>
+
+<body class="command" onload="highLightSearch();">
+    <div id="banner">
+        <table width="100%">
+            <tr>
+                <td>
+                    <font size="-1"><b>コマンド</b> (Python)</font>
+                </td>
+                <td align="right">
+                    <font size="-1"><i><a href="../Commands/workspaceControlState.html">MEL バージョン</a></i></font>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h1>workspaceControlState </h1>
+                </td>
+                <td align="right">カテゴリ内: <a href="cat_Windows.html" target="contentFrame">ウィンドウ</a></td>
+            </tr>
+        </table>
+    </div>
+    <p class="toolbar" align="right">
+        <script>toolbar("workspaceControlState.html");</script>
+    </p>
+    <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a
+            href="#hExamples">Python 例</a>. </p>
+
+    <h2><a name="hSynopsis">概要</a></h2>
+    <p id="synopsis">
+        <code>workspaceControlState(
+string
+    , [<a href="#flagdefaultTopLeftCorner">defaultTopLeftCorner</a>=<i>[int, int]</i>], [<a href="#flagdefaultWidthHeight">defaultWidthHeight</a>=<i>[int, int]</i>], [<a href="#flagexists">exists</a>=<i>boolean</i>], [<a href="#flagheight">height</a>=<i>int</i>], [<a href="#flagleftEdge">leftEdge</a>=<i>int</i>], [<a href="#flagmaximized">maximized</a>=<i>boolean</i>], [<a href="#flagremove">remove</a>=<i>boolean</i>], [<a href="#flagtopEdge">topEdge</a>=<i>int</i>], [<a href="#flagtopLeftCorner">topLeftCorner</a>=<i>[int, int]</i>], [<a href="#flagwidth">width</a>=<i>int</i>], [<a href="#flagwidthHeight">widthHeight</a>=<i>[int, int]</i>]) </code>
+        <br><br>
+        <font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font>
+    </p>
+    <p>workspaceControlState は、取り消し可能、照会可能、および編集可能です。</p>
+    ワークスペース コントロールの希望するウィンドウ アトリビュートを作成または修正します。ワークスペース コントロールのサイズや位置は、アプリケーション セッション中は保持されます(ただし、位置はフローティング ワークスペース
+    ドッキング パネルに単独で存在するワークスペース コントロールのみに適用されます)。ワークスペース コントロールを閉じると、既定のワークスペース コントロールの状態が作成されます。ワークスペース
+    コントロールの状態に名前を付ける必要があり、その後は一致する名前を持つワークスペース コントロールのみに影響します。
+    <p>
+
+    <h2><a name="hReturn">戻り値</a></h2>
+    <p><i>なし</i></p>
+    <p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+
+
+
+
+    <h2><a name="hFlags">フラグ</a></h2>
+    <a href="#flagdefaultTopLeftCorner">defaultTopLeftCorner</a>, <a
+        href="#flagdefaultWidthHeight">defaultWidthHeight</a>, <a href="#flagexists">exists</a>, <a
+        href="#flagheight">height</a>, <a href="#flagleftEdge">leftEdge</a>, <a href="#flagmaximized">maximized</a>, <a
+        href="#flagremove">remove</a>, <a href="#flagtopEdge">topEdge</a>, <a
+        href="#flagtopLeftCorner">topLeftCorner</a>, <a href="#flagwidth">width</a>, <a
+        href="#flagwidthHeight">widthHeight</a>
+    <table width="100%">
+        <tr>
+            <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+            <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+            <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD">
+            <td colspan="3"><u></u></td>
+        </tr>
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagdefaultTopLeftCorner">
+                    <code><b>defaultTopLeftCorner</b>(<b>dc</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>[int, int]</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2"
+                    vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            サイズと位置の記憶(Remember size and position)がオフの場合に、このパネルを最初に開いたときのウィンドウの上端と左端の位置です。値は、編集時には DPI
+                            スケーリングされますが、照会中はスケーリングされないで返されます。この値は、既定の幅と高さも有効である場合のみ使用されます。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagdefaultWidthHeight">
+                    <code><b>defaultWidthHeight</b>(<b>dwh</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>[int, int]</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2"
+                    vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            サイズと位置の記憶(Remember size and position)がオフの場合に、このパネルを最初に開いたときのウィンドウの幅と高さです。値は、編集時には DPI
+                            スケーリングされますが、照会中はスケーリングされないで返されます。この場合に使用される位置は defaultTopLeftCorner です。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagexists">
+                    <code><b>exists</b>(<b>ex</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>boolean</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            指定したオブジェクトが存在するかどうかによって、true または false を返します。他のフラグは無視されます。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagheight">
+                    <code><b>height</b>(<b>h</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>int</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2"
+                    vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            ウィンドウの高さを指定します。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagleftEdge">
+                    <code><b>leftEdge</b>(<b>le</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>int</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2"
+                    vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            ウィンドウの左端の位置を指定します。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagmaximized">
+                    <code><b>maximized</b>(<b>max</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>boolean</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2"
+                    vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            ウィンドウを最大化します。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagremove">
+                    <code><b>remove</b>(<b>r</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>boolean</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            1 つのウィンドウ プリファレンスを除去します。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagtopEdge">
+                    <code><b>topEdge</b>(<b>te</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>int</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2"
+                    vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            ウィンドウの上端の位置を指定します。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagtopLeftCorner">
+                    <code><b>topLeftCorner</b>(<b>tlc</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>[int, int]</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2"
+                    vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            ウィンドウの上端と左端の位置を指定します。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagwidth">
+                    <code><b>width</b>(<b>w</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>int</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2"
+                    vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            ウィンドウの幅を指定します。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+
+        <tr bgcolor="#EEEEEE">
+            <td valign="top">
+                <a name="flagwidthHeight">
+                    <code><b>widthHeight</b>(<b>wh</b>)</code></a>
+            </td>
+            <td valign="top">
+                <code><i>[int, int]</i></code>
+            </td>
+            <td valign="top">
+                <img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2"
+                    vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2"
+                    vspace="2">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table width="100%">
+                    <tr>
+                        <td width="5%"></td>
+                        <td>
+
+                            ウィンドウの幅と高さを指定します。
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+    <hr>
+    <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+        <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+        </tr>
+    </table>
+
+
+    <h2><a name="hExamples">Python 例</a></h2>
+    <pre>import maya.cmds as cmds
+
+#    Check if the window exists.
+#
+if cmds.window('ExampleWindow', exists=True):
+	cmds.deleteUI('ExampleWindow', window=True)
+
+#    Create a window.
+#
+cmds.window( 'ExampleWindow' )
+cmds.columnLayout()
+cmds.text( label='Size and position the window before closing it.' )
+cmds.button( label='Close', command='cmds.deleteUI(&quot;ExampleWindow&quot;, window=True)' )
+cmds.showWindow( 'ExampleWindow' )
+
+#    When the window is closed a window preference object is
+#    created for the window. It has the same name as the window
+#    object.
+#
+cmds.workspaceControlState( 'ExampleWindow', exists=True )
+
+#    Query the window preference size and position.
+#
+cmds.workspaceControlState( 'ExampleWindow', query=True, topLeftCorner=True )
+cmds.workspaceControlState( 'ExampleWindow', query=True, widthHeight=True )
+
+#    Create a window with the same name. When it is shown
+#    it will be sized and positioned according to the
+#    window preference.
+#
+if cmds.window('ExampleWindow', exists=True):
+	cmds.deleteUI('ExampleWindow', window=True)
+
+cmds.window( 'ExampleWindow' )
+cmds.columnLayout()
+cmds.text( label='Size and position the window before closing it.' )
+cmds.button( label='Close', command='cmds.deleteUI(&quot;ExampleWindow&quot;, window=True)' )
+cmds.showWindow( 'ExampleWindow' )
+
+#    Delete the window preference and the window will have a
+#    default size and position.
+#
+cmds.workspaceControlState( 'ExampleWindow', remove=True )
+
+#    Create the window one last time.
+#
+if cmds.window('ExampleWindow', exists=True):
+	cmds.deleteUI('ExampleWindow', window=True)
+
+cmds.window( 'ExampleWindow' )
+cmds.columnLayout()
+cmds.text( label='Size and position the window before closing it.' )
+cmds.button( label='Close', command='cmds.deleteUI(&quot;ExampleWindow&quot;, window=True)' )
+cmds.showWindow( 'ExampleWindow' )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
