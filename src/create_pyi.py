@@ -169,6 +169,7 @@ class CreateMayaCommandPYI:
             hExamples_content_text = hExamples_content.get_text(strip=True)
             if not self.is_only_whitespace(hExamples_content_text):
                 # hExamples_content_text = hExamples_content_text.replace("# ", "").replace("#", "---\n")
+                hExamples_content_text.replace(r'"""', r'\"""')
                 return f"\n{self.translator.EXAMPLE_WORD}:\n---\n```\n{hExamples_content_text}\n```\n\n---"
         return ""
 
