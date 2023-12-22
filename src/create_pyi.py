@@ -195,8 +195,8 @@ class CreateMayaCommandPYI:
         flags = self.create_docstrings_flags_texts()
         code = ""
         for arguments in functionData.arguments:
-            code += f"{arguments[0]}: {arguments[1]}, "
-        code = f'''def {self.function_name}({code[:-2]}) -> {self.return_typeHint}:
+            code += f"{arguments[0]}: {arguments[1]} = ..., "
+        code = f'''def {self.function_name}(*args, {code[:-2]}) -> {self.return_typeHint}:
     """{functionData.description}
         
 {docstrings}
