@@ -169,6 +169,7 @@ class CreateMayaCommandPYI:
             hExamples_content_text = hExamples_content.get_text(strip=True)
             if not self.is_only_whitespace(hExamples_content_text):
                 # hExamples_content_text = hExamples_content_text.replace("# ", "").replace("#", "---\n")
+                hExamples_content_text.replace(r'"""', r'\"""')
                 return f"\n{self.translator.EXAMPLE_WORD}:\n---\n```\n{hExamples_content_text}\n```\n\n---"
         return ""
 
@@ -194,8 +195,8 @@ class CreateMayaCommandPYI:
         flags = self.create_docstrings_flags_texts()
         code = ""
         for arguments in functionData.arguments:
-            code += f"{arguments[0]}: {arguments[1]}, "
-        code = f'''def {self.function_name}({code[:-2]}) -> {self.return_typeHint}:
+            code += f"{arguments[0]}: {arguments[1]} = ..., "
+        code = f'''def {self.function_name}(*args, {code[:-2]}) -> {self.return_typeHint}:
     """{functionData.description}
         
 {docstrings}
