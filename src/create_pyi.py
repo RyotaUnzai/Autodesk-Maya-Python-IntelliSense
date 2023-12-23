@@ -10,6 +10,8 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 import translator
 from models import ArgumentData, Arguments, FunctionData, HTags, IntelliSenseOptionModel
 
+# from utils import stop_watch
+
 
 class CreateMayaCommandPYI:
     document_root: Path
@@ -168,8 +170,8 @@ class CreateMayaCommandPYI:
         if hExamples_content:
             hExamples_content_text = hExamples_content.get_text(strip=True)
             if not self.is_only_whitespace(hExamples_content_text):
-                # hExamples_content_text = hExamples_content_text.replace("# ", "").replace("#", "---\n")
-                hExamples_content_text.replace(r'"""', r'\"""')
+                if '"""' in hExamples_content_text:
+                    hExamples_content_text = hExamples_content_text.replace(r'"""', r"'''")
                 return f"\n{self.translator.EXAMPLE_WORD}:\n---\n```\n{hExamples_content_text}\n```\n\n---"
         return ""
 
@@ -371,6 +373,7 @@ URL:
             for returns_text in returns_texts:
                 self.docstrings_text += f"\n    {returns_text[0]}: {returns_text[1]}"
 
+    @stop_watch
     def create_code_text(self) -> None:
         count = 0
         self.code_texts = {}
@@ -379,7 +382,7 @@ URL:
             length += 1
         count = 0
         for iter in self.document_root.iterdir():
-            print(f"{length-count}/{length}")
+            # print(f"{length-count}/{length}")
             self.function_name = iter.stem
             if iter.stem not in self.option.common.ignore:
                 self.add_code_texts_key()
