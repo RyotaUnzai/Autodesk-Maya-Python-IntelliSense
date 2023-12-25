@@ -339,7 +339,7 @@ URL:
     def getReturnData(self) -> None:
         return_content = self.hReturn()
         self.return_typeHint = ""
-        returns_texts: list[list[str, str]] = []
+        returns_texts: list[list[str] | str] = []
         returns = []
         return_content_text = return_content.text
 
@@ -373,7 +373,7 @@ URL:
             for returns_text in returns_texts:
                 self.docstrings_text += f"\n    {returns_text[0]}: {returns_text[1]}"
 
-    @stop_watch
+    # @stop_watch
     def create_code_text(self) -> None:
         count = 0
         self.code_texts = {}
@@ -426,7 +426,7 @@ if __name__ == "__main__":
     export_dir.mkdir(exist_ok=True)
     export_path = export_dir / "typings"
     export_path.mkdir(exist_ok=True)
-    document_dir = args.document_dir or cwd / "mayaProductHelps"  # / "Autodesk Maya User Guide 2024.2 (ADE 2.1)=en" / "CommandsPython"
+    document_dir = args.document_dir or cwd / "mayaProductHelps"
 
     maya = cwd / "src" / f"maya{int(float(version))}.yml"
     with open(create_pyi, "r") as file:

@@ -114,12 +114,17 @@ common:
         - str
     -   - script
         - str
+    -   - double
+        - float
+    -   - selectionItem
+        - str
     maya argments:
+        Int: int
         int64: int64
         angle: angle
         floatrange: floatrange
         linear: linear
-        boolean: boolean
+        Boolean: boolean
         float: float
         timerange: timerange
         script: script
@@ -128,6 +133,10 @@ common:
         name: name
         string: string
         string[]: list[string]
+        float[]: list[float]
+        double[]: list[double]
+        boolean[]: list[boolean]
+        selectionItem[]: list[selectionItem]
         int[]: list[int]
         '[int, [, string, ]]': list[int] | tuple[int, string] # nodeEditor
         '[int, [, int, ]]': int | tuple[int, int] # nodeEditor
@@ -162,7 +171,7 @@ common:
         '[int, boolean]': tuple[int, boolean]
         '[float, float]': tuple[float, float]
         '[uint, linear]': tuple[uint, linear]
-        '[[, boolean, float, ]]': bool | list[boolean, float] # bakeResults
+        '[[, boolean, float, ]]': bool | list[boolean | float] # bakeResults
         '[int, float, [, float, float, ]]': tuple[int, float] |tuple[int | float, ...] | tuple[tuple, ...] # polySplit
         '[string, [, string, ], [, string, ]]': string | tuple[string, ...] # contentBrowser
         '[string, int, float, float, float]': tuple[string, int, float, float, float] # treeView
