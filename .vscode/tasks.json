@@ -58,6 +58,70 @@
         },
         {
             "type": "shell",
+            "label": "Maya2024.1 JP",
+            "command": "python",
+            "args": [
+                "-b",
+                "src\\create_pyi.py",
+                "-v",
+                "\"2024.1\"",
+                "-l",
+                "\"jp\""
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Maya2024.1 EN",
+            "command": "python",
+            "args": [
+                "-b",
+                "src\\create_pyi.py",
+                "-v",
+                "\"2024.1\"",
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Maya2024 JP",
+            "command": "python",
+            "args": [
+                "-b",
+                "src\\create_pyi.py",
+                "-v",
+                "\"2024\"",
+                "-l",
+                "\"jp\""
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Maya2024 EN",
+            "command": "python",
+            "args": [
+                "-b",
+                "src\\create_pyi.py",
+                "-v",
+                "\"2024\"",
+            ],
+            "icon": {
+                "id": "debug-start",
+                "color": "terminal.ansiBlue"
+            }
+        },
+        {
+            "type": "shell",
             "label": "Maya2023.3 JP",
             "command": "python",
             "args": [

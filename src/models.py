@@ -1,14 +1,14 @@
 from argparse import ArgumentParser
 from enum import Enum
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 from pydantic import BaseModel, Field, validator
 from typing_extensions import Self
 
 
 class FunctionData:
-    arguments: list
+    arguments: list[str]
     description: str
     url: str
 
@@ -33,14 +33,14 @@ class NewTypes(BaseModel):
 class Common(BaseModel):
     ignore: list[str]
     new_types: NewTypes = Field(alias="new types")
-    maya_argments: dict = Field(alias="maya argments")
+    maya_argments: dict[str, str] = Field(alias="maya argments")
     all_definition: list[str] = Field(alias="__all__")
 
     class Config:
         populate_by_name = True
 
     @validator("new_types", pre=True)
-    def create_new_type_list(cls, v):
+    def create_new_type_list(cls, v: Any) -> dict[str, list[NewType]]:
         return {"items": [NewType(name=item[0], type=item[1]) for item in v]}
 
 
@@ -60,15 +60,15 @@ class Maya(BaseModel):
         populate_by_name = True
 
     @validator("imports", pre=True)
-    def create_imports_list(cls, v) -> list[str]:
+    def create_imports_list(cls, v: Any) -> list[str]:
         return v or []
 
     @validator("help_url", pre=True)
-    def create_help_url(cls, v) -> Path:
+    def create_help_url(cls, v: str) -> Path:
         return Path(v)
 
     @validator("documents", pre=True)
-    def create_help_url(cls, v) -> Path:
+    def create_base_documents(cls, v: dict[str, dict[str, str]]) -> dict[str, Docs]:
         docs: dict[str, Docs] = {}
         for key, value in v.items():
             docs[str(key)] = Docs(**value)
