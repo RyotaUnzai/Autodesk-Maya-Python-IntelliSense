@@ -453,6 +453,19 @@ URL:
         return matches.group(1) if matches else None
 
     def extract_next_p_content(self) -> None:
+        """
+        Extracts and compiles the synopsis content from the HTML documentation of a Maya command.
+
+        This method first extracts a segment of the HTML content that falls under the 'Synopsis' section
+        and then parses it to compile a structured description. The method traverses through the HTML elements,
+        concatenating the text content to form a comprehensive synopsis. The final synopsis is formatted and
+        stored in the 'description' attribute of the class.
+
+        Note:
+            This method relies on specific HTML structure and id attributes (e.g., 'id="synopsis"') to identify
+            and extract the relevant content. It also uses configured translator settings for specific text
+            labels such as 'SYNOPSIS_WORD' and 'SYNOPSIS_NOTE_TEXT'.
+        """
         allSynopsis = self.extract_between_specific_h2_tags(f'<h2><a name="hSynopsis">{self.translator.SYNOPSIS_WORD}</a></h2>')
         soup = BeautifulSoup(allSynopsis, "html.parser")
         docs = soup.get_text()
@@ -484,6 +497,17 @@ URL:
         return self.function_name[0] if self.function_name else ""
 
     def getArgmentsList(self) -> list[list[str]]:
+        """
+        Extracts and returns a list of arguments and their types from the synopsis section.
+
+        This method parses the synopsis section of the Maya command's documentation to extract arguments.
+        It looks for `<code>` tags within the synopsis and then identifies each argument's flag and type.
+        The method also checks if the argument type is present in the common Maya arguments configuration,
+        and if so, uses the configured type.
+
+        Returns:
+            list[list[str]]: A list of lists, where each inner list contains the argument flag and its type.
+        """
         code_tags = self.synopsis.find_all("code")
         self.resultArgs: list[list[str]] = []
         for code_tag in code_tags:
@@ -499,6 +523,18 @@ URL:
 
     @property
     def synopsis(self) -> Tag | NavigableString | None:
+        """
+        Retrieves the synopsis section from the HTML documentation of a Maya command.
+
+        This property locates the 'Synopsis' section in the command's HTML documentation using a specific
+        HTML structure and identifiers (e.g., an anchor tag with 'name' attribute as 'hSynopsis'). It returns
+        the content immediately following this section, typically a paragraph, which contains the command's
+        synopsis information.
+
+        Returns:
+            Tag | NavigableString | None: The BeautifulSoup tag or navigable string containing the synopsis,
+            or None if the synopsis section is not found.
+        """
         synopsis_section = self.soup.find("a", {"name": HTags.hSynopsis.value}).find_parent("h2")
         return synopsis_section.find_next_sibling("p")
 
@@ -516,6 +552,16 @@ URL:
             self.code_texts[self.first_letter] = {}
 
     def hReturn(self) -> Tag | NavigableString | str:
+        """
+        Retrieves the content of the 'Return' section from the HTML documentation of a Maya command.
+
+        This method searches for the 'Return' section in the command's HTML documentation, identified by an
+        anchor tag with the name 'hReturn'. It then returns the content following this section, typically
+        detailing the return values of the command.
+
+        Returns:
+            Tag | NavigableString | str: The content of the 'Return' section, or None if the section is not found.
+        """
         section = self.soup.find("a", {"name": "hReturn"})
         if section:
             h2_parent = section.find_parent("h2")
@@ -528,6 +574,19 @@ URL:
             return None
 
     def getReturnTable(self, table: Tag | NavigableString) -> tuple[str, str]:
+        """
+        Extracts and returns the return type and description from a given table element.
+
+        This method is used to parse return type information from a table in the 'Return' section of the command's
+        documentation. It extracts the return type and its description, adjusting the type if it's listed in the
+        common Maya arguments configuration.
+
+        Parameters:
+            table (Tag | NavigableString): The BeautifulSoup object representing the table to parse.
+
+        Returns:
+            tuple[str, str]: A tuple containing the return type and its description.
+        """
         td_tags = table.find_all("td")
         if len(td_tags) > 1:
             td_texts = td_tags[1].get_text(strip=True)
@@ -537,6 +596,13 @@ URL:
         return i_tag, td_texts
 
     def getReturnData(self) -> None:
+        """
+        Extracts and processes the return data from the command's HTML documentation.
+
+        This method retrieves the return type information from the documentation, parses it,
+        and formats it into a structured form suitable for inclusion in the docstrings. It compiles
+        the return types and their descriptions, updating the class attributes for further use in PYI file generation.
+        """
         return_content = self.hReturn()
         self.return_typeHint = ""
         returns_texts: list[list[str] | str] = []
@@ -575,6 +641,13 @@ URL:
 
     # @stop_watch
     def create_code_text(self) -> None:
+        """
+        Generates the complete code text for each Maya command.
+
+        This method iterates through all the HTML files in the document root directory, extracts the necessary
+        information (including return data, arguments, and descriptions), and creates the function definition text.
+        The generated text is stored and organized for later use in PYI file export.
+        """
         count = 0
         self.code_texts = {}
         length = 0
@@ -602,11 +675,28 @@ URL:
         self.export_pyi()
 
     def run(self) -> None:
+        """
+        Executes the complete process of generating PYI files for Maya commands.
+
+        This method is the main entry point for the PYI file generation process. It ensures version compatibility,
+        creates the function texts for all commands, and handles the export of the generated PYI files and
+        the creation of '__init__.py' files.
+        """
         self.versionCompatible()
         self.create_code_text()
         self.create_initpy()
 
     def versionCompatible(self) -> None:
+        """
+        Handles version-specific compatibility adjustments for the documentation.
+
+        This method checks the specified version of the Maya documentation and performs necessary adjustments
+        to ensure compatibility. For example, it handles specific file copying operations for Japanese documentation
+        of Maya 2023.3.
+
+        Note:
+            Adjustments made by this method depend on the specific requirements of different versions of Maya documentation.
+        """
         if self.version == "2023.3" and self.language == "jp":
             import shutil
 
