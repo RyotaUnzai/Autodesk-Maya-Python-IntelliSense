@@ -14,6 +14,14 @@ from models import ArgumentData, Arguments, FunctionData, HTags, IntelliSenseOpt
 
 
 class CreateMayaCommandPYI:
+    """
+    A class for generating Python Interface (PYI) files for Maya commands.
+
+    This class parses Maya command documentation from HTML files, extracts relevant
+    information, and generates PYI files which include type hints and docstrings for
+    each Maya command based on the parsed data.
+    """
+
     document_root: Path
     export_path: Path
     code_text: str
@@ -53,18 +61,58 @@ class CreateMayaCommandPYI:
 
     @cached_property
     def cloudhelp_url(self) -> str:
+        """
+        Generates and returns a fully qualified URL to the Maya help documentation based on the configured option.
+
+        This method constructs the URL using the `help_url` attribute from the `maya` configuration option.
+        The URL is created as an HTTPS URL. As a cached property, the generated URL is stored and reused,
+        ensuring that it's only generated once during the lifespan of the instance.
+
+        Returns:
+            str: The full HTTPS URL pointing to the Maya help documentation.
+
+        Usage:
+            instance = YourClassName()
+            help_url = instance.cloudhelp_url  # Accesses the cached URL
+        """
         return f"https://{self.option.maya.help_url.as_posix()}"
 
     @property
     def cmd_cloudhelp_url(self) -> str:
+        """
+        Gets the full URL for the documentation of the currently processed Maya command.
+
+        This property constructs the URL by appending the command's name to the base Maya help URL.
+        The command name is set using the cmd_cloudhelp_url setter.
+
+        Returns:
+            str: The full URL pointing to the documentation of the specific Maya command.
+        """
         return f"{self.cloudhelp_url}/{self._cmd_name}"
 
     @cmd_cloudhelp_url.setter
     def cmd_cloudhelp_url(self, cmd_name: str) -> None:
+        """
+        Sets the command name for which the cloud help URL is to be constructed.
+
+        This setter updates the internal command name, which is used to generate the full URL
+        for the command's documentation.
+
+        Parameters:
+            cmd_name (str): The name of the Maya command.
+        """
         self._cmd_name = cmd_name
 
     @cached_property
     def __import_typing_code(self) -> str:
+        """
+        Generates and returns a string of import statements from the typing module.
+
+        This cached property ensures the import code is generated only once and then reused.
+
+        Returns:
+            str: A string containing import statements from the typing module.
+        """
         return """from typing import (
     NewType,
     Any
@@ -72,6 +120,15 @@ class CreateMayaCommandPYI:
 
     @cached_property
     def __imports_code(self) -> str:
+        """
+        Constructs and returns the import statements required for the PYI file.
+
+        This method iterates over the import lines defined in the configuration options
+        and concatenates them into a single string.
+
+        Returns:
+            str: A string of concatenated import statements.
+        """
         code = ""
         for import_line in self.option.maya.imports:
             code += f"{import_line}\n"
@@ -79,6 +136,15 @@ class CreateMayaCommandPYI:
 
     @cached_property
     def __new_types_code(self) -> str:
+        """
+        Generates new type definitions for use in the PYI files.
+
+        This method creates new type aliases based on the items specified in the configuration options.
+        These types are used to enhance the type hinting in the generated PYI files.
+
+        Returns:
+            str: A string containing new type definitions.
+        """
         code = ""
         for item in self.option.common.new_types.items:
             code += f'{item.name} = NewType("{item.name}", {item.type})\n'
