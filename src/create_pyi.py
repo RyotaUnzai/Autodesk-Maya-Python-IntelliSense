@@ -151,12 +151,30 @@ class CreateMayaCommandPYI:
         return code
 
     def __init_code_text(self) -> None:
+        """
+        Initializes the code text for PYI file generation.
+
+        This method concatenates various parts of the code including imports and new type definitions,
+        setting up the initial structure of the PYI file.
+        """
         self.code_text = ""
         self.code_text += self.__imports_code
         self.code_text += self.__import_typing_code
         self.code_text += self.__new_types_code
 
     def extract_html_content(self, file_path: Path | str) -> None:
+        """
+        Reads the HTML content from the given file path and stores it in the instance.
+
+        This method is used to read the HTML file corresponding to a Maya command and store its content
+        for further processing.
+
+        Parameters:
+            file_path (Path | str): The path to the HTML file to be read.
+
+        Raises:
+            Exception: If there is an error reading the file.
+        """
         try:
             with open(file_path, "r", encoding="utf-8") as file:
                 self.html_content = file.read()
@@ -164,23 +182,54 @@ class CreateMayaCommandPYI:
             raise e
 
     def __init_export_dir(self) -> None:
+        """
+        Initializes the export directory structure for the PYI files.
+
+        This method ensures that the base export directory and its subdirectories for Maya and cmds exist.
+        If they do not exist, they are created. This setup is necessary before starting the export of PYI files.
+        """
         self.export_path.mkdir(exist_ok=True)
         self.maya_dir
         self.cmds_dir
 
     @cached_property
     def maya_dir(self) -> Path:
+        """
+        Gets the directory path for storing the exported Maya PYI files.
+
+        This cached property ensures that the Maya directory is created only once and then reused.
+        The directory is a subdirectory within the main export path specifically for Maya-related files.
+
+        Returns:
+            Path: The Path object representing the Maya directory.
+        """
         maya_dir = self.export_path / "maya"
         maya_dir.mkdir(exist_ok=True)
         return maya_dir
 
     @cached_property
     def cmds_dir(self) -> Path:
+        """
+        Gets the directory path for storing the exported cmds PYI files.
+
+        This cached property creates a 'cmds' subdirectory within the Maya directory. This directory
+        is used to store the PYI files related to individual Maya commands.
+
+        Returns:
+            Path: The Path object representing the cmds directory.
+        """
         cmds_dir = self.maya_dir / "cmds"
         cmds_dir.mkdir(exist_ok=True)
         return cmds_dir
 
     def export_pyi(self) -> None:
+        """
+        Exports the accumulated Python Interface (PYI) code for the current letter to a file.
+
+        This method concatenates the PYI code for all the commands starting with the current letter
+        and writes the combined code to a PYI file. The file is named based on the current letter and
+        is formatted using the autopep8 tool for better readability.
+        """
         code = self.code_text
         for fileName in sorted(self.code_texts[self.current_letter].keys()):
             code += self.code_texts[self.current_letter][fileName]
@@ -190,6 +239,16 @@ class CreateMayaCommandPYI:
             file.write(v)
 
     def create_initpy(self) -> None:
+        """
+        Creates '__init__.py' files in the Maya and cmds directories.
+
+        This method generates '__init__.py' files to ensure that the exported PYI files
+        are recognized as Python modules. It includes dynamic import statements based on
+        the command names processed, and adds a list of all command definitions to the '__all__' variable.
+
+        The '__init__.py' file in the cmds directory imports all the generated mayacmds_<letter>.pyi files,
+        while the one in the maya directory is created empty as a placeholder for the package.
+        """
         import_text = ""
         # https://github.com/tiangolo/typer/issues/142
         definitions = ""
@@ -206,16 +265,33 @@ class CreateMayaCommandPYI:
 
     @property
     def soup(self) -> BeautifulSoup:
-        """Convert HTML content to a BeautifulSoup object for parsing.
-        This property uses BeautifulSoup to parse the HTML content stored in
-        self.html_content, facilitating HTML parsing and manipulation. It returns
-        a BeautifulSoup object initialized with the HTML content.
+        """
+        Parses the stored HTML content into a BeautifulSoup object for easy manipulation and extraction.
+
+        This property provides a convenient way to access and parse the HTML content of a Maya command's
+        documentation. It utilizes BeautifulSoup to turn the raw HTML into a parseable tree structure,
+        enabling efficient extraction and processing of the required information.
+
         Returns:
-            BeautifulSoup: A parser object created from the HTML content.
+            BeautifulSoup: A BeautifulSoup object representing the parsed HTML content.
         """
         return BeautifulSoup(self.html_content, "html.parser")
 
     def getHTagContent(self, value: str) -> Tag | NavigableString | None:
+        """
+        Retrieves the content associated with a specific HTML anchor tag.
+
+        This method searches for an anchor (`<a>`) tag with the given name attribute and then finds the content
+        in its parent `<h2>` tag's next sibling. It's used to extract specific sections, such as examples or flags,
+        from the HTML documentation of Maya commands.
+
+        Parameters:
+            value (str): The value of the 'name' attribute in the anchor tag to search for.
+
+        Returns:
+            Tag | NavigableString | None: The content of the next sibling of the parent `<h2>` tag of the found anchor,
+            or None if no matching tag is found.
+        """
         section = self.soup.find("a", {"name": value})
         if section:
             h2_parent = section.find_parent("h2")
@@ -228,10 +304,31 @@ class CreateMayaCommandPYI:
             return None
 
     def is_only_whitespace(self, text: str) -> bool:
-        """Checks if the string is non-empty and consists only of whitespace characters"""
+        """
+        Checks if the provided string consists only of whitespace characters.
+
+        This utility method is used to determine if a given string is empty or contains only spaces,
+        tabs, or newlines. It's helpful for validating the content extracted from HTML before processing it further.
+
+        Parameters:
+            text (str): The string to check.
+
+        Returns:
+            bool: True if the string is empty or only contains whitespace, False otherwise.
+        """
         return text.isspace() if text else False
 
     def create_docstrings_example_texts(self) -> str:
+        """
+        Creates a formatted docstring section listing the flags and their descriptions.
+
+        This method iterates over the argument data collected for a Maya command, formats each argument's information,
+        and compiles them into a single string suitable for inclusion in a docstring. The information includes the flag name,
+        type, properties, and its documentation.
+
+        Returns:
+            str: A formatted string containing the flags section for the docstring.
+        """
         hExamples_content = self.getHTagContent(HTags.hExamples.value)
         if hExamples_content:
             hExamples_content_text = hExamples_content.get_text(strip=True)
@@ -242,6 +339,16 @@ class CreateMayaCommandPYI:
         return ""
 
     def create_docstrings_flags_texts(self) -> str:
+        """
+        Generates a docstring section that lists all the flags and their properties for a Maya command.
+
+        This method iterates through the argument data extracted from the command's documentation.
+        It formats each flag's name, type, properties, and documentation into a structured docstring
+        that can be included in the generated PYI files.
+
+        Returns:
+            str: A formatted docstring section listing all the flags and their details.
+        """
         text = f"\n{self.translator.FLAGS_WORD}:\n---\n\n"
         for argData in self.argument_data:
             types = ""
@@ -258,6 +365,16 @@ class CreateMayaCommandPYI:
         return text
 
     def create_function_text(self) -> str:
+        """
+        Constructs the function definition text for a Maya command.
+
+        This method generates the complete function definition, including its arguments, return type hint,
+        and docstrings. The docstrings include descriptions, examples, flag information, and a URL to the
+        command's official documentation.
+
+        Returns:
+            str: The complete function definition as a string, ready to be included in a PYI file.
+        """
         functionData = self.commands_data[self.function_name]
         docstrings = self.create_docstrings_example_texts()
         flags = self.create_docstrings_flags_texts()
@@ -278,6 +395,13 @@ URL:
         return code
 
     def extract_table_data(self) -> None:
+        """
+        Extracts argument data from HTML tables in the command documentation.
+
+        This method processes each table found in the command's HTML documentation, extracting data
+        about the command's arguments, including their names, types, properties, and descriptions.
+        The extracted data is stored in the argument_data attribute for further processing.
+        """
         tables = self.soup.find_all("table")
         self.argument_data = []
         for table in tables:
@@ -311,6 +435,19 @@ URL:
                                 print("Non: argumentData.docs")
 
     def extract_between_specific_h2_tags(self, start_h2_tag: str) -> str | Any | None:
+        """
+        Extracts and returns content found between specific H2 tags in the HTML documentation.
+
+        This method uses regular expressions to find and return content located between
+        the specified H2 tag and the next H2 tag in the HTML documentation. It's used to
+        extract specific sections from the documentation for further processing.
+
+        Parameters:
+            start_h2_tag (str): The H2 tag from which to start the extraction.
+
+        Returns:
+            str | Any | None: The extracted content as a string, or None if no content is found.
+        """
         pattern = re.compile(rf"{re.escape(start_h2_tag)}(.*?)(?=<h2>)", re.DOTALL)
         matches = re.search(pattern, self.html_content)
         return matches.group(1) if matches else None
@@ -326,9 +463,6 @@ URL:
             self.description += str(current_element.get_text())
             current_element = current_element.find_next_sibling()
         note_text = self.translator.SYNOPSIS_NOTE_TEXT
-        # description_split = self.description.split(note_text)
-        # mention = description_split[1].split("\n")[0]
-        # command_description = description_split[1].replace(mention, f"\n{mention}")
         synopsis_description, command_description = docs.split(note_text)
 
         self.description = f"""{self.translator.SYNOPSIS_WORD}:
