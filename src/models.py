@@ -49,6 +49,25 @@ class Docs(BaseModel):
     en: str
 
 
+class Translator(BaseModel):
+    synopsis_word: str = Field(alias="synopsis word")
+    synopsis_note_text: str = Field(alias="synopsis note text")
+    flags_word: str = Field(alias="flags word")
+    return_word: str = Field(alias="return word")
+    return_none_word: str = Field(alias="return none word")
+    example_word: str = Field(alias="example word")
+    properties_word: str = Field(alias="properties word")
+    property_mode: dict[str, str] | None = Field(alias="property mode")
+
+    class Config:
+        populate_by_name = True
+
+    def get_property_mode(self, property: str) -> str:
+        if isinstance(self.property_mode, None):
+            return property
+        return self.property_mode[property]
+
+
 class Maya(BaseModel):
     version: int
     python: str
