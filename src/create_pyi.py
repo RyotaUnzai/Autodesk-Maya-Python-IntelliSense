@@ -4,13 +4,9 @@ from pathlib import Path
 from typing import Any
 
 import autopep8
-import yaml
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-import translator
-from models import ArgumentData, Arguments, FunctionData, HTags, IntelliSenseOptionModel
-
-# from utils import stop_watch
+from models import ArgumentData, FunctionData, HTags, IntelliSenseOptionModel
 
 
 class CreateMayaCommandPYI:
@@ -31,28 +27,15 @@ class CreateMayaCommandPYI:
     function_name: str
     argument_data: list[ArgumentData]
     current_letter: str | None = None
-    translator: translator.Translator
-    version: str
-    language: str
 
     def __init__(
         self,
         document_root: str | Path,
         export_path: str | Path,
-        language: str,
-        version: str,
         option: IntelliSenseOptionModel,
     ) -> None:
-        self.language = language
-        self.version = str(version)
         self.option = option
-        if language == "jp":
-            path = self.option.maya.documents[self.version].jp
-            self.translator = translator.Jp()
-        else:
-            path = self.option.maya.documents[self.version].en
-            self.translator = translator.En()
-        self.document_root = Path(document_root) / path / "CommandsPython"
+        self.document_root = Path(document_root) / self.option.maya.documents / "CommandsPython"
 
         self.export_path = Path(export_path)
         self.__init_export_dir()
@@ -335,7 +318,8 @@ class CreateMayaCommandPYI:
             if not self.is_only_whitespace(hExamples_content_text):
                 if '"""' in hExamples_content_text:
                     hExamples_content_text = hExamples_content_text.replace(r'"""', r"'''")
-                return f"\n{self.translator.EXAMPLE_WORD}:\n---\n```\n{hExamples_content_text}\n```\n\n---"
+
+                return f"\n{self.option.common.html_contens.example_word}:\n---\n```\n{hExamples_content_text}\n```\n\n---"
         return ""
 
     def create_docstrings_flags_texts(self) -> str:
@@ -349,17 +333,18 @@ class CreateMayaCommandPYI:
         Returns:
             str: A formatted docstring section listing all the flags and their details.
         """
-        text = f"\n{self.translator.FLAGS_WORD}:\n---\n\n"
+
+        text = f"\n{self.option.common.html_contens.flags_word}:\n---\n\n"
         for argData in self.argument_data:
             types = ""
             for p in argData.properties:
-                prop = self.translator.property_mode(p)
+                prop = self.option.common.html_contens.get_property_mode(p)
                 types += f"{prop}, "
             types = types[:-2]
             text += f"""
 ---
 {argData.longName}: {argData.type}
-    {self.translator.PROPERTIES_WORD}: {types}
+    {self.option.common.html_contens.properties_word}: {types}
     {argData.docs}
 """
         return text
@@ -379,18 +364,25 @@ class CreateMayaCommandPYI:
         docstrings = self.create_docstrings_example_texts()
         flags = self.create_docstrings_flags_texts()
         code = ""
+        if self.option.common.html_contens.queryable in functionData.description:
+            isQueryable = True
+            if self.option.common.html_contens.not_queryable in functionData.description:
+                isQueryable = False
+            if isQueryable:
+                code += "query: bool = ..., "
+
         for arguments in functionData.arguments:
             code += f"{arguments[0]}: {arguments[1]} = ..., "
         code = f'''def {self.function_name}(*args, {code[:-2]}) -> {self.return_typeHint}:
     """{functionData.description}
-        
+
 {docstrings}
 {self.docstrings_text}
 {flags}
 URL:
 ---
-{functionData.url} 
-    """  
+{functionData.url}
+"""
 \n\n'''
         return code
 
@@ -466,7 +458,7 @@ URL:
             and extract the relevant content. It also uses configured translator settings for specific text
             labels such as 'SYNOPSIS_WORD' and 'SYNOPSIS_NOTE_TEXT'.
         """
-        allSynopsis = self.extract_between_specific_h2_tags(f'<h2><a name="hSynopsis">{self.translator.SYNOPSIS_WORD}</a></h2>')
+        allSynopsis = self.extract_between_specific_h2_tags(f'<h2><a name="hSynopsis">{self.option.common.html_contens.synopsis_word}</a></h2>')
         soup = BeautifulSoup(allSynopsis, "html.parser")
         docs = soup.get_text()
         synopsis = soup.find("p", {"id": "synopsis"})
@@ -475,10 +467,10 @@ URL:
         while current_element and current_element.name != "h2":
             self.description += str(current_element.get_text())
             current_element = current_element.find_next_sibling()
-        note_text = self.translator.SYNOPSIS_NOTE_TEXT
+        note_text = self.option.common.html_contens.synopsis_note_text
         synopsis_description, command_description = docs.split(note_text)
 
-        self.description = f"""{self.translator.SYNOPSIS_WORD}:
+        self.description = f"""{self.option.common.html_contens.synopsis_word}:
 ---
 ---
 {synopsis_description}
@@ -591,8 +583,8 @@ URL:
         if len(td_tags) > 1:
             td_texts = td_tags[1].get_text(strip=True)
         i_tag = table.find("i").text
-        if i_tag in option.common.maya_argments:
-            i_tag = option.common.maya_argments[i_tag]
+        if i_tag in self.option.common.maya_argments:
+            i_tag = self.option.common.maya_argments[i_tag]
         return i_tag, td_texts
 
     def getReturnData(self) -> None:
@@ -606,10 +598,13 @@ URL:
         return_content = self.hReturn()
         self.return_typeHint = ""
         returns_texts: list[list[str] | str] = []
-        returns = []
-        return_content_text = return_content.text
+        if not isinstance(return_content, Tag):
+            return_content_text = None
+        else:
+            return_content_text = return_content.text
 
-        if return_content_text != self.translator.RETURN_NONE_WORD:
+        if return_content_text != self.option.common.html_contens.return_none_word:
+            returns = []
             soup = BeautifulSoup(str(return_content), "html.parser")
             tables = soup.find("table")
             if tables:
@@ -635,7 +630,7 @@ URL:
             self.return_typeHint = "None"
         self.docstrings_text = ""
         if returns_texts != []:
-            self.docstrings_text = f"{self.translator.RETURN_WORD}:\n---\n\n"
+            self.docstrings_text = f"{self.option.common.html_contens.return_word}:\n---\n\n"
             for returns_text in returns_texts:
                 self.docstrings_text += f"\n    {returns_text[0]}: {returns_text[1]}"
 
@@ -697,9 +692,9 @@ URL:
         Note:
             Adjustments made by this method depend on the specific requirements of different versions of Maya documentation.
         """
-        if self.version == "2023.3" and self.language == "jp":
+        if self.option.maya.versioning == "2023.3" and self.option.common.language == "jp":
             import shutil
 
-            source = self.document_root.parent.parent.with_name("contents") / self.version / "workspaceControlState.content"
+            source = self.document_root.parent.parent.with_name("contents") / self.option.maya.versioning / "workspaceControlState.content"
             target = self.document_root / "workspaceControlState.html"
             shutil.copy(target.as_posix(), source.as_posix())
