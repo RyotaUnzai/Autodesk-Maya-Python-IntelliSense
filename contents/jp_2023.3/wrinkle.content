@@ -1,0 +1,483 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>wrinkle command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-wrinkle"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/wrinkle.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>wrinkle </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Animation.html" target="contentFrame">アニメーション</a>, <a href="cat_Animation.html#Deformation" target="contentFrame">デフォメーション</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("wrinkle.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>wrinkle(
+objects
+    , [<a href="#flagaxis">axis</a>=<i>[linear, linear, linear]</i>], [<a href="#flagbranchCount">branchCount</a>=<i>uint</i>], [<a href="#flagbranchDepth">branchDepth</a>=<i>uint</i>], [<a href="#flagcenter">center</a>=<i>[linear, linear, linear]</i>], [<a href="#flagcrease">crease</a>=<i>string</i>], [<a href="#flagdropoffDistance">dropoffDistance</a>=<i>linear</i>], [<a href="#flagenvelope">envelope</a>=<i>linear</i>], [<a href="#flagrandomness">randomness</a>=<i>linear</i>], [<a href="#flagstyle">style</a>=<i>string</i>], [<a href="#flagthickness">thickness</a>=<i>linear</i>], [<a href="#flaguvSpace">uvSpace</a>=<i>[linear, linear, linear, linear, linear]</i>], [<a href="#flagwrinkleCount">wrinkleCount</a>=<i>uint</i>], [<a href="#flagwrinkleIntensity">wrinkleIntensity</a>=<i>linear</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>wrinkle は、取り消し可能、<b>照会不可能</b>、および<b>編集不可能</b>です。</p>
+      wrinkle コマンドは、サーフェスにリンクル ネットワークを生成するために使われます。これは、ワイヤ デフォーマを制御するリンクル カーブのネットワークを自動的に生成します。リンクル カーブはクラスタ デフォーマにアタッチされます。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string[]</i></td><td>作成されたクラスタのリストの後に、作成されたワイヤ デフォーマのリストが続きます。</td></tr></table>
+      
+      <h2><a name="hRelated">関連</a></h2><a href="cluster.html">cluster</a>, <a href="deformer.html">deformer</a>, <a href="flexor.html">flexor</a>, <a href="lattice.html">lattice</a>, <a href="percent.html">percent</a>, <a href="sculpt.html">sculpt</a>, <a href="wire.html">wire</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagaxis">axis</a>, <a href="#flagbranchCount">branchCount</a>, <a href="#flagbranchDepth">branchDepth</a>, <a href="#flagcenter">center</a>, <a href="#flagcrease">crease</a>, <a href="#flagdropoffDistance">dropoffDistance</a>, <a href="#flagenvelope">envelope</a>, <a href="#flagrandomness">randomness</a>, <a href="#flagstyle">style</a>, <a href="#flagthickness">thickness</a>, <a href="#flaguvSpace">uvSpace</a>, <a href="#flagwrinkleCount">wrinkleCount</a>, <a href="#flagwrinkleIntensity">wrinkleIntensity</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagaxis">
+          <code><b>axis</b>(<b>ax</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リンクルのプレーンを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbranchCount">
+          <code><b>branchCount</b>(<b>brc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>uint</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Wrinkle ごとの枝分かれ数を指定します。既定は 2 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbranchDepth">
+          <code><b>branchDepth</b>(<b>bd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>uint</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+枝分かれの深度を指定します。既定は 0 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcenter">
+          <code><b>center</b>(<b>ct</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リンクルの中心を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcrease">
+          <code><b>crease</b>(<b>cr</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+既存のカーブを Wrinkle として指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdropoffDistance">
+          <code><b>dropoffDistance</b>(<b>dds</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+中心からのドロップオフ距離を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenvelope">
+          <code><b>envelope</b>(<b>en</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+エンベロープが全体的にデフォメーションの度合いを和らげます。既定は 1.0 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrandomness">
+          <code><b>randomness</b>(<b>rnd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ランダム度です。既定は 0.2 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagstyle">
+          <code><b>style</b>(<b>st</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リンクル スタイルを指定します。有効な値は、「radial」または「tangential」です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagthickness">
+          <code><b>thickness</b>(<b>th</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Wrinkle の厚みです。既定は 1.0 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguvSpace">
+          <code><b>uvSpace</b>(<b>uv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+長さの 1/2、幅の 1/2、回転角度、center u、center v、Wrinkle を作成する場所の UV スペースのパッチの定義を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwrinkleCount">
+          <code><b>wrinkleCount</b>(<b>wc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>uint</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+生成されるリンクルのラインの数を指定します。既定は 3 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwrinkleIntensity">
+          <code><b>wrinkleIntensity</b>(<b>wi</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+輝度を増やすと、Wrinke が増加します。既定は 0.5 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# Apply radial wrinkles to a sphere:
+
+mySph = cmds.sphere()
+cmds.wrinkle( mySph, st='radial', wc=3, brc=2, bd=0, th=1, rnd=0.2, wi=0.5, uv=(2.0, 4.0, 0.0, 2.0, 4.0) )
+
+# Apply a 5-line tangential wrinkle to a plane:
+
+myPlane = cmds.nurbsPlane( w=50, u=20, v=20 )
+cmds.wrinkle( myPlane, st='lines', wc=5, th=1.0, rnd=0.2, wi=0.5, uv=(1.0, 1.0, 0.0, 0.5, 0.5) )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

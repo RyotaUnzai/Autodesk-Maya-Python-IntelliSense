@@ -1,4 +1,5 @@
 import re
+import shutil
 from functools import cached_property
 from pathlib import Path
 from typing import Any
@@ -692,9 +693,11 @@ URL:
         Note:
             Adjustments made by this method depend on the specific requirements of different versions of Maya documentation.
         """
-        if self.option.maya.versioning == "2023.3" and self.option.common.language == "jp":
-            import shutil
+        targetDir = self.document_root.parent.parent.with_name("contents") / self.option.maya.versioning
+        
+        # if self.option.maya.versioning == "2023.3" and self.option.common.language == "jp":
 
-            source = self.document_root.parent.parent.with_name("contents") / self.option.maya.versioning / "workspaceControlState.content"
-            target = self.document_root / "workspaceControlState.html"
-            shutil.copy(target.as_posix(), source.as_posix())
+            
+        #     / "workspaceControlState.content"
+        #     target = self.document_root / "workspaceControlState.html"
+        #     shutil.copy(target.as_posix(), source.as_posix())

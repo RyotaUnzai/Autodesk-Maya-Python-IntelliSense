@@ -1,0 +1,1163 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>bluePencilUtil command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-bluePencilUtil"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/bluePencilUtil.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>bluePencilUtil <div class="version middle">2023</div></h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Animation.html" target="contentFrame">アニメーション</a>, <a href="cat_Animation.html#BluePencil" target="contentFrame">Blue Pencil</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("bluePencilUtil.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>bluePencilUtil([<a href="#flagadjustBrushSize">adjustBrushSize</a>=<i>boolean</i>], [<a href="#flagadjustOpacity">adjustOpacity</a>=<i>boolean</i>], [<a href="#flagarrowOptions">arrowOptions</a>=<i>[int, int]</i>], [<a href="#flagarrowTool">arrowTool</a>=<i>boolean</i>], [<a href="#flagbrushOptions">brushOptions</a>=<i>[int, int, int, int, int]</i>], [<a href="#flagbrushTool">brushTool</a>=<i>boolean</i>], [<a href="#flagdraw">draw</a>=<i>boolean</i>], [<a href="#flagdrawColor">drawColor</a>=<i>[int, int, int]</i>], [<a href="#flagellipseOptions">ellipseOptions</a>=<i>[int, int]</i>], [<a href="#flagellipseTool">ellipseTool</a>=<i>boolean</i>], [<a href="#flageraserOptions">eraserOptions</a>=<i>[int, int, int, int, int]</i>], [<a href="#flageraserTool">eraserTool</a>=<i>boolean</i>], [<a href="#flagghostColorNext">ghostColorNext</a>=<i>[int, int, int]</i>], [<a href="#flagghostColorOverride">ghostColorOverride</a>=<i>boolean</i>], [<a href="#flagghostColorPrevious">ghostColorPrevious</a>=<i>[int, int, int]</i>], [<a href="#flagghostNext">ghostNext</a>=<i>boolean</i>], [<a href="#flagghostNextCount">ghostNextCount</a>=<i>int</i>], [<a href="#flagghostPrevious">ghostPrevious</a>=<i>boolean</i>], [<a href="#flagghostPreviousCount">ghostPreviousCount</a>=<i>int</i>], [<a href="#flaglayerManager">layerManager</a>=<i>boolean</i>], [<a href="#flaglayerProperties">layerProperties</a>=<i>boolean</i>], [<a href="#flaglineOptions">lineOptions</a>=<i>[int, int]</i>], [<a href="#flaglineTool">lineTool</a>=<i>boolean</i>], [<a href="#flagpencilOptions">pencilOptions</a>=<i>[int, int, int, int]</i>], [<a href="#flagpencilTool">pencilTool</a>=<i>boolean</i>], [<a href="#flagrectangleOptions">rectangleOptions</a>=<i>[int, int]</i>], [<a href="#flagrectangleTool">rectangleTool</a>=<i>boolean</i>], [<a href="#flagrefreshLayerManager">refreshLayerManager</a>=<i>boolean</i>], [<a href="#flagrefreshTimelineDisplay">refreshTimelineDisplay</a>=<i>boolean</i>], [<a href="#flagresetTool">resetTool</a>=<i>boolean</i>], [<a href="#flagtextFontFamily">textFontFamily</a>=<i>string</i>], [<a href="#flagtextOptions">textOptions</a>=<i>[int, int, string]</i>], [<a href="#flagtextTool">textTool</a>=<i>boolean</i>], [<a href="#flagtimelineFrameDisplay">timelineFrameDisplay</a>=<i>int</i>], [<a href="#flagtransform">transform</a>=<i>boolean</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>bluePencilUtil は、取り消し可能、照会可能、および編集可能です。</p>
+      Blue Pencil ツールのユーティリティ コマンド。
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <p><i>なし</i></p><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagadjustBrushSize">adjustBrushSize</a>, <a href="#flagadjustOpacity">adjustOpacity</a>, <a href="#flagarrowOptions">arrowOptions</a>, <a href="#flagarrowTool">arrowTool</a>, <a href="#flagbrushOptions">brushOptions</a>, <a href="#flagbrushTool">brushTool</a>, <a href="#flagdraw">draw</a>, <a href="#flagdrawColor">drawColor</a>, <a href="#flagellipseOptions">ellipseOptions</a>, <a href="#flagellipseTool">ellipseTool</a>, <a href="#flageraserOptions">eraserOptions</a>, <a href="#flageraserTool">eraserTool</a>, <a href="#flagghostColorNext">ghostColorNext</a>, <a href="#flagghostColorOverride">ghostColorOverride</a>, <a href="#flagghostColorPrevious">ghostColorPrevious</a>, <a href="#flagghostNext">ghostNext</a>, <a href="#flagghostNextCount">ghostNextCount</a>, <a href="#flagghostPrevious">ghostPrevious</a>, <a href="#flagghostPreviousCount">ghostPreviousCount</a>, <a href="#flaglayerManager">layerManager</a>, <a href="#flaglayerProperties">layerProperties</a>, <a href="#flaglineOptions">lineOptions</a>, <a href="#flaglineTool">lineTool</a>, <a href="#flagpencilOptions">pencilOptions</a>, <a href="#flagpencilTool">pencilTool</a>, <a href="#flagrectangleOptions">rectangleOptions</a>, <a href="#flagrectangleTool">rectangleTool</a>, <a href="#flagrefreshLayerManager">refreshLayerManager</a>, <a href="#flagrefreshTimelineDisplay">refreshTimelineDisplay</a>, <a href="#flagresetTool">resetTool</a>, <a href="#flagtextFontFamily">textFontFamily</a>, <a href="#flagtextOptions">textOptions</a>, <a href="#flagtextTool">textTool</a>, <a href="#flagtimelineFrameDisplay">timelineFrameDisplay</a>, <a href="#flagtransform">transform</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagadjustBrushSize">
+          <code><b>adjustBrushSize</b>(<b>abs</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ドラッグしてブラシ サイズを調整するモードをアクティブまたは非アクティブにします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagadjustOpacity">
+          <code><b>adjustOpacity</b>(<b>aop</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ドラッグしてブラシの不透明度を調整するモードをアクティブまたは非アクティブにします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagarrowOptions">
+          <code><b>arrowOptions</b>(<b>ao</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+矢印のオプションを設定します。 引数は size、opacity です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagarrowTool">
+          <code><b>arrowTool</b>(<b>at</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+矢印ツールをアクティブにします。 照会すると、矢印ツールがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbrushOptions">
+          <code><b>brushOptions</b>(<b>bo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int, int, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ブラシのオプションを設定します。 引数の順序は、size、opacity、hardness pressure opacity、pressure size です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbrushTool">
+          <code><b>brushTool</b>(<b>bt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ブラシ ツールをアクティブにします。 照会すると、ブラシ ツールがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdraw">
+          <code><b>draw</b>(<b>d</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+描画ツール コンテキストをアクティブにします。照会すると、描画ツール コンテキストがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdrawColor">
+          <code><b>drawColor</b>(<b>dc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+現在の描画カラーを設定します。カラー フォーマットは 0 ～ 255 の値を持つ RGB です。照会すると、現在の描画カラーを返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagellipseOptions">
+          <code><b>ellipseOptions</b>(<b>elo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+楕円オプションを設定します。引数は size、opacity です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagellipseTool">
+          <code><b>ellipseTool</b>(<b>elt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+楕円ツールをアクティブにします。 照会すると、楕円ツールがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flageraserOptions">
+          <code><b>eraserOptions</b>(<b>eo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int, int, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ブラシのオプションを設定します。 引数の順序は、size、opacity、hardness pressure opacity、pressure size です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flageraserTool">
+          <code><b>eraserTool</b>(<b>et</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+消しゴム ツールをアクティブにします。 照会すると、消しゴムツールがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagghostColorNext">
+          <code><b>ghostColorNext</b>(<b>gcn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+次のフレームのゴーストのカラーを設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagghostColorOverride">
+          <code><b>ghostColorOverride</b>(<b>gco</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ゴーストのカラーのオーバーライドをアクティブまたは非アクティブにします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagghostColorPrevious">
+          <code><b>ghostColorPrevious</b>(<b>gcp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+前のフレームのゴーストのカラーを設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagghostNext">
+          <code><b>ghostNext</b>(<b>gn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+次のフレームのゴースト化をアクティブまたは非アクティブにします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagghostNextCount">
+          <code><b>ghostNextCount</b>(<b>gnc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+次のフレームのゴーストの数を設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagghostPrevious">
+          <code><b>ghostPrevious</b>(<b>gp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+前のフレームのゴースト化をアクティブまたは非アクティブにします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagghostPreviousCount">
+          <code><b>ghostPreviousCount</b>(<b>gpc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+前のフレームのゴーストの数を設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglayerManager">
+          <code><b>layerManager</b>(<b>lm</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツール設定ウィンドウを表示してレイヤ マネージャを表示します。照会すると、レイヤ マネージャを表示するかどうかを返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglayerProperties">
+          <code><b>layerProperties</b>(<b>lp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+[レイヤのプロパティ](Layer Properties)ダイアログ ボックスを表示します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglineOptions">
+          <code><b>lineOptions</b>(<b>lo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+線のオプションを設定します。引数は size、opacity です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglineTool">
+          <code><b>lineTool</b>(<b>lt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ライン ツールをアクティブにします。照会すると、ライン ツールがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpencilOptions">
+          <code><b>pencilOptions</b>(<b>po</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+鉛筆のオプションを設定します。引数の順序は、size、opacity、pressure opacity、pressure size です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpencilTool">
+          <code><b>pencilTool</b>(<b>pt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+鉛筆ツールをアクティブにします。 照会すると、鉛筆ツールがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrectangleOptions">
+          <code><b>rectangleOptions</b>(<b>ro</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+長方形のオプションを設定します。引数は size、opacity です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrectangleTool">
+          <code><b>rectangleTool</b>(<b>rt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+長方形ツールをアクティブにします。照会すると、長方形ツールがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrefreshLayerManager">
+          <code><b>refreshLayerManager</b>(<b>rlm</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+レイヤ マネージャを更新します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrefreshTimelineDisplay">
+          <code><b>refreshTimelineDisplay</b>(<b>rtd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+タイムライン表示フレームを更新します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagresetTool">
+          <code><b>resetTool</b>(<b>r</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツール設定を既定値に戻します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtextFontFamily">
+          <code><b>textFontFamily</b>(<b>tff</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+文字のフォント ファミリを設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtextOptions">
+          <code><b>textOptions</b>(<b>txo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+テキストのオプションを設定します。 引数の順序は、size、opacity、font family name です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtextTool">
+          <code><b>textTool</b>(<b>tt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+テキスト ツールをアクティブにします。照会すると、テキスト ツールがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtimelineFrameDisplay">
+          <code><b>timelineFrameDisplay</b>(<b>tfd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+タイムラインの Blue Pencil フレームの表示モードを設定します。<br> モード:
+<ul>
+<li>0 ＝ 常に表示</li>
+<li>1 = コンテキストがアクティブなときに表示</li>
+<li>2 = 非表示</li>
+</ul>
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtransform">
+          <code><b>transform</b>(<b>t</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+トランスフォーム ツールのコンテキストをアクティブにします。照会すると、トランスフォーム ツールのコンテキストがアクティブな場合は true を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# Activate the drawing tool context.
+cmds.bluePencilUtil(draw=True)
+
+# Activate the transform tool context.
+cmds.bluePencilUtil(transform)
+
+# Set the draw color to red.
+cmds.bluePencilUtil(drawColor=[255, 0, 0])
+
+# Activate tool.
+cmds.bluePencilUtil(pencilTool=True)
+cmds.bluePencilUtil(brushTool=True)
+cmds.bluePencilUtil(eraserTool=True)
+cmds.bluePencilUtil(lineTool=True)
+cmds.bluePencilUtil(arrowTool=True)
+cmds.bluePencilUtil(ellipseTool=True)
+cmds.bluePencilUtil(rectangleTool=True)
+cmds.bluePencilUtil(textTool=True)
+
+# Start adjusting the brush size.
+cmds.bluePencilUtil(adjustBrushSize=True)
+
+# Stop adjusting the brush size.
+cmds.bluePencilUtil(adjustBrushSize=False)
+
+# Adjust opacity.
+cmds.bluePencilUtil(adjustOpacity=True)
+
+# Set pencil options size: 10, opacity 25, pressure size: 35, pressure opacity: 45.
+cmds.bluePencilUtil(pencilOptions=[10, 25, 35, 45])
+
+# Set pencil options size: 10, opacity 25, hardness: 30,
+# pressure size: 35, pressure opacity: 45.
+cmds.bluePencilUtil(brushOptions=[10, 25, 30, 35, 45])
+cmds.bluePencilUtil(eraserOptions=[10, 25, 30, 35, 45])
+cmds.bluePencilUtil(lineOptions=[10, 25])
+cmds.bluePencilUtil(arrowOptions=[10, 25])
+cmds.bluePencilUtil(ellipseOptions=[10, 25])
+cmds.bluePencilUtil(rectangleOptions=[10, 25])
+
+# Set the text options, size: 12, opacity: 25, font: Arial
+cmds.bluePencilUtil(textOptions=[12, 25, 'Arial'])
+cmds.bluePencilUtil(textFontFamily='Arial')
+
+# Activate ghosting
+cmds.bluePencilUtil(ghostPrevious=True)
+cmds.bluePencilUtil(ghostNext=True)
+
+# Set the number of ghosts.
+cmds.bluePencilUtil(ghostPreviousCount=5)
+cmds.bluePencilUtil(ghostNextCount=5)
+
+# Set the ghost color.
+cmds.bluePencilUtil(ghostColorOverride=True)
+cmds.bluePencilUtil(ghostColorPrevious=[0, 0, 255])
+cmds.bluePencilUtil(ghostColorNext=[255, 255, 0])
+
+# Refresh timeline.
+cmds.bluePencilUtil(refreshTimelineDisplay=True)
+
+# Show layer manager.
+cmds.bluePencilUtil(layerManager=True)
+
+# Refresh layer manager.
+cmds.bluePencilUtil(refreshLayerManager=True)
+
+# Show layer properties.
+cmds.bluePencilUtil(layerProperties=True)
+
+# Reset blue pencil tool settings.
+cmds.bluePencilUtil(resetTool=True)
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

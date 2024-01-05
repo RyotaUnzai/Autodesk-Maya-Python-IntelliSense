@@ -1,0 +1,334 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>uvLink command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-uvLink"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/uvLink.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>uvLink </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Rendering.html" target="contentFrame">レンダリング</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("uvLink.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>uvLink(
+[objects]
+    , [<a href="#flagb">b</a>=<i>boolean</i>], [<a href="#flagisValid">isValid</a>=<i>boolean</i>], [<a href="#flagmake">make</a>=<i>boolean</i>], [<a href="#flagqueryObject">queryObject</a>=<i>name</i>], [<a href="#flagtexture">texture</a>=<i>name</i>], [<a href="#flaguvSet">uvSet</a>=<i>name</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>uvLink は、取り消し可能、照会可能、および<b>編集不可能</b>です。</p>
+      オブジェクトの UV セットとその UV セットで使用されるテクスチャ間で、UV のリンク機能リレーションの作成、切断、照会を行うのに使用します。
+<p>
+make フラグ、break フラグ、query フラグを指定せずに uvSet フラグと texture フラグの両方を指定すると、make フラグが指定したと仮定されます。
+<p>
+make フラグ、break フラグ、query フラグを指定せずに uvSet フラグか texture フラグのいずれかを指定すると、query フラグが指定したと仮定されます。
+<p>
+この UV リンクのコンテキストで言う「texture」とは、多少単純化しすぎた表現です。実際は、UV セットは UV 座標を入力に取る、どのノードともリンク可能です。しかし、ほとんどの場合、UV セットとリンクする必要が生じるのはテクスチャだけです。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string</i></td><td>または、isValid の照会ブーリアンの文字配列です。</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagb">b</a>, <a href="#flagisValid">isValid</a>, <a href="#flagmake">make</a>, <a href="#flagqueryObject">queryObject</a>, <a href="#flagtexture">texture</a>, <a href="#flaguvSet">uvSet</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagb">
+          <code><b>b</b>(<b>b</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コマンドでこのフラグを指定すると、UV セットとテクスチャ間のリンクを切断するためにコマンドが呼び出されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagisValid">
+          <code><b>isValid</b>(<b>iv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+このフラグを使用して、テクスチャまたは UV セットが UV リンクに有効かどうかを検証します。これは -texture フラグまたは -uvSet フラグとともに使用されますが、両方のフラグを一度には使うことはできません。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmake">
+          <code><b>make</b>(<b>m</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コマンドでこのフラグを指定すると、UV セットとテクスチャの間にリンクを作成するためにコマンドが呼び出されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagqueryObject">
+          <code><b>queryObject</b>(<b>qo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>name</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+このフラグはテクスチャの照会時のみに使われます。このフラグを使用して、照会結果がこのフラグで指定したオブジェクトの UV セットに限定されることを示します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtexture">
+          <code><b>texture</b>(<b>t</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>name</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+texture フラグの引数は、アクションの実行時にコマンドが使用するテクスチャを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguvSet">
+          <code><b>uvSet</b>(<b>uvs</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>name</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+uvSet フラグの引数は、アクションの実行時にコマンドが使用する UV セットを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+cmds.uvLink( uvSet='pSphereShape1.uvSet[2].uvSetName', texture='checker1' )
+# causes a UV link to be created between uvSet[2] on pSphereShape1
+# and the checker1 texture.
+# Note that no make, break or query flag is specified so make is
+# assumed since both uvSet and texture are specified.
+
+cmds.uvLink( make=True, uvSet='pCubeShape2.uvSet[0].uvSetName', texture='file8' )
+# causes a UV link to be created between uvSet[0] of pCubeShape2 and
+# the file8 file texture.
+
+cmds.uvLink( uvSet='pCubeShape2.uvSet[0].uvSetName', texture='file8' )
+# causes a UV link to be created between uvSet[0] of pCubeShape2 and
+# the file8 file texture. Note: no make, break or query flag is
+# specified so the make flag is assumed since both uvSet
+# and texture are specified.
+
+cmds.uvLink( query=True, uvSet='pCubeShape2.uvSet[0].uvSetName' )
+# will return a string array of textures which use the UV set
+# pCubeShape2.uvSet[0].setName. For example, the return value might
+# be:
+# file8 file9 checker4 slimeMap
+
+cmds.uvLink( query=True, texture='checker4' )
+# will return a string array of the UV sets that are used by the
+# texture. For example, the return value might be
+# pCubeShape2.uvSet[0].setName pCylinderShape1.uvSet[4].setName
+# pCylinderShape2.uvSet[3].setName
+
+cmds.uvLink( texture='checker4' )
+# will return a string array of the UV sets that are used by the
+# texture. For example, the return value might be
+# pCubeShape2.uvSet[0].setName pCylinderShape1.uvSet[4].setName
+# pCylinderShape2.uvSet[3].setName
+# Note that no make, break or query flag is specified, so query is
+# assumed since no uvSet was specified.
+
+cmds.uvLink( b=True, uvSet='pCylinderShape2.uvSet[3].uvSetName', texture='checker4' )
+# causes the checker4 texture to no longer use the UV set
+# pCylinderShape2.uvSet[3].setName.
+# The texture will use the default UV set on pCylinderShape2 instead.
+# If checker4 wasn't using pCylinderShape2.uvSet[3].setName,
+# nothing changes and a warning is produced.
+
+cmds.uvLink( isValid=True, texture='myTexture' )
+# Returns true if myTexture is a texture to which a UV set can be
+# linked, or false otherwise.
+
+myPlug = getSomePlugFromSomewhere()
+cmds.uvLink( isValid=True, uvSet=myPlug )
+# Returns true if $myPlug is a UV set, or false otherwise.
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

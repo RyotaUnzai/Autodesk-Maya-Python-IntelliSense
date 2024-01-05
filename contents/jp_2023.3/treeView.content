@@ -1,0 +1,2692 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>treeView command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-treeView"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/treeView.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>treeView </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Windows.html" target="contentFrame">ウィンドウ</a>, <a href="cat_Windows.html#Controls" target="contentFrame">コントロール</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("treeView.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>treeView(
+[string]
+    , [<a href="#flagaddItem">addItem</a>=<i>[string, string]</i>], [<a href="#flagallowDragAndDrop">allowDragAndDrop</a>=<i>boolean</i>], [<a href="#flagallowHiddenParents">allowHiddenParents</a>=<i>boolean</i>], [<a href="#flagallowMultiSelection">allowMultiSelection</a>=<i>boolean</i>], [<a href="#flagallowReparenting">allowReparenting</a>=<i>boolean</i>], [<a href="#flagannotation">annotation</a>=<i>string</i>], [<a href="#flagattachButtonRight">attachButtonRight</a>=<i>int</i>], [<a href="#flagbackgroundColor">backgroundColor</a>=<i>[float, float, float]</i>], [<a href="#flagborderHighlite">borderHighlite</a>=<i>[string, boolean]</i>], [<a href="#flagborderHighliteColor">borderHighliteColor</a>=<i>[string, float, float, float]</i>], [<a href="#flagbuttonErase">buttonErase</a>=<i>[string, boolean]</i>], [<a href="#flagbuttonState">buttonState</a>=<i>[string, int, string]</i>], [<a href="#flagbuttonStyle">buttonStyle</a>=<i>[string, int, string]</i>], [<a href="#flagbuttonTextIcon">buttonTextIcon</a>=<i>[string, int, string]</i>], [<a href="#flagbuttonTooltip">buttonTooltip</a>=<i>[string, int, string]</i>], [<a href="#flagbuttonTransparencyColor">buttonTransparencyColor</a>=<i>[string, int, float, float, float]</i>], [<a href="#flagbuttonTransparencyOverride">buttonTransparencyOverride</a>=<i>[string, int, boolean]</i>], [<a href="#flagbuttonVisible">buttonVisible</a>=<i>[string, int, boolean]</i>], [<a href="#flagchildren">children</a>=<i>string</i>], [<a href="#flagclearSelection">clearSelection</a>=<i>boolean</i>], [<a href="#flagcontextMenuCommand">contextMenuCommand</a>=<i>script</i>], [<a href="#flagdefineTemplate">defineTemplate</a>=<i>string</i>], [<a href="#flagdisplayLabel">displayLabel</a>=<i>[string, string]</i>], [<a href="#flagdisplayLabelSuffix">displayLabelSuffix</a>=<i>[string, string]</i>], [<a href="#flagdocTag">docTag</a>=<i>string</i>], [<a href="#flagdragAndDropCommand">dragAndDropCommand</a>=<i>script</i>], [<a href="#flagdragCallback">dragCallback</a>=<i>script</i>], [<a href="#flagdropCallback">dropCallback</a>=<i>script</i>], [<a href="#flageditLabelCommand">editLabelCommand</a>=<i>script</i>], [<a href="#flagenable">enable</a>=<i>boolean</i>], [<a href="#flagenableBackground">enableBackground</a>=<i>boolean</i>], [<a href="#flagenableButton">enableButton</a>=<i>[string, int, int]</i>], [<a href="#flagenableKeyboardFocus">enableKeyboardFocus</a>=<i>boolean</i>], [<a href="#flagenableKeys">enableKeys</a>=<i>boolean</i>], [<a href="#flagenableLabel">enableLabel</a>=<i>[string, int]</i>], [<a href="#flagexists">exists</a>=<i>boolean</i>], [<a href="#flagexpandCollapseCommand">expandCollapseCommand</a>=<i>script</i>], [<a href="#flagexpandItem">expandItem</a>=<i>[string, boolean]</i>], [<a href="#flagflatButton">flatButton</a>=<i>int</i>], [<a href="#flagfont">font</a>=<i>[string, string]</i>], [<a href="#flagfontFace">fontFace</a>=<i>[string, int]</i>], [<a href="#flagfullPathName">fullPathName</a>=<i>boolean</i>], [<a href="#flagheight">height</a>=<i>int</i>], [<a href="#flaghideButtons">hideButtons</a>=<i>boolean</i>], [<a href="#flaghighlightColor">highlightColor</a>=<i>[float, float, float]</i>], [<a href="#flaghighlite">highlite</a>=<i>[string, boolean]</i>], [<a href="#flaghighliteColor">highliteColor</a>=<i>[string, float, float, float]</i>], [<a href="#flagignoreButtonClick">ignoreButtonClick</a>=<i>[string, int, int]</i>], [<a href="#flagimage">image</a>=<i>[string, int, string]</i>], [<a href="#flaginsertItem">insertItem</a>=<i>[string, string, int]</i>], [<a href="#flagisItemExpanded">isItemExpanded</a>=<i>string</i>], [<a href="#flagisLeaf">isLeaf</a>=<i>string</i>], [<a href="#flagisObscured">isObscured</a>=<i>boolean</i>], [<a href="#flagitem">item</a>=<i>string</i>], [<a href="#flagitemAnnotation">itemAnnotation</a>=<i>[string, string]</i>], [<a href="#flagitemDblClickCommand">itemDblClickCommand</a>=<i>script</i>], [<a href="#flagitemDblClickCommand2">itemDblClickCommand2</a>=<i>script</i>], [<a href="#flagitemExists">itemExists</a>=<i>string</i>], [<a href="#flagitemIndex">itemIndex</a>=<i>string</i>], [<a href="#flagitemParent">itemParent</a>=<i>string</i>], [<a href="#flagitemRenamedCommand">itemRenamedCommand</a>=<i>script</i>], [<a href="#flagitemSelected">itemSelected</a>=<i>string</i>], [<a href="#flagitemVisible">itemVisible</a>=<i>[string, boolean]</i>], [<a href="#flaglabelBackgroundColor">labelBackgroundColor</a>=<i>[string, float, float, float]</i>], [<a href="#flagmanage">manage</a>=<i>boolean</i>], [<a href="#flagnoBackground">noBackground</a>=<i>boolean</i>], [<a href="#flagnumberOfButtons">numberOfButtons</a>=<i>int</i>], [<a href="#flagnumberOfPopupMenus">numberOfPopupMenus</a>=<i>boolean</i>], [<a href="#flagornament">ornament</a>=<i>[string, int, int, int]</i>], [<a href="#flagornamentColor">ornamentColor</a>=<i>[string, float, float, float]</i>], [<a href="#flagparent">parent</a>=<i>string</i>], [<a href="#flagpopupMenuArray">popupMenuArray</a>=<i>boolean</i>], [<a href="#flagpressCommand">pressCommand</a>=<i>[int, script]</i>], [<a href="#flagpreventOverride">preventOverride</a>=<i>boolean</i>], [<a href="#flagremoveAll">removeAll</a>=<i>boolean</i>], [<a href="#flagremoveItem">removeItem</a>=<i>string</i>], [<a href="#flagreverseTreeOrder">reverseTreeOrder</a>=<i>boolean</i>], [<a href="#flagrightPressCommand">rightPressCommand</a>=<i>[int, script]</i>], [<a href="#flagselect">select</a>=<i>[string, int]</i>], [<a href="#flagselectCommand">selectCommand</a>=<i>script</i>], [<a href="#flagselectItem">selectItem</a>=<i>[string, boolean]</i>], [<a href="#flagselectionChangedCommand">selectionChangedCommand</a>=<i>script</i>], [<a href="#flagselectionColor">selectionColor</a>=<i>[string, float, float, float]</i>], [<a href="#flagshowItem">showItem</a>=<i>string</i>], [<a href="#flagstatusBarMessage">statusBarMessage</a>=<i>string</i>], [<a href="#flagtextColor">textColor</a>=<i>[string, float, float, float]</i>], [<a href="#flaguseTemplate">useTemplate</a>=<i>string</i>], [<a href="#flagvisible">visible</a>=<i>boolean</i>], [<a href="#flagvisibleChangeCommand">visibleChangeCommand</a>=<i>script</i>], [<a href="#flagwidth">width</a>=<i>int</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>treeView は、取り消し可能、照会可能、および編集可能です。</p>
+      このコマンドはカスタム コントロールを作成します。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string</i></td><td>コントロールのフル ネーム</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagaddItem">addItem</a>, <a href="#flagallowDragAndDrop">allowDragAndDrop</a>, <a href="#flagallowHiddenParents">allowHiddenParents</a>, <a href="#flagallowMultiSelection">allowMultiSelection</a>, <a href="#flagallowReparenting">allowReparenting</a>, <a href="#flagannotation">annotation</a>, <a href="#flagattachButtonRight">attachButtonRight</a>, <a href="#flagbackgroundColor">backgroundColor</a>, <a href="#flagborderHighlite">borderHighlite</a>, <a href="#flagborderHighliteColor">borderHighliteColor</a>, <a href="#flagbuttonErase">buttonErase</a>, <a href="#flagbuttonState">buttonState</a>, <a href="#flagbuttonStyle">buttonStyle</a>, <a href="#flagbuttonTextIcon">buttonTextIcon</a>, <a href="#flagbuttonTooltip">buttonTooltip</a>, <a href="#flagbuttonTransparencyColor">buttonTransparencyColor</a>, <a href="#flagbuttonTransparencyOverride">buttonTransparencyOverride</a>, <a href="#flagbuttonVisible">buttonVisible</a>, <a href="#flagchildren">children</a>, <a href="#flagclearSelection">clearSelection</a>, <a href="#flagcontextMenuCommand">contextMenuCommand</a>, <a href="#flagdefineTemplate">defineTemplate</a>, <a href="#flagdisplayLabel">displayLabel</a>, <a href="#flagdisplayLabelSuffix">displayLabelSuffix</a>, <a href="#flagdocTag">docTag</a>, <a href="#flagdragAndDropCommand">dragAndDropCommand</a>, <a href="#flagdragCallback">dragCallback</a>, <a href="#flagdropCallback">dropCallback</a>, <a href="#flageditLabelCommand">editLabelCommand</a>, <a href="#flagenable">enable</a>, <a href="#flagenableBackground">enableBackground</a>, <a href="#flagenableButton">enableButton</a>, <a href="#flagenableKeyboardFocus">enableKeyboardFocus</a>, <a href="#flagenableKeys">enableKeys</a>, <a href="#flagenableLabel">enableLabel</a>, <a href="#flagexists">exists</a>, <a href="#flagexpandCollapseCommand">expandCollapseCommand</a>, <a href="#flagexpandItem">expandItem</a>, <a href="#flagflatButton">flatButton</a>, <a href="#flagfont">font</a>, <a href="#flagfontFace">fontFace</a>, <a href="#flagfullPathName">fullPathName</a>, <a href="#flagheight">height</a>, <a href="#flaghideButtons">hideButtons</a>, <a href="#flaghighlightColor">highlightColor</a>, <a href="#flaghighlite">highlite</a>, <a href="#flaghighliteColor">highliteColor</a>, <a href="#flagignoreButtonClick">ignoreButtonClick</a>, <a href="#flagimage">image</a>, <a href="#flaginsertItem">insertItem</a>, <a href="#flagisItemExpanded">isItemExpanded</a>, <a href="#flagisLeaf">isLeaf</a>, <a href="#flagisObscured">isObscured</a>, <a href="#flagitem">item</a>, <a href="#flagitemAnnotation">itemAnnotation</a>, <a href="#flagitemDblClickCommand">itemDblClickCommand</a>, <a href="#flagitemDblClickCommand2">itemDblClickCommand2</a>, <a href="#flagitemExists">itemExists</a>, <a href="#flagitemIndex">itemIndex</a>, <a href="#flagitemParent">itemParent</a>, <a href="#flagitemRenamedCommand">itemRenamedCommand</a>, <a href="#flagitemSelected">itemSelected</a>, <a href="#flagitemVisible">itemVisible</a>, <a href="#flaglabelBackgroundColor">labelBackgroundColor</a>, <a href="#flagmanage">manage</a>, <a href="#flagnoBackground">noBackground</a>, <a href="#flagnumberOfButtons">numberOfButtons</a>, <a href="#flagnumberOfPopupMenus">numberOfPopupMenus</a>, <a href="#flagornament">ornament</a>, <a href="#flagornamentColor">ornamentColor</a>, <a href="#flagparent">parent</a>, <a href="#flagpopupMenuArray">popupMenuArray</a>, <a href="#flagpressCommand">pressCommand</a>, <a href="#flagpreventOverride">preventOverride</a>, <a href="#flagremoveAll">removeAll</a>, <a href="#flagremoveItem">removeItem</a>, <a href="#flagreverseTreeOrder">reverseTreeOrder</a>, <a href="#flagrightPressCommand">rightPressCommand</a>, <a href="#flagselect">select</a>, <a href="#flagselectCommand">selectCommand</a>, <a href="#flagselectItem">selectItem</a>, <a href="#flagselectionChangedCommand">selectionChangedCommand</a>, <a href="#flagselectionColor">selectionColor</a>, <a href="#flagshowItem">showItem</a>, <a href="#flagstatusBarMessage">statusBarMessage</a>, <a href="#flagtextColor">textColor</a>, <a href="#flaguseTemplate">useTemplate</a>, <a href="#flagvisible">visible</a>, <a href="#flagvisibleChangeCommand">visibleChangeCommand</a>, <a href="#flagwidth">width</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagaddItem">
+          <code><b>addItem</b>(<b>ai</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー ビュー項目をツリー ビューに追加します。1 番目の引数は項目名を、2 番目の引数は項目の親を指定します(項目をツリーのトップ レベルに配置する場合は空文字列を使用します)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagallowDragAndDrop">
+          <code><b>allowDragAndDrop</b>(<b>adr</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+treeView 項目のドラッグ＆ドロップ操作が可能になります。有効にすると、中マウス ボタンで re-ordering / re-parenting の操作を実行できます。このフラグは、フラグに関するほかのドラッグ＆ドロップ操作よりも優先されます。既定は true です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagallowHiddenParents">
+          <code><b>allowHiddenParents</b>(<b>ahp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+クリアされない場合(既定)、treeView では、表示ノードの親ノードが自動的に可視になります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagallowMultiSelection">
+          <code><b>allowMultiSelection</b>(<b>ams</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+マルチあるいはシングル セレクション モードを指定します。Ctrl キーまたは Shift キーを押しながら treeView 項目を選択すると、複数の項目を選択できます。既定は true です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagallowReparenting">
+          <code><b>allowReparenting</b>(<b>arp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー ビューで中マウス ボタンを使用して項目を再ペアレント化できるようにします。既定は true です。false に設定しても、ツリー ビューで中マウス ボタンを使用して項目の順序を変更することは可能です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagannotation">
+          <code><b>annotation</b>(<b>ann</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールに文字列値で注釈を付けます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagattachButtonRight">
+          <code><b>attachButtonRight</b>(<b>abr</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー ビュー項目のボタンの表示を右または左に設定します。右にアタッチする場合は引数によって指定されます。false に設定されると左にアタッチされます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbackgroundColor">
+          <code><b>backgroundColor</b>(<b>bgc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールのバックグラウンド カラーです。引数は、赤、緑、青のカラー成分に対応しています。それぞれの成分の値は、0.0～1.0 です。<br>backgroundColor を設定する場合、enableBackground を false に指定していない限り、バックグラウンドは自動的に有効になります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagborderHighlite">
+          <code><b>borderHighlite</b>(<b>bh</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, boolean]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目の境界を強調表示するかどうかを設定します。1 番目の引数は項目を指定し、2 番目はオンまたはオフを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagborderHighliteColor">
+          <code><b>borderHighliteColor</b>(<b>bcl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+強調表示を有効にしたときに、項目の境界の強調表示として使用される色を設定します。1 番目のパラメータはレイヤを指定します。0 ～ 1 までの 3 つの float 値は、RGB 値を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbuttonErase">
+          <code><b>buttonErase</b>(<b>bef</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, boolean]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+buttonErase を true に設定した場合、treeView 項目のボタンを非表示に設定した場合も、treeView はバックグラウンドでこの treeView 項目の buttonRect を消去します。最初の引数は項目の名前、2 番目の引数は buttonErase が true または false に設定されているかを示します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbuttonState">
+          <code><b>buttonState</b>(<b>bst</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ボタンの状態を設定します。 1 番目の引数はレイヤ、2 番目は対象のボタン、3 番目は状態を指定します。可能な状態は次のとおりです。「buttonUp」 - ボタンは上がっています。「buttonDown」 - ボタンは下がっています。「buttonThirdState」 - ボタンは第 3 の状態にあります(「3StateButton」ボタンスタイルで使用)
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbuttonStyle">
+          <code><b>buttonStyle</b>(<b>bs</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ボタンのタイプ、指定可能な状態および放したときにリセットされるかどうかを設定します。1 番目の引数はレイヤ、2 番目は対象のボタン、3 番目はボタン タイプを指定します。可能なボタン タイプは次のとおりです。「pushButton」 - 可能な状態は 2 つです。ボタンを放すと up にリセットされます。「2StateButton」 - 可能な状態は 2 つです。ボタンの状態はクリックで変化します。「3StateButton」 - 可能な状態は 3 つです。ボタンの状態はクリックで変化します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbuttonTextIcon">
+          <code><b>buttonTextIcon</b>(<b>bti</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した項目上の指定したボタンを示すアイコンとして使用する 1 文字のテキストを設定します。1 番目の引数は項目、2 番目はボタン、3 番目はアイコン テキストを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbuttonTooltip">
+          <code><b>buttonTooltip</b>(<b>btp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した項目上の指定したボタンにツール ヒントを指定します。1 番目の引数は項目、2 番目はボタン、3 番目はツール ヒントを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbuttonTransparencyColor">
+          <code><b>buttonTransparencyColor</b>(<b>btc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+buttonTransparencyOverride が有効な場合に使用される、ボタンのバックグラウンド カラーを設定します。1 番目の引数は項目、2 番目はボタン、3 番目は RGB 値(0 ～ 1)を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbuttonTransparencyOverride">
+          <code><b>buttonTransparencyOverride</b>(<b>bto</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, boolean]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ボタンのバックグラウンドをオーバーライドするかどうかを設定します。1 番目の引数は項目、2 番目はボタン、3 番目はオーバーライドの有無を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbuttonVisible">
+          <code><b>buttonVisible</b>(<b>bvf</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, boolean]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ボタンを表示/非表示に設定します。1 番目の引数は項目を指定します。2 番目の引数はボタンを指定します。3 番目の引数は表示/非表示を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagchildren">
+          <code><b>children</b>(<b>ch</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目の子を照会します。引数が null の場合は、すべての項目が返されます。
+      <p><i>照会モードでは、このフラグに値が必要になります。</i></p>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagclearSelection">
+          <code><b>clearSelection</b>(<b>cs</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+選択項目をすべてクリアします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcontextMenuCommand">
+          <code><b>contextMenuCommand</b>(<b>cmc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+アタッチされたいずれかのコンテキストメニューが表示される直前にコールバック関数が起動されるように設定します。これは popupMenu コマンドの postMenuCommand フラグの代わりとして、またはこのフラグに追加して使用できます。この関数は、クリックした項目に該当する文字列(項目をクリックしていない場合、空文字列)を受け入れる必要があります。関数は、メニューを表示する場合に true を、表示しない場合に false を返す必要があります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdefineTemplate">
+          <code><b>defineTemplate</b>(<b>dt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+他の任意のフラグと引数を解析し、かつ引数で指定したコマンド テンプレートに追加するモードに、コマンドのモードを変更します。 templateName が現在のテンプレートとして設定されていれば、その後コマンドが実行されるたびに、この引数が既定の引数として使用されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdisplayLabel">
+          <code><b>displayLabel</b>(<b>dl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目に対し、それを特定する文字列と異なるラベルを設定します。このラベルは項目の表示に使用します。1 番目のパラメータは項目を指定し、2 番目は表示ラベルを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdisplayLabelSuffix">
+          <code><b>displayLabelSuffix</b>(<b>dls</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目の表示ラベルに拡張子を指定します。この拡張子は、項目の名前をツリー ビューで変更する場合は表示されません。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdocTag">
+          <code><b>docTag</b>(<b>dtg</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールにドキュメンテーション フラグを追加します。ドキュメンテーション フラグは、ディレクトリ構造になっています。 (例: -dt render/multiLister/createNode/material)
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdragAndDropCommand">
+          <code><b>dragAndDropCommand</b>(<b>dad</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+レイヤのドラッグ＆ドロップ時にコールバック関数が起動されるように設定します。コールバック関数は次のものをパラメータとして使用する必要があります。- ドロップされた項目の文字配列 - 項目の以前の親の文字配列 - 項目の以前のインデックスの整数配列 - 項目の新しい親の文字列 - 項目の新しいインデックスの整数配列 - ドロップされた項目の前に来るようになった項目の文字列 - ドロップされた項目の後に来るようになった項目の文字列
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdragCallback">
+          <code><b>dragCallback</b>(<b>dgc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+中マウス ボタンを押すとコールされるコールバックを追加します。MEL バージョンのコールバックの書式は次のとおりです。
+<p>
+global proc string[] callbackName(string $dragControl, int $x, int $y, int $mods)
+<p>
+proc はドロップ先に転送される文字配列を返します。規則により、配列の先頭文字列はユーザ設定可能なメッセージ タイプを表しています。アプリケーションで定義されたドラッグ元のコントロールは、このコールバックを無視する可能性があります。$mods で、キー モディファイアである CTRL と SHIFT をテストできます。 有効な値は、0 == モディファイアなし、1 == SHIFT、2 == CTRL、3 == CTRL + SHIFT です。
+<p>
+Python でも同様ですが、コールバックの指定方法が 2 つあります。お勧めの方法は、引数として Python 関数オブジェクトを渡すことです。この場合、Python コールバックの書式は次のようになります。
+<p>
+def callbackName( dragControl, x, y, modifiers ):
+<p>
+この引数の値は、上記の MEL バージョンの引数と同じです。
+<p>
+Python でコールバックを指定するもう 1 つの方法では、実行する文字列を指定します。この場合、Python の標準的なフォーマット演算子を介して文字列に値が代入されます。このフォーマットの値は、キー「dragControl」、「x」、「y」、「modifiers」と共に辞書で渡されます。dragControl の値は文字列で、その他の値は整数です(コールバック文字列の例: 「print '%(dragControl)s %(x)d %(y)d %(modifiers)d'」)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdropCallback">
+          <code><b>dropCallback</b>(<b>dpc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ドラッグ＆ドロップ操作をドロップ位置で解放したときにコールされるコールバックを追加します。MEL バージョンのコールバックの書式は次のとおりです。
+<p>
+global proc callbackName(string $dragControl, string $dropControl, string $msgs[], int $x, int $y, int $type)
+<p>
+proc は、ドラッグ元から転送される文字配列を受け取ります。msgs 配列の先頭文字列はユーザ定義のメッセージ タイプを表します。アプリケーションで定義されたドロップ先のコントロールでは、このコールバックが無視されることがあります。$type の値は、1 == 移動、2 == コピー、3 == リンクのいずれかです。
+<p>
+Python でも同様ですが、コールバックの指定方法が 2 つあります。お勧めの方法は、引数として Python 関数オブジェクトを渡すことです。この場合、Python コールバックの書式は次のようになります。
+<p>
+def pythonDropTest( dragControl, dropControl, messages, x, y, dragType ):
+<p>
+この引数の値は、上記の MEL バージョンの引数と同じです。
+<p>
+Python でコールバックを指定するもう 1 つの方法では、実行する文字列を指定します。この場合、Python の標準的なフォーマット演算子を介して文字列に値が代入されます。このフォーマットの値は、キー「dragControl」、「dropControl」、「messages」、「x」、「y」、「type」と共に辞書で渡されます。dragControl の値は文字列で、その他の値は整数です(コールバック文字列の例: 「print '%(dragControl)s %(dropControl)s %(messages)r %(x)d %(y)d %(type)d'」)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flageditLabelCommand">
+          <code><b>editLabelCommand</b>(<b>elc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ユーザが項目を UI 上でダブルクリックして名前を変更したときに、コールバック関数が起動されるように設定します。コールバックは、2 つの文字列引数を受け入れる必要があります。項目名と新しい名前です。項目名は、表示ラベルではなく項目の名前を参照します。コールバック関数は文字列を返す必要があります。空文字列は、コントロールを元の名前に戻すことを示します。名前の変更操作が有効な場合、コールバックは項目を特定する文字列を返す必要があります。これはユーザが入力する新しい表示名とは異なる可能性があります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenable">
+          <code><b>enable</b>(<b>en</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールの有効、無効です。既定では true に設定されていて、コントロールは有効になっています。false を指定するとコントロールはグレー表示になって無効になります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenableBackground">
+          <code><b>enableBackground</b>(<b>ebg</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールのバックグラウンド カラーを有効にします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenableButton">
+          <code><b>enableButton</b>(<b>eb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した項目の指定したボタンを使用可能または不可能に指定します。1 番目の引数は項目、2 番目はボタン、3 番目はオンまたはオフを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenableKeyboardFocus">
+          <code><b>enableKeyboardFocus</b>(<b>ekf</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+有効にすると、[Tab]キーを押してコントロールに移動し、キーボードまたはマウスで値を選択することができます。このフラグは通常、編集コントロールやリスト コントロールなどで既定で使用されるコントロールから、フォーカスのサポートをオフにするために使用されます。 無効にすると、テキスト フィールド内のテキストはマウスで選択できますが、コピーできません(Linuxで「中ボタンでクリックして貼り付け」が有効になっている場合を除く)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenableKeys">
+          <code><b>enableKeys</b>(<b>enk</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+既定では、ツリービューではキーボード入力は使用できません。キーボードのサポートを有効にすると上下矢印キーでツリービューを上下にナビゲーションできるようになります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenableLabel">
+          <code><b>enableLabel</b>(<b>enl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー ビュー項目のラベルの表示と非表示を切り替えます。1 番目のパラメータは項目を指定し、2 番目はオンまたはオフを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagexists">
+          <code><b>exists</b>(<b>ex</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定したオブジェクトが存在するかどうかを返します。他のフラグは無視されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagexpandCollapseCommand">
+          <code><b>expandCollapseCommand</b>(<b>ecc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+展開/折り畳みボタンをクリックしたときにコールバック関数が起動されるように設定します。この関数は次のものをパラメータとして使用する必要があります。- 展開/折り畳みボタンをクリックした項目に対する文字列 - 展開状態を表す整数
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagexpandItem">
+          <code><b>expandItem</b>(<b>ei</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, boolean]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目の子を展開するか折り畳みます。1 番目の引数は項目を指定し、2 番目は展開または折り畳みを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagflatButton">
+          <code><b>flatButton</b>(<b>fb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+使用するフラット ボタンのタイプです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfont">
+          <code><b>font</b>(<b>fn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+1 番目のパラメータは TtreeNodeMap の TtreeViewNode の項目文字列を指定します。2 番目の文字列はテキストのフォントを指定します。有効な値は、「boldLabelFont」、「smallBoldLabelFont」、「tinyBoldLabelFont」、「plainLabelFont」、「smallPlainLabelFont」、「obliqueLabelFont」、「smallObliqueLabelFont」、「fixedWidthFont」、「smallFixedWidthFont」です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfontFace">
+          <code><b>fontFace</b>(<b>ff</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した項目のテキストに使用するフォント フェースを設定します。0 は通常、1 は太字、2 は斜体です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfullPathName">
+          <code><b>fullPathName</b>(<b>fpn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+すべての親を含むウィジェットのフル パス名を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagheight">
+          <code><b>height</b>(<b>h</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールの高さです。コントロールは親のレイアウトの条件によって無効にされない限り、このサイズを保持しようとします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghideButtons">
+          <code><b>hideButtons</b>(<b>hb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー ビュー内の項目のボタンを非表示にします。「addItem」フラグを使用してツリーに項目を追加する場合にのみ使用できます。操作後も項目が親の配下に並ぶよう、ボタンのための場所はそのまま残ります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghighlightColor">
+          <code><b>highlightColor</b>(<b>hlc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールのハイライト カラーです。引数は、赤、緑、青のカラー成分に対応しています。それぞれの成分の値は、0.0～1.0 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghighlite">
+          <code><b>highlite</b>(<b>hl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, boolean]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目を強調表示に設定します。強調表示は、項目をアウトラインすることで行われます。1 番目のパラメータは項目を指定し、2 番目は強調表示するかどうかを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghighliteColor">
+          <code><b>highliteColor</b>(<b>hc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+強調表示を有効にしたときに、項目の境界の強調表示として使用される色を設定します。1 番目のパラメータはレイヤを指定します。0 ～ 1 までの 3 つの float 値は、RGB 値を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagignoreButtonClick">
+          <code><b>ignoreButtonClick</b>(<b>ibc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した項目の指定したボタンを、ボタン クリックを無視するように設定します。1 番目の引数は項目、2 番目はボタン、3 番目はオンまたはオフを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagimage">
+          <code><b>image</b>(<b>i</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ボタンのアイコンとして使用するイメージを設定します。1 番目の引数で項目を、2 番目の引数でボタンを、3 番目の引数でイメージを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaginsertItem">
+          <code><b>insertItem</b>(<b>ii</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, string, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー ビュー項目を作成して、ツリー ビューに挿入します。1 番目の引数は項目名を、2 番目の引数は項目の親を指定します(項目をツリーのトップ レベルに配置する場合は空文字列を使用します)。3 番目の引数は子リスト内の子のインデックス位置です。0 未満のインデックスを指定すると、最初の子として挿入され、子の数以上のインデックスを指定すると、最後の子として挿入されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagisItemExpanded">
+          <code><b>isItemExpanded</b>(<b>iie</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー ビューの項目が展開されているかどうかを示します。
+      <p><i>照会モードでは、このフラグに値が必要になります。</i></p>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagisLeaf">
+          <code><b>isLeaf</b>(<b>il</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目がリーフかどうかを照会します。
+      <p><i>照会モードでは、このフラグに値が必要になります。</i></p>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagisObscured">
+          <code><b>isObscured</b>(<b>io</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールが実際に表示されるかどうかを返します。コントロールは、次の場合に隠れた状態になります。非表示の場合、別のコントロールで(完全に、または部分的に)ブロックされた場合、コントロールまたは親のレイアウトを制御できない場合、あるいはコントロールのウィンドウが非表示またはアイコン化されている場合。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitem">
+          <code><b>item</b>(<b>it</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+照会する項目を指定します。「selectionColor」および「itemAnnotation」フラグと一緒に使用されます。
+      <p><i>照会モードでは、このフラグに値が必要になります。</i></p>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitemAnnotation">
+          <code><b>itemAnnotation</b>(<b>ia</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, string]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定された項目に文字列値で注釈を付けます。照会に使用する場合、このフラグは引数を使用せず、「item」フラグと一緒に使用する必要があります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitemDblClickCommand">
+          <code><b>itemDblClickCommand</b>(<b>idc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー内の項目の名前をダブルクリックしたときにコールバック関数が起動されるように設定します。コールバックは、ダブルクリックした項目の表示ラベルである 1 つの文字列を受け入れる必要があります。このコールバックが定義されている場合は、動作の名前変更を行う通常の項目より優先されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitemDblClickCommand2">
+          <code><b>itemDblClickCommand2</b>(<b>dc2</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー内の項目の名前をダブルクリックしたときにコールバック関数が起動されるように設定します。このコールバックは itemDblClickCommand(idc)と似ていますが、ダブルクリックした項目の名前と表示ラベルという 2 つの文字列を受け入れます。このコールバックが定義されている場合は、動作の名前変更を行う通常の項目より優先されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitemExists">
+          <code><b>itemExists</b>(<b>iex</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定したツリー ビュー項目の存在を照会します。
+      <p><i>照会モードでは、このフラグに値が必要になります。</i></p>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitemIndex">
+          <code><b>itemIndex</b>(<b>idx</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した項目の親の子リストから、その項目のインデックスを取得します。これは 0 から始まるインデックスです。
+      <p><i>照会モードでは、このフラグに値が必要になります。</i></p>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitemParent">
+          <code><b>itemParent</b>(<b>ip</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した項目が子の場合は親項目を返し、子ではない場合は何も返しません。
+      <p><i>照会モードでは、このフラグに値が必要になります。</i></p>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitemRenamedCommand">
+          <code><b>itemRenamedCommand</b>(<b>irc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー内の項目の名前が変更されたときにコールバック関数が起動されるように設定します。これは、「editLabelCommand」によってアタッチされたコマンドが成功して戻ってきたとき、あるいは editLabelCommand がない場合は無条件に発生します。コールバックは 2 つの文字列を受け入れる必要があります。名前が変更される項目の、古い名前と新しい名前です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitemSelected">
+          <code><b>itemSelected</b>(<b>isl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目が現在選択されているかどうかを照会します。
+      <p><i>照会モードでは、このフラグに値が必要になります。</i></p>
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagitemVisible">
+          <code><b>itemVisible</b>(<b>iv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, boolean]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した項目の可視性をコントロールします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglabelBackgroundColor">
+          <code><b>labelBackgroundColor</b>(<b>lbc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー内の特定項目のテキスト ラベルにバックグラウンド カラーを設定します。最初のパラメータはレイヤを指定します。<br>バックグラウンドを「transparent」の既定値復元するには、(-1.0, -1.0, -1.0)を設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmanage">
+          <code><b>manage</b>(<b>m</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールの状態を管理します。管理されていないコントロールは表示されず、画面の領域も占有しません。既定では、コントロールは管理できるように作成されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnoBackground">
+          <code><b>noBackground</b>(<b>nbg</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールのバックグラウンドをクリア/リセットします。バックグラウンドは、true を渡すと一切描画されず、false を渡すと描画されます。このフラグの状態は、このコントロールの子に継承されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnumberOfButtons">
+          <code><b>numberOfButtons</b>(<b>nb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー内の項目に対してボタンの数を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnumberOfPopupMenus">
+          <code><b>numberOfPopupMenus</b>(<b>npm</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+このコントロールにアタッチされるポップアップ メニューの数を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagornament">
+          <code><b>ornament</b>(<b>ornament</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目がオーナメント(小さい色付きの円)を持つようにし、そのオン/オフ状態、点の有無とサイズを設定します。1 番目の引数は項目、2 番目の引数はオン/オフの指定、3 番目の引数は点の有無、4 番目の引数は半径(ピクセル単位)を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagornamentColor">
+          <code><b>ornamentColor</b>(<b>orc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定したレイヤで、オーナメントを描画する色を設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagparent">
+          <code><b>parent</b>(<b>p</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールの親のレイアウトです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpopupMenuArray">
+          <code><b>popupMenuArray</b>(<b>pma</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+このコントロールにアタッチされる全ポップアップ メニューの名前を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpressCommand">
+          <code><b>pressCommand</b>(<b>pc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, script]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+treeView ボタンをクリックしたときに起動するようコールバック関数を設定します。最初の引数で treeView ボタンを指定します。2 番目の引数は実行するコールバック関数を指定します。コールバック関数は次のものをパラメータとして使用する必要があります。- クリックしたボタンの項目を示す文字列 - クリックしたボタンの状態を示す整数
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpreventOverride">
+          <code><b>preventOverride</b>(<b>po</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+true の場合、コントロールの右マウス ボタン メニューを使用したコントロール アトリビュートのオーバーライドは無効になります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagremoveAll">
+          <code><b>removeAll</b>(<b>ra</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目をツリー ビューからすべて除去します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagremoveItem">
+          <code><b>removeItem</b>(<b>ri</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー ビュー項目をツリー ビューから除去します。この項目に子項目が存在する場合は、すべての子項目が除去されます。1 番目の引数は項目名を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreverseTreeOrder">
+          <code><b>reverseTreeOrder</b>(<b>rto</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリーを描画する順序をコントロールします(true の場合、逆順になります)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrightPressCommand">
+          <code><b>rightPressCommand</b>(<b>rpc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, script]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+treeView ボタンを右クリックしたときに起動するようコールバック関数を設定します。最初の引数で treeView ボタンを指定します。2 番目の引数は実行するコールバック関数を指定します。コールバック関数は次のものをパラメータとして使用する必要があります。- クリックしたボタンの項目を示す文字列 - クリックしたボタンの状態を示す整数
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagselect">
+          <code><b>select</b>(<b>sl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+要素の選択を設定します。1 番目のパラメータは項目を指定し、2 番目はオンまたはオフを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagselectCommand">
+          <code><b>selectCommand</b>(<b>sc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツリー内の項目の名前が変更されたときにコールバック関数が起動されるように設定します。関数は、1 つの文字列引数と 1 つの整数引数を受け入れる必要があります。それぞれ、項目名と選択状態です。関数が true を返した場合、選択/選択解除は有効とみなされ正常に実行されます。そうでない場合は許可されません。name and
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagselectItem">
+          <code><b>selectItem</b>(<b>si</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, boolean]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目の選択状態を設定します。1 番目の引数は項目を指定し、2 番目は選択状態を指定します。引数なしの照会に使用する場合、ツリービューで選択されたすべての項目を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagselectionChangedCommand">
+          <code><b>selectionChangedCommand</b>(<b>scc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ユーザによって起動された完全な選択操作が正常に発生した場合に、コールバック関数を起動するように設定します。このコールバックは、「selectCommand」コールバックが空でない値を返した場合に(または、「selectCommand」コールバックがない場合は常に)起動します。「selectCommand」との違いは、単純な選択置換では「selectCommand」によって 2 つのコールバックが生成される(1 つが古い項目の選択解除、もう 1 つが新しい項目の選択)のに対して、「selectionChangedCommand」は選択が完了したときに 1 回だけ起動されるということです。コールバックに渡されるパラメータはなく、コールバックから値を返す必要もありません(つまり、単なる通知メカニズムです)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagselectionColor">
+          <code><b>selectionColor</b>(<b>scl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目が選択されたときに変化する色を設定します。1 番目のパラメータは項目を指定します。0 ～ 1 までの 3 つの float 値は、RGB 値を指定します。照会に使用する場合、このフラグは引数を使用せず、「item」フラグと一緒に使用する必要があります。項目が選択されたときに変化する項目のカラーを返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagshowItem">
+          <code><b>showItem</b>(<b>shi</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+項目を表示します。必要に応じてリストをスクロールし、項目を可視にします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagstatusBarMessage">
+          <code><b>statusBarMessage</b>(<b>sbm</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+マウスがコントロール上にある場合にステータス バーに表示する追加の文字列です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtextColor">
+          <code><b>textColor</b>(<b>tc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定したレイヤに対する、ラベルのテキスト文字列を設定します。1 番目の引数はレイヤを指定します。0 ～ 1 までの 3 つの float 値は、RGB 値を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguseTemplate">
+          <code><b>useTemplate</b>(<b>ut</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コマンドに、現在のものとは異なるコマンド テンプレートを使用するように強制します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvisible">
+          <code><b>visible</b>(<b>vis</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールの可視の状態です。既定では、コントロールは表示されます。コントロールの実際の外見も、その親レイアウトの可視の状態によって異なることに注意してください。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvisibleChangeCommand">
+          <code><b>visibleChangeCommand</b>(<b>vcc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールの可視の状態が変更されたときに実行されるコマンドです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwidth">
+          <code><b>width</b>(<b>w</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コントロールの幅を指定します。コントロールは親のレイアウトの条件によって無効にされない限り、このサイズを保持しようとします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+def selectTreeCallBack(*args):
+  print 'selection :- str= ' + args[0] + ' onoff= ' + str(args[1])
+  return True
+
+def pressTreeCallBack(*args):
+  print 'press :- str= ' + args[0] + ' onoff= ' + str(args[1])
+
+from maya import cmds
+window = cmds.window()
+layout = cmds.formLayout()
+
+control = cmds.treeView( parent = layout, numberOfButtons = 3, abr = False )
+
+cmds.formLayout(layout,e=True, attachForm=(control,'top', 2))
+cmds.formLayout(layout,e=True, attachForm=(control,'left', 2))
+cmds.formLayout(layout,e=True, attachForm=(control,'bottom', 2))
+cmds.formLayout(layout,e=True, attachForm=(control,'right', 2))
+
+cmds.showWindow( window )
+
+cmds.treeView( control, e=True, addItem = (&quot;layer 1&quot;, &quot;&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 2&quot;, &quot;&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 3&quot;, &quot;&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 4&quot;, &quot;&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 5&quot;, &quot;&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 6&quot;, &quot;&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 7&quot;, &quot;layer 2&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 8&quot;, &quot;layer 2&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 9&quot;, &quot;layer 2&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 10&quot;, &quot;layer 8&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 11&quot;, &quot;layer 2&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 12&quot;, &quot;&quot;))
+cmds.treeView( control, e=True, addItem = (&quot;layer 13&quot;, &quot;layer 10&quot;))
+cmds.treeView(control,edit=True,pressCommand=[(1,pressTreeCallBack),(2,pressTreeCallBack),(3,pressTreeCallBack)])
+cmds.treeView(control,edit=True,selectCommand=selectTreeCallBack)
+
+
+cmds.treeView( control, edit=True, removeAll = True )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

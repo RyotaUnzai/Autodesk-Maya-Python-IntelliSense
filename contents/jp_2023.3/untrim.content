@@ -1,0 +1,423 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>untrim command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-untrim"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/untrim.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>untrim </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Modeling.html" target="contentFrame">モデリング</a>, <a href="cat_Modeling.html#NURBS" target="contentFrame">NURBS</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("untrim.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>untrim(
+surface
+    , [<a href="#flagcaching">caching</a>=<i>boolean</i>], [<a href="#flagconstructionHistory">constructionHistory</a>=<i>boolean</i>], [<a href="#flagcurveOnSurface">curveOnSurface</a>=<i>boolean</i>], [<a href="#flagname">name</a>=<i>string</i>], [<a href="#flagnoChanges">noChanges</a>=<i>boolean</i>], [<a href="#flagnodeState">nodeState</a>=<i>int</i>], [<a href="#flagobject">object</a>=<i>boolean</i>], [<a href="#flagreplaceOriginal">replaceOriginal</a>=<i>boolean</i>], [<a href="#flaguntrimAll">untrimAll</a>=<i>boolean</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>untrim は、取り消し可能、照会可能、および編集可能です。</p>
+      サーフェスのトリムを解除します。
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string[]</i></td><td>オブジェクト名とノード名</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      <h2><a name="hRelated">関連</a></h2><a href="intersect.html">intersect</a>, <a href="projectCurve.html">projectCurve</a>, <a href="trim.html">trim</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagcaching">caching</a>, <a href="#flagconstructionHistory">constructionHistory</a>, <a href="#flagcurveOnSurface">curveOnSurface</a>, <a href="#flagname">name</a>, <a href="#flagnoChanges">noChanges</a>, <a href="#flagnodeState">nodeState</a>, <a href="#flagobject">object</a>, <a href="#flagreplaceOriginal">replaceOriginal</a>, <a href="#flaguntrimAll">untrimAll</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcaching">
+          <code><b>caching</b>(<b>cch</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+すべてのアトリビュートのキャッシングを切り替えることで、再計算を不要にします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnodeState">
+          <code><b>nodeState</b>(<b>nds</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+<p>
+Maya のディペンデンシー ノードには 6 種類の設定可能な状態があります。<b>通常(Normal)(0)</b>、<b>エフェクトなし(HasNoEffect)(1)</b>、<b>ブロッキング(Blocking)(2)</b>ステータスは、グラフの評価方法を変更するために使用されます。
+
+
+<p>
+<b>待機 - 通常(Waiting-Normal)(3)</b>、<b>待機 - エフェクトなし(Waiting-HasNoEffect)(4)</b>、<b>待機 - ブロッキング(Waiting-Blocking)(5)</b>は、内部でのみ使用されます。これらは、インタラクション(例: 操作)の実行中にグラフのパーツを一時的に遮断します。操作が完了すると、ステータスは適切にリセットされます(例: <b>待機 - ブロッキング(Waiting-Blocking)</b> は <b>ブロッキング(Blocking)</b> にリセットされます)。
+
+
+<p>
+<b>通常(Normal)</b>および<b>ブロッキング(Blocking)</b>のケースはすべてのノードに適用できますが、<b>エフェクトなし(HasNoEffect)</b>はノード特定です。多くのノードはこのオプションをサポートしていません。プラグインは状態を <i>MPxNode::state</i> アトリビュートに保存します。誰もがこのアトリビュートを設定したり確認したりすることができます。これらの 3 つの状態に関するその他の詳細は次の通りです。
+
+<p> 
+
+<table border="1">
+<tr>
+<th>状態</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><b>通常(Normal)</b></td>
+<td>通常のノードの状態です。これが既定の設定です。</td>
+</tr>
+<tr>
+<td><b>エフェクトなし(HasNoEffect)</b> </td>
+<td>
+<p>
+<b>エフェクトなし(HasNoEffect)</b>オプション(別名: 通過)は、同じデータ タイプの出力を生成する入力を操作している場合に使用されます。 ほぼすべてのデフォーマが、他のいくつかのノードと同様に、この状態をサポートします。前に説明したように、すべてのノードでサポートされるわけではありません。
+
+<p>
+ノードの計算メソッドで<b>エフェクトなし(HasNoEffect)</b>状態のサポートを実装し、適切な操作を実行することが一般的です。プラグインは<b>エフェクトなし(HasNoEffect)</b>もサポートします。
+
+<p>
+この状態を普通に実装するには、ノードにアルゴリズムを適用しないで、適合する出力に直接入力をコピーします。デフォーマの場合は、この状態を適用することにより、入力ジオメトリが出力でデフォーム解除されたままになります。
+
+</td>
+</tr>
+<tr>
+<td><b>ブロッキング(Blocking)</b></td>
+<td>
+<p>
+これはディペンデンシー ノードのベース クラスで実装され、すべてのノードに適用されます。<b>ブロッキング(Blocking)</b>は評価フェーズ中に接続に適用されます。 ブロックされた接続に対する評価要求が失敗を返すと、目的プラグが現在の値を保持します。 ダーティな伝播はこの状態の間接的な影響を受けますが、ブロックされた接続がクリーンアップされることはありません。
+
+<p>
+ノードを<b>ブロッキング(Blocking)</b>に設定すると、すべての送信接続が解除されたのと同じ動作になる可能性があります。 ブロックされたノードの評価を直接要求しない限り、その後に再評価されることはありません。ブロックされたノードは <i>getAttr</i> 要求に引き続き応答しますが、下流ノードの <i>getAttr</i> は、ブロックされたノードを再評価しないことに注意してください。
+
+<p>
+<b>ブロッキング(Blocking)</b>に対して階層のルート変換を設定しても、自動的にはこの階層の子変換に影響しません。これを実行するには、<b>ブロッキング(Blocking)</b>状態に対してすべての子ノードを明示的に設定する必要があります。
+
+<p>
+たとえば、すべての子トランスフォームを<b>ブロッキング(Blocking)</b>に設定するには、次のスクリプトを使用します。<pre> import maya.cmds as cmds def blockTree(root): nodesToBlock = [] for node in {child:1 for child in cmds.listRelatives( root, path=True, allDescendents=True )}.keys(): nodesToBlock += cmds.listConnections(node, source=True, destination=True ) for node in {source:1 for source in nodesToBlock}.keys(): cmds.setAttr( '%s.nodeState' % node, 2 ) </pre>
+<p>
+このスクリプトを適用してオブジェクトの描画を継続できますが、アニメートは行えません。
+
+</td>
+</tr>
+</table>
+<br><i>既定:</i> kdnNormal
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+<tr bgcolor="#DDDDDD"><td colspan="3"><u>共通のフラグ</u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagconstructionHistory">
+          <code><b>constructionHistory</b>(<b>ch</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コンストラクション ヒストリをオンまたはオフにします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcurveOnSurface">
+          <code><b>curveOnSurface</b>(<b>cos</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+可能な場合は、2D カーブが作成されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagname">
+          <code><b>name</b>(<b>n</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+新しく作成するノードの名前を設定します。ネームスペース パスを含む場合、指定されたネームスペースの下に新しいノードが作成されます。ネームスペースが存在しない場合は、ネームスペースが作成されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnoChanges">
+          <code><b>noChanges</b>(<b>nc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+設定すると、操作ノードが自動的に通過モード内に配置されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagobject">
+          <code><b>object</b>(<b>o</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+結果のオブジェクト、またはディペンデンシー ノードのみを作成します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreplaceOriginal">
+          <code><b>replaceOriginal</b>(<b>rpo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+「同じ位置」に作成(つまり置き換え)します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguntrimAll">
+          <code><b>untrimAll</b>(<b>all</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+true の場合、サーフェスのすべてのトリムを解除します。false の場合、最後のトリムだけを解除します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# Untrim surface with history.
+cmds.untrim( 'surface', ch=True )
+
+# Untrims surface without history.
+cmds.untrim( 'surface', ch=False )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

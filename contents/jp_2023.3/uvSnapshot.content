@@ -1,0 +1,530 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>uvSnapshot command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-uvSnapshot"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/uvSnapshot.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>uvSnapshot </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Modeling.html" target="contentFrame">モデリング</a>, <a href="cat_Modeling.html#Polygons" target="contentFrame">ポリゴン</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("uvSnapshot.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hKeywords">キーワード</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>uvSnapshot([<a href="#flagantiAliased">antiAliased</a>=<i>boolean</i>], [<a href="#flagblueColor">blueColor</a>=<i>int</i>], [<a href="#flagentireUVRange">entireUVRange</a>=<i>boolean</i>], [<a href="#flagfileFormat">fileFormat</a>=<i>string</i>], [<a href="#flaggreenColor">greenColor</a>=<i>int</i>], [<a href="#flagname">name</a>=<i>string</i>], [<a href="#flagoverwrite">overwrite</a>=<i>boolean</i>], [<a href="#flagredColor">redColor</a>=<i>int</i>], [<a href="#flaguMax">uMax</a>=<i>float</i>], [<a href="#flaguMin">uMin</a>=<i>float</i>], [<a href="#flaguvSetName">uvSetName</a>=<i>string</i>], [<a href="#flagvMax">vMax</a>=<i>float</i>], [<a href="#flagvMin">vMin</a>=<i>float</i>], [<a href="#flagxResolution">xResolution</a>=<i>int</i>], [<a href="#flagyResolution">yResolution</a>=<i>int</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>uvSnapshot は、<b>取り消し不可能</b>、<b>照会不可能</b>、および<b>編集不可能</b>です。</p>
+      選択したオブジェクトの UV を含むイメージを構築します。
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <p><i>なし</i></p>
+      <h2><a name="hKeywords">キーワード</a></h2>texture, uv, image
+      <h2><a name="hRelated">関連</a></h2><a href="move.html">move</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagantiAliased">antiAliased</a>, <a href="#flagblueColor">blueColor</a>, <a href="#flagentireUVRange">entireUVRange</a>, <a href="#flagfileFormat">fileFormat</a>, <a href="#flaggreenColor">greenColor</a>, <a href="#flagname">name</a>, <a href="#flagoverwrite">overwrite</a>, <a href="#flagredColor">redColor</a>, <a href="#flaguMax">uMax</a>, <a href="#flaguMin">uMin</a>, <a href="#flaguvSetName">uvSetName</a>, <a href="#flagvMax">vMax</a>, <a href="#flagvMin">vMin</a>, <a href="#flagxResolution">xResolution</a>, <a href="#flagyResolution">yResolution</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagantiAliased">
+          <code><b>antiAliased</b>(<b>aa</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        このフラグを設定すると、ラインがアンチエイリアシングされます。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagblueColor">
+          <code><b>blueColor</b>(<b>b</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        線画の青色の成分です。既定は 255 です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagentireUVRange">
+          <code><b>entireUVRange</b>(<b>euv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        このフラグを設定すると、生成されたイメージには UV の全範囲が含まれます。既定は、0-1 の範囲にある UV です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfileFormat">
+          <code><b>fileFormat</b>(<b>ff</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        出力ファイル フォーマットです。このキーワードは、「iff」、「sgi」、「pic」、「tif」、「als」、「gif」、「rla」、「jpg」のいずれかで、既定は iff です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaggreenColor">
+          <code><b>greenColor</b>(<b>g</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        線画の緑色の成分です。既定は 255 です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagname">
+          <code><b>name</b>(<b>n</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        作成するファイルの名前です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagoverwrite">
+          <code><b>overwrite</b>(<b>o</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        このフラグを設定すると、既存のファイルを上書きできます。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagredColor">
+          <code><b>redColor</b>(<b>r</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        線画の赤色の成分です。既定は 255 です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguMax">
+          <code><b>uMax</b>(<b>umx</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        ユーザがオプションで指定した U 方向の最大値です。既定値は 1 で、「全範囲」の -euv フラグよりも優先されます。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguMin">
+          <code><b>uMin</b>(<b>umn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        ユーザがオプションで指定した U 方向の最小値です。既定値は 0 で、「全範囲」の -euv フラグよりも優先されます。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguvSetName">
+          <code><b>uvSetName</b>(<b>uvs</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        使用する UV セットの名前です。既定は現在の UV セットです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvMax">
+          <code><b>vMax</b>(<b>vmx</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        ユーザがオプションで指定した V 方向の最大値です。既定値は 1 で、「全範囲」の -euv フラグよりも優先されます。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvMin">
+          <code><b>vMin</b>(<b>vmn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        ユーザがオプションで指定した V 方向の最小値です。既定値は 0 で、「全範囲」の -euv フラグよりも優先されます。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagxResolution">
+          <code><b>xResolution</b>(<b>xr</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        イメージの水平方向のサイズです。既定は 512 です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagyResolution">
+          <code><b>yResolution</b>(<b>yr</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        イメージの垂直方向のサイズです。既定は 512 です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# Create a polygonal sphere
+cmds.polySphere()
+
+# Save the UVs in a image
+cmds.uvSnapshot( o=True, n='/tmp/uvImage2.iff', xr=256, yr=256 )
+	</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

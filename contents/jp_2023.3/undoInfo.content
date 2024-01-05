@@ -1,0 +1,484 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>undoInfo command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-undoInfo"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/undoInfo.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>undoInfo </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_System.html" target="contentFrame">システム</a>, <a href="cat_System.html#Utilities" target="contentFrame">ユーティリティ</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("undoInfo.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>undoInfo([<a href="#flagchunkName">chunkName</a>=<i>string</i>], [<a href="#flagcloseChunk">closeChunk</a>=<i>boolean</i>], [<a href="#flaginfinity">infinity</a>=<i>boolean</i>], [<a href="#flaglength">length</a>=<i>uint</i>], [<a href="#flagopenChunk">openChunk</a>=<i>boolean</i>], [<a href="#flagprintQueue">printQueue</a>=<i>boolean</i>], [<a href="#flagprintRedoQueue">printRedoQueue</a>=<i>boolean</i>], [<a href="#flagredoName">redoName</a>=<i>string</i>], [<a href="#flagredoQueueEmpty">redoQueueEmpty</a>=<i>boolean</i>], [<a href="#flagstate">state</a>=<i>boolean</i>], [<a href="#flagstateWithoutFlush">stateWithoutFlush</a>=<i>boolean</i>], [<a href="#flagundoName">undoName</a>=<i>string</i>], [<a href="#flagundoQueueEmpty">undoQueueEmpty</a>=<i>boolean</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>undoInfo は、取り消し可能、照会可能、および<b>編集不可能</b>です。</p>
+      このコマンドは undo/redo のパラメータを制御します。
+<p>
+照会モードでは、フラグ(照会フラグ以外)を使用しないで呼び出された場合、このコマンドは現在、元に戻す待ち行列にある項目数を返します。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string</i></td><td>undoName または redoName を照会する場合</td></tr><tr><td valign="top"><i>int</i></td><td>状態、インフィニティ、または長さを照会する場合</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      <h2><a name="hRelated">関連</a></h2><a href="flushUndo.html">flushUndo</a>, <a href="redo.html">redo</a>, <a href="undo.html">undo</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagchunkName">chunkName</a>, <a href="#flagcloseChunk">closeChunk</a>, <a href="#flaginfinity">infinity</a>, <a href="#flaglength">length</a>, <a href="#flagopenChunk">openChunk</a>, <a href="#flagprintQueue">printQueue</a>, <a href="#flagprintRedoQueue">printRedoQueue</a>, <a href="#flagredoName">redoName</a>, <a href="#flagredoQueueEmpty">redoQueueEmpty</a>, <a href="#flagstate">state</a>, <a href="#flagstateWithoutFlush">stateWithoutFlush</a>, <a href="#flagundoName">undoName</a>, <a href="#flagundoQueueEmpty">undoQueueEmpty</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagchunkName">
+          <code><b>chunkName</b>(<b>cn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+チャンクを開くときに、元に戻す、またはやり直す目的でチャンクを識別するために使用される名前を設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcloseChunk">
+          <code><b>closeChunk</b>(<b>cck</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+以前、openChunk により開かれたチャンクを閉じます。チャンクのクローズがコールされると、チャンク内の元に戻すことができる操作はすべて、単一の元に戻す操作として元に戻されます。この機能の使用には注意が必要です。このコマンドを不適切に使用すると、元に戻す待ち行列が状態不良になることがあります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaginfinity">
+          <code><b>infinity</b>(<b>infinity</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+待ち行列の長さ(取り消しできる回数)を無限にします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglength">
+          <code><b>length</b>(<b>l</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>uint</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+元に戻す待ち行列の項目の最大数を指定します。infinity フラグを使用すると、このフラグはオーバーライドされます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagopenChunk">
+          <code><b>openChunk</b>(<b>ock</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+チャンクを開きます。このコール後、元に戻すことができる操作はすべて、チャンクのクローズがコールされるまで、新しく開かれたチャンクに入るようになります。チャンクのクローズがコールされると、チャンク内の元に戻すことができる操作はすべて、単一の元に戻す操作として元に戻されます。この機能の使用には注意が必要です。このコマンドを不適切に使用すると、元に戻す待ち行列が状態不良になることがあります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagprintQueue">
+          <code><b>printQueue</b>(<b>pq</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+元に戻す待ち行列の内容をスクリプト エディタに出力します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagprintRedoQueue">
+          <code><b>printRedoQueue</b>(<b>prq</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+やり直し待ち行列の内容をスクリプト エディタに出力します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagredoName">
+          <code><b>redoName</b>(<b>rn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+やり直されるものがあれば、その名前を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagredoQueueEmpty">
+          <code><b>redoQueueEmpty</b>(<b>rqe</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+再実行の待ち行列が空であれば、true を返します。待ち行列に再実行するコマンドが 1 つでもあれば、false を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagstate">
+          <code><b>state</b>(<b>st</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+元に戻す/再実行のオンとオフを切り替えます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagstateWithoutFlush">
+          <code><b>stateWithoutFlush</b>(<b>swf</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+待ち行列の内容を消去せずに、undo/redo のオンとオフを切り替えます。この機能の使用には注意が必要です。stateWithoutFlush を無効にして破壊的な操作を実行し、再びこのフラグを有効にした場合、破壊的操作を遡って元に戻す操作を実行しても、元に戻す操作はシーンの以前の状態を正しく再構築できないため、結果が不安定になる恐れがあります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagundoName">
+          <code><b>undoName</b>(<b>un</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+元に戻す対象取り消しされるものがあれば、その名前を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagundoQueueEmpty">
+          <code><b>undoQueueEmpty</b>(<b>uqe</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+元に戻す待ち行列が空であれば、true を返します。待ち行列に元に戻すコマンドが 1 つでもあれば、false を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# Turn undo on, with an infinite queue length
+cmds.undoInfo( state=True, infinity=True )
+# Turn undo on, with a queue length of 200
+cmds.undoInfo( state=True, infinity=False, length=200 )
+# Turn undo off
+cmds.undoInfo( state=False )
+# Query the queue length
+cmds.undoInfo( q=True, length=True )
+# Query the number of items currently on the queue.
+cmds.undoInfo( q=True )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

@@ -1,0 +1,337 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>untangleUV command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-untangleUV"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/untangleUV.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>untangleUV </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Modeling.html" target="contentFrame">モデリング</a>, <a href="cat_Modeling.html#Polygons" target="contentFrame">ポリゴン</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("untangleUV.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hKeywords">キーワード</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>untangleUV([<a href="#flagmapBorder">mapBorder</a>=<i>string</i>], [<a href="#flagmaxRelaxIterations">maxRelaxIterations</a>=<i>int</i>], [<a href="#flagpinBorder">pinBorder</a>=<i>boolean</i>], [<a href="#flagpinSelected">pinSelected</a>=<i>boolean</i>], [<a href="#flagpinUnselected">pinUnselected</a>=<i>boolean</i>], [<a href="#flagrelax">relax</a>=<i>string</i>], [<a href="#flagrelaxTolerance">relaxTolerance</a>=<i>float</i>], [<a href="#flagshapeDetail">shapeDetail</a>=<i>float</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>untangleUV は、取り消し可能、<b>照会不可能</b>、および<b>編集不可能</b>です。</p>
+      このコマンドは、テクスチャ UV をほどくことで、テクスチャ空間に非オーバーラップ領域(すなわちポリゴン)を作成できるようにします。これは次の 2 段階で行われます。<br> 1. このコマンドを使用して、現在の選択項目に定義された UV 境界または渡されたコンポーネントを、次のリラックス処理により適したシェイプにマッピングします。<br> 2. テクスチャ空間にあるすべてのエッジに対して長さの最小化アルゴリズムを実行し、内部のすべてのテクスチャ UV をリラックスさせます。
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>int</i></td><td>実行するリラックス反復の回数</td></tr></table>
+      <h2><a name="hKeywords">キーワード</a></h2>poly, uv, map, border, relax, untangle
+      <h2><a name="hRelated">関連</a></h2><a href="polyClipboard.html">polyClipboard</a>, <a href="polyCylindricalProjection.html">polyCylindricalProjection</a>, <a href="polyEditUV.html">polyEditUV</a>, <a href="polyForceUV.html">polyForceUV</a>, <a href="polyMapCut.html">polyMapCut</a>, <a href="polyMapDel.html">polyMapDel</a>, <a href="polyMapSew.html">polyMapSew</a>, <a href="polyMoveFacetUV.html">polyMoveFacetUV</a>, <a href="polyMoveUV.html">polyMoveUV</a>, <a href="polyPlanarProjection.html">polyPlanarProjection</a>, <a href="polyProjection.html">polyProjection</a>, <a href="polySphericalProjection.html">polySphericalProjection</a>, <a href="polyUVSet.html">polyUVSet</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagmapBorder">mapBorder</a>, <a href="#flagmaxRelaxIterations">maxRelaxIterations</a>, <a href="#flagpinBorder">pinBorder</a>, <a href="#flagpinSelected">pinSelected</a>, <a href="#flagpinUnselected">pinUnselected</a>, <a href="#flagrelax">relax</a>, <a href="#flagrelaxTolerance">relaxTolerance</a>, <a href="#flagshapeDetail">shapeDetail</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmapBorder">
+          <code><b>mapBorder</b>(<b>mb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+選択した UV を含む境界を、UV のリラックス操作により適したシェイプへとマッピングします。数多くのタイプのマッピングが使用可能です。すべてのマッピング結果は単位正方形内に収められます。<br><br> 有効な文字列: <br><b>circular</b>: (0,0)に最近接の選択済み UV による円形マッピング<br><b>square</b>: 選択済み UV を(0,0)に配置した、単位正方形へのマッピング<br><b>shape</b>: 選択済み UV が(0,0)から(0.5,0.5)の直線状に配置されたオブジェクトの、実際のシェイプを反映することを試みるマッピング<br><b>shape_circular</b>: マッピングされた境界の自己交差を回避できる程度に、円形マッピングへと補間されるシェイプ マッピング<br><b>shape_square</b>: マップピングされた境界の自己交差を回避できる程度に、正方形マッピングへと補間されるシェイプ マッピング <br>
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmaxRelaxIterations">
+          <code><b>maxRelaxIterations</b>(<b>mri</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リラックス プロセスは反復アルゴリズムです。このフラグを使用して、実行する反復数の上限を設定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpinBorder">
+          <code><b>pinBorder</b>(<b>pb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+true の場合、すべてのリラックス操作において、関連するテクスチャ境界を同じ位置に固定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpinSelected">
+          <code><b>pinSelected</b>(<b>ps</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+true の場合、すべてのリラックス操作において、選択した UV を同じ位置に固定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpinUnselected">
+          <code><b>pinUnselected</b>(<b>pu</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+true の場合、すべてのリラックス操作において、各メッシュにあるすべての非選択 UV を同じ位置に固定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrelax">
+          <code><b>relax</b>(<b>r</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+選択した UV のシェルにあるすべての UV をリラックスします。リラックスは、UV の各エッジをスプリングとして扱う、スプリング システムをシミュレートします。リラックスには、スプリング システムにおける UV エッジをウェイト付けする方法により、さまざまな方法があります。ウェイト付けは文字列で指定します。有効な文字列: <br><b>uniform</b>: すべてのエッジを同じようにウェイト付けします。これが最速の方法です。<br><b>inverse_length</b>: すべてのエッジ ウェイトは、ワールド空間上の長さに反比例します。<br><b>inverse_sqrt_length</b>: すべてのエッジ ウェイトは、ワールド空間上の長さの平方根に反比例します。<br><b>harmonic</b>: このウェイト付けは、UV とジオメトリとの一致ングについてほぼ最適の結果を生成できますが、処理に時間がかかる場合があります。<br>
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrelaxTolerance">
+          <code><b>relaxTolerance</b>(<b>rt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リラックス プロセスを中止するタイミングを定義する許容量を設定します。許容量を小さくすると優れた結果が得られますが、処理に時間がかかります。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagshapeDetail">
+          <code><b>shapeDetail</b>(<b>sd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+mapBorder フラグを circular または square に設定した場合、このフラグは、境界の他王するサーフェス シェイプが、最終的にマッピングされた境界で保持される度合いを制御します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+cmds.untangleUV( mb='shape_square' )
+# map the border associated with the selected UV trying to retain the
+# shape of the object and use a square mapping to iron out crossings
+
+cmds.untangleUV( r='one_over_length', pb=True, ps=False, pu=False, rt=0.1 )
+# relax the shell associated with the selected UV using edge weights
+# that are inversely proportional to length of world space lengths
+# pin the UV on borders and use a tolerance of 0.1
+	</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

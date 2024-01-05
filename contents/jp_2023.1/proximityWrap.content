@@ -1,0 +1,327 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>proximityWrap command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-proximityWrap"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/proximityWrap.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>proximityWrap </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Animation.html" target="contentFrame">アニメーション</a>, <a href="cat_Animation.html#Deformation" target="contentFrame">デフォメーション</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("proximityWrap.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>proximityWrap(
+[objects]
+    , [<a href="#flagaddDrivers">addDrivers</a>=<i>string</i>], [<a href="#flagapplyUserDefaults">applyUserDefaults</a>=<i>boolean</i>], [<a href="#flagcanBeAdded">canBeAdded</a>=<i>string</i>], [<a href="#flagdriverIndices">driverIndices</a>=<i>boolean</i>], [<a href="#flagdumpInfo">dumpInfo</a>=<i>boolean</i>], [<a href="#flagfreeDriverIndex">freeDriverIndex</a>=<i>boolean</i>], [<a href="#flagremoveDrivers">removeDrivers</a>=<i>string</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>proximityWrap は、取り消し可能、照会可能、および編集可能です。</p>
+      このコマンドは、ドライバからの距離に基づいてジオメトリを変形する proximityWrap デフォーマを作成します。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string[]</i></td><td>(proximityWrap ノード名)</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagaddDrivers">addDrivers</a>, <a href="#flagapplyUserDefaults">applyUserDefaults</a>, <a href="#flagcanBeAdded">canBeAdded</a>, <a href="#flagdriverIndices">driverIndices</a>, <a href="#flagdumpInfo">dumpInfo</a>, <a href="#flagfreeDriverIndex">freeDriverIndex</a>, <a href="#flagremoveDrivers">removeDrivers</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagaddDrivers">
+          <code><b>addDrivers</b>(<b>ad</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+proximityWrap ノードに新規ドライバの接続を追加します
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagapplyUserDefaults">
+          <code><b>applyUserDefaults</b>(<b>aud</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+addDriver フラグと一緒に使用されるフラグです。設定すると、新しいドライバはオプション変数の設定からユーザの既定のアトリビュートを設定します。フラグが設定されていない場合、ユーザの既定のアトリビュートは設定されません。既定はオンです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcanBeAdded">
+          <code><b>canBeAdded</b>(<b>cba</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リストされたすべてのシェイプをドライバとして追加できる場合は true を返します。項目が false を返す理由は、項目がドライバとして既に接続されているか、変形されたジオメトリとして接続されているか、無効なオブジェクト内に存在しているためです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdriverIndices">
+          <code><b>driverIndices</b>(<b>di</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+接続されているドライバ インデックスをリストします
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdumpInfo">
+          <code><b>dumpInfo</b>(<b>dui</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+proximityWrap ノードに関連する情報を含む Python ディクショナリを返します。一部の情報は MEL では文字列形式で返されますが、フラグは Python で使用するためのものです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfreeDriverIndex">
+          <code><b>freeDriverIndex</b>(<b>fdi</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ドライバが接続されていない最初のインデックスを返します
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagremoveDrivers">
+          <code><b>removeDrivers</b>(<b>rd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+接続されているドライバを削除
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# Add drivers to the proximityWrap
+cmds.proximityWrap('proximityWrap1', edit=True, addDrivers=['driverShape1', 'driverShape2'])
+
+# Add driver to the proximityWrap and skip setting the initial attributes
+cmds.proximityWrap('proximityWrap1', edit=True, applyUserDefaults=True, addDrivers=['driverShape2'])
+
+# Remove drivers
+cmds.proximityWrap('proximityWrap1', edit=True, removeDrivers=['driverShape1', 'driverShape2')
+
+# List driver indices (returns [0, 1])
+cmds.proximityWrap('proximityWrap1', query=True, driverIndices=True)
+
+# List free driver index (returns 2)
+cmds.proximityWrap('proximityWrap1', query=True, freeDriverIndex=True)
+
+# Query can be added
+cmds.proximityWrap('proximityWrap1', query=True, canBeAdded=['driverShape1'])
+
+# Dump info
+cmds.proximityWrap('proximityWrap1', query=True, dumpInfo= proximityWrap1)
+
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

@@ -1,0 +1,231 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>viewClipPlane command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-viewClipPlane"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/viewClipPlane.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>viewClipPlane </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Rendering.html" target="contentFrame">レンダリング</a>, <a href="cat_Rendering.html#Camera" target="contentFrame">カメラ</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("viewClipPlane.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>viewClipPlane(
+[camera]
+    , [<a href="#flagautoClipPlane">autoClipPlane</a>=<i>boolean</i>], [<a href="#flagfarClipPlane">farClipPlane</a>=<i>linear</i>], [<a href="#flagnearClipPlane">nearClipPlane</a>=<i>linear</i>], [<a href="#flagsurfacesOnly">surfacesOnly</a>=<i>boolean</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>viewClipPlane は、取り消し可能、照会可能、および<b>編集不可能</b>です。</p>
+      viewClipPlane コマンドはカメラのクリップ プレーンを照会したり設定したりするために使用されます。カメラを指定していない場合は、アクティブなビューのカメラが使用されます。near および far クリップ プレーン フラグは auto クリップ プレーン フラグと同時に使用します。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <p><i>なし</i></p><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      <h2><a name="hRelated">関連</a></h2><a href="camera.html">camera</a>, <a href="cameraView.html">cameraView</a>, <a href="dolly.html">dolly</a>, <a href="listCameras.html">listCameras</a>, <a href="lookThru.html">lookThru</a>, <a href="orbit.html">orbit</a>, <a href="roll.html">roll</a>, <a href="track.html">track</a>, <a href="tumble.html">tumble</a>, <a href="viewCamera.html">viewCamera</a>, <a href="viewFit.html">viewFit</a>, <a href="viewHeadOn.html">viewHeadOn</a>, <a href="viewLookAt.html">viewLookAt</a>, <a href="viewPlace.html">viewPlace</a>, <a href="viewSet.html">viewSet</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagautoClipPlane">autoClipPlane</a>, <a href="#flagfarClipPlane">farClipPlane</a>, <a href="#flagnearClipPlane">nearClipPlane</a>, <a href="#flagsurfacesOnly">surfacesOnly</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagautoClipPlane">
+          <code><b>autoClipPlane</b>(<b>acp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+カメラのビュー フラスタム内のすべてのオブジェクトが見えるようにクリップ プレーンを計算します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfarClipPlane">
+          <code><b>farClipPlane</b>(<b>fcp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+far クリップ プレーンを設定、照会します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnearClipPlane">
+          <code><b>nearClipPlane</b>(<b>ncp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+near クリップ プレーンを設定、照会します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagsurfacesOnly">
+          <code><b>surfacesOnly</b>(<b>so</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+このフラグは autoClipPlane フラグと同時に使用します。カメラのクリッピング プレーンを計算する際にサーフェスのバウンディング ボックスだけを使います。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+cmds.viewClipPlane( 'perspShape', acp=True )
+
+cmds.viewClipPlane( acp=True )
+
+cmds.viewClipPlane( acp=True, ncp=3.0 )
+
+cmds.viewClipPlane( ncp='3.0cm' )
+
+cmds.viewClipPlane( 'perspShape', q=True, ncp=True )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

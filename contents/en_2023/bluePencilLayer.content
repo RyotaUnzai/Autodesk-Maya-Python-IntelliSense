@@ -1,0 +1,728 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>bluePencilLayer command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-bluePencilLayer"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>command</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/bluePencilLayer.html">MEL version</a></i></font></td>
+		  </tr><tr>
+		  <td><h1>bluePencilLayer <div class="version middle">2023</div></h1></td>
+			<td align="right">In categories: <a href="cat_Animation.html" target="contentFrame">Animation</a>, <a href="cat_Animation.html#BluePencil" target="contentFrame">Blue Pencil</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("bluePencilLayer.html");</script>
+      </p>
+      <p>Go to: <a href="#hSynopsis">Synopsis</a>. <a href="#hReturn">Return value</a>. <a href="#hFlags">Flags</a>. <a href="#hExamples">Python examples</a>. </p>
+
+      <h2><a name="hSynopsis">Synopsis</a></h2>
+      <p id="synopsis"> <code>bluePencilLayer([<a href="#flagactive">active</a>=<i>int</i>], [<a href="#flagaddLayer">addLayer</a>=<i>boolean</i>], [<a href="#flagcount">count</a>=<i>boolean</i>], [<a href="#flagdelete">delete</a>=<i>int</i>], [<a href="#flagdeleteAll">deleteAll</a>=<i>boolean</i>], [<a href="#flageditLocked">editLocked</a>=<i>[boolean, int]</i>], [<a href="#flageditName">editName</a>=<i>[string, int]</i>], [<a href="#flageditOpacity">editOpacity</a>=<i>[float, int]</i>], [<a href="#flageditState">editState</a>=<i>[int, int]</i>], [<a href="#flageditVis">editVis</a>=<i>[boolean, int]</i>], [<a href="#flaginsert">insert</a>=<i>int</i>], [<a href="#flaglayerState">layerState</a>=<i>[int, int]</i>], [<a href="#flagmove">move</a>=<i>[int, int]</i>], [<a href="#flagmoveAll">moveAll</a>=<i>boolean</i>], [<a href="#flagname">name</a>=<i>[string, int]</i>], [<a href="#flagnewCamera">newCamera</a>=<i>string</i>], [<a href="#flagqueryLocked">queryLocked</a>=<i>int</i>], [<a href="#flagqueryName">queryName</a>=<i>int</i>], [<a href="#flagqueryOpacity">queryOpacity</a>=<i>int</i>], [<a href="#flagqueryState">queryState</a>=<i>int</i>], [<a href="#flagqueryVis">queryVis</a>=<i>int</i>]) </code> <br><br><font size="-1"><i>Note: Strings representing object names and arguments must be separated by commas. This is not depicted in the synopsis.</i></font></p>
+      <p>bluePencilLayer is undoable, queryable, and editable.</p>
+      Command to manage blue pencil layers. The command requires a camera name as argument.
+	  
+      <h2><a name="hReturn">Return value</a></h2>
+      <p><i>None</i></p><p>In query mode, return type is based on queried flag.</p>
+      
+      
+
+      
+    <h2><a name="hFlags">Flags</a></h2>
+      <a href="#flagactive">active</a>, <a href="#flagaddLayer">addLayer</a>, <a href="#flagcount">count</a>, <a href="#flagdelete">delete</a>, <a href="#flagdeleteAll">deleteAll</a>, <a href="#flageditLocked">editLocked</a>, <a href="#flageditName">editName</a>, <a href="#flageditOpacity">editOpacity</a>, <a href="#flageditState">editState</a>, <a href="#flageditVis">editVis</a>, <a href="#flaginsert">insert</a>, <a href="#flaglayerState">layerState</a>, <a href="#flagmove">move</a>, <a href="#flagmoveAll">moveAll</a>, <a href="#flagname">name</a>, <a href="#flagnewCamera">newCamera</a>, <a href="#flagqueryLocked">queryLocked</a>, <a href="#flagqueryName">queryName</a>, <a href="#flagqueryOpacity">queryOpacity</a>, <a href="#flagqueryState">queryState</a>, <a href="#flagqueryVis">queryVis</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">Long name (short name)</th>
+          <th bgcolor="#CCCCCC"><i>Argument types</i></th>
+          <th bgcolor="#CCCCCC">Properties</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagactive">
+          <code><b>active</b>(<b>act</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Sets the active layer index. Query returns the active layer index.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagaddLayer">
+          <code><b>addLayer</b>(<b>add</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Creates a new layer.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcount">
+          <code><b>count</b>(<b>cnt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Returns the number of layers.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdelete">
+          <code><b>delete</b>(<b>delete</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Removes the layer at the specified index.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdeleteAll">
+          <code><b>deleteAll</b>(<b>da</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Removes all layers.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flageditLocked">
+          <code><b>editLocked</b>(<b>el</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[boolean, int]</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Edit the layer's locked state.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flageditName">
+          <code><b>editName</b>(<b>en</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int]</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Sets name of the layer at the specified index.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flageditOpacity">
+          <code><b>editOpacity</b>(<b>eo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[float, int]</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Sets the opacity of the layer at the specified index.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flageditState">
+          <code><b>editState</b>(<b>es</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int]</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Edits the layer's state. 0: animated, 1: static.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flageditVis">
+          <code><b>editVis</b>(<b>ev</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[boolean, int]</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Sets the visibility of the layer at the specified index.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaginsert">
+          <code><b>insert</b>(<b>ins</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Creates a new layer at the given index.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglayerState">
+          <code><b>layerState</b>(<b>ls</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int]</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Sets the layer state when adding a new layer. 0: animated, 1: static.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmove">
+          <code><b>move</b>(<b>mv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int]</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Moves a layer from one index to another.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmoveAll">
+          <code><b>moveAll</b>(<b>mva</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Moves all layers from the current camera to the given camera.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagname">
+          <code><b>name</b>(<b>n</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, int]</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Sets the name of the new layer when using addLayer or insertLayer.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnewCamera">
+          <code><b>newCamera</b>(<b>nc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Sets a new camera to move layers to when using the move test.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagqueryLocked">
+          <code><b>queryLocked</b>(<b>ql</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Query the layer's locked state.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagqueryName">
+          <code><b>queryName</b>(<b>qn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Returns the specified layer's name.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagqueryOpacity">
+          <code><b>queryOpacity</b>(<b>qo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Returns the specified layer's opacity.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagqueryState">
+          <code><b>queryState</b>(<b>qs</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Queries the layer's state. 0: animated, 1: static.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagqueryVis">
+          <code><b>queryVis</b>(<b>qv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Returns the specified layer's visibility.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                Flag can appear in Create mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                Flag can appear in Edit mode of command
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                Flag can appear in Query mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                Flag can have multiple arguments, passed either as a tuple or a list.
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python examples</a></h2><pre>import maya.cmds as cmds
+
+# Set the active layer to index 3 on camera perspective1
+cmds.bluePencilLayer(&quot;perspective1&quot;, active=3)
+
+# Get the number of layers for perspective1.
+cmds.bluePencilLayer(&quot;perspective1&quot;, count=True)
+
+# Create layer.
+cmds.bluePencilLayer(&quot;perspective1&quot;, addLayer=True, name=&quot;newLayerName&quot;, layerState=1)
+cmds.bluePencilLayer(&quot;perspective1&quot;, insert=3, name=&quot;newLayerName&quot;, layerState=0)
+
+# Remove layer.
+cmds.bluePencilLayer(&quot;perspective1&quot;, delete=3)
+cmds.bluePencilLayer(&quot;perspective1&quot;, deleteAll=True)
+
+# Move layer.
+cmds.bluePencilLayer(&quot;perspective1&quot;, move=(3, 6), newCamera=&quot;top&quot;)
+cmds.bluePencilLayer(&quot;perspective1&quot;, moveAll=&quot;top&quot;)
+
+# Rename layer.
+cmds.bluePencilLayer(&quot;perspective1&quot;, editName=(&quot;newLayerName&quot;, 3))
+
+# Query layer info.
+cmds.bluePencilLayer(&quot;perspective1&quot;, queryName=3)
+cmds.bluePencilLayer(&quot;perspective1&quot;, queryVis=3)
+cmds.bluePencilLayer(&quot;perspective1&quot;, queryOpacity=3)
+cmds.bluePencilLayer(&quot;perspective1&quot;, queryState=3)
+
+# Set layer info.
+cmds.bluePencilLayer(&quot;perspective1&quot;, editName=(&quot;newName&quot;, 3))
+cmds.bluePencilLayer(&quot;perspective1&quot;, editVis=(0, 3))
+cmds.bluePencilLayer(&quot;perspective1&quot;, editOpacity=(0.5, 3))
+cmds.bluePencilLayer(&quot;perspective1&quot;, editState=(1, 3))
+cmds.bluePencilLayer(&quot;perspective1&quot;, editLocked=(1, 3))
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

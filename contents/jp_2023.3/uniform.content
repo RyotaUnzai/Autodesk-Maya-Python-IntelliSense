@@ -1,0 +1,523 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>uniform command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-uniform"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/uniform.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>uniform </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Effects.html" target="contentFrame">エフェクト</a>, <a href="cat_Effects.html#Dynamics" target="contentFrame">ダイナミクス</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("uniform.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>uniform(
+selectionList
+    , [<a href="#flagattenuation">attenuation</a>=<i>float</i>], [<a href="#flagdirectionX">directionX</a>=<i>float</i>], [<a href="#flagdirectionY">directionY</a>=<i>float</i>], [<a href="#flagdirectionZ">directionZ</a>=<i>float</i>], [<a href="#flagmagnitude">magnitude</a>=<i>float</i>], [<a href="#flagmaxDistance">maxDistance</a>=<i>linear</i>], [<a href="#flagname">name</a>=<i>string</i>], [<a href="#flagperVertex">perVertex</a>=<i>boolean</i>], [<a href="#flagposition">position</a>=<i>[linear, linear, linear]</i>], [<a href="#flagtorusSectionRadius">torusSectionRadius</a>=<i>linear</i>], [<a href="#flagvolumeExclusion">volumeExclusion</a>=<i>boolean</i>], [<a href="#flagvolumeOffset">volumeOffset</a>=<i>[linear, linear, linear]</i>], [<a href="#flagvolumeShape">volumeShape</a>=<i>string</i>], [<a href="#flagvolumeSweep">volumeSweep</a>=<i>angle</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>uniform は、取り消し可能、照会可能、および編集可能です。</p>
+      このコマンドは、リストされた各オブジェクトに対して新しいフィールドを作成します。このフィールドには DAG で有効なシェイプがあり、関連付けられたディペンデンシー ノードがあります。このフィールドはオブジェクトが所有するフィールドのリストに追加されます。connectDynamic を使用して、フィールドがダイナミック オブジェクトに影響を及ぼすようにします。複数のオブジェクトがリストされている場合、各オブジェクトのために個別のフィールドが作成されます。
+<p>
+フィールドが作成されると、このコマンドは各所有シェイプの名前とフィールド シェイプそのものの名前を返します。フィールドを照会すると、その結果を返します。フィールドを編集すると、フィールド名を返します。
+<p>
+オブジェクト名は提供されないがアクティブな選択リストが空ではない場合、このコマンドにより、リスト内の各オブジェクトに対するフィールドが作成されます。リストが空の場合、コマンドの既定は -pos 0 0 0 です。均一フィールドは一定の方向にオブジェクトを押します。フィールドの影響力はフィールドの場所からオブジェクトまでの距離に従って変化しますが、フィールドの方向は変わりません。
+<p>
+このトランスフォームは関連付けられたディペンデンシー ノードです。connectDynamic を使用して、フィールドがダイナミック オブジェクトに影響を及ぼすようにします。
+<p>
+フィールドを作成すると、このコマンドは各フィールドの名前を返します。フィールドを照会すると、その結果を返します。フィールドを編集すると、フィールド名を返します。
+<p>
+オブジェクト名が提供されるか、アクティブなセレクション リストが空でない場合、このコマンドはリスト内の全オブジェクトのフィールドを作成し、addDynamic をコールしてオブジェクトに追加します。リストが空の場合、コマンドの既定は -pos 0 0 0 です。
+<p>
+コマンド ラインにオブジェクトを指定して -pos フラグを設定すると、エラーになります。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string</i></td><td>コマンドの結果</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagattenuation">attenuation</a>, <a href="#flagdirectionX">directionX</a>, <a href="#flagdirectionY">directionY</a>, <a href="#flagdirectionZ">directionZ</a>, <a href="#flagmagnitude">magnitude</a>, <a href="#flagmaxDistance">maxDistance</a>, <a href="#flagname">name</a>, <a href="#flagperVertex">perVertex</a>, <a href="#flagposition">position</a>, <a href="#flagtorusSectionRadius">torusSectionRadius</a>, <a href="#flagvolumeExclusion">volumeExclusion</a>, <a href="#flagvolumeOffset">volumeOffset</a>, <a href="#flagvolumeShape">volumeShape</a>, <a href="#flagvolumeSweep">volumeSweep</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagattenuation">
+          <code><b>attenuation</b>(<b>att</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フィールドの減衰率です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdirectionX">
+          <code><b>directionX</b>(<b>dx</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+方向の X コンポーネントです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdirectionY">
+          <code><b>directionY</b>(<b>dy</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+方向の Y コンポーネントです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdirectionZ">
+          <code><b>directionZ</b>(<b>dz</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+方向の Z コンポーネントです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmagnitude">
+          <code><b>magnitude</b>(<b>m</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フィールドの強さです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmaxDistance">
+          <code><b>maxDistance</b>(<b>mxd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フィールドが作用する最大距離です。-1 は、フィールドに最大距離がないことを示します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagname">
+          <code><b>name</b>(<b>n</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フィールドの名前です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagperVertex">
+          <code><b>perVertex</b>(<b>pv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+頂点ごとに適用します。このフラグが true に設定されている場合、選択したオブジェクトのそれぞれのポイント(CV、パーティクル、頂点など)に、フォース フィールドの同一コピーが発生します。このフラグを false に設定すると、フォースはポイント セットのジオメトリの中心からのみ発せられます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagposition">
+          <code><b>position</b>(<b>pos</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+重力フィールドを配置する空間内の位置(x, y,z)です。これで、重力がオブジェクトからではなく空間のその位置から発生します。-pos を使用する(位置でフィールド作成時)ことも、オブジェクト名を示すこともできることに注意してください。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtorusSectionRadius">
+          <code><b>torusSectionRadius</b>(<b>tsr</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+トーラス ボリュームの断面半径です。トーラスにのみ適用されます。トーラス モデリング プリミティブの断面半径と同じです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvolumeExclusion">
+          <code><b>volumeExclusion</b>(<b>vex</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フィールドのボリューム排除です。true の場合は、ボリュームの外側のポイント(ボリューム シェイプ アトリビュートによって定義される)が影響を受けます。false の場合は、ボリュームの内側が影響を受けます。volumeShape が「none」に設定されている場合は何も起こりません。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvolumeOffset">
+          <code><b>volumeOffset</b>(<b>vof</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フィールドのボリューム オフセットです。 ボリューム オフセットによって、フィールドのボリュームはフィールドの実際の場所から指定した量だけ移動します。 これはフィールドのローカル空間にあります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvolumeShape">
+          <code><b>volumeShape</b>(<b>vsh</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フィールドのボリューム シェイプです。 フィールドのボリューム シェイプのアトリビュートを設定、編集、照会します。「none」以外の値に設定すると、フィールドが影響を受ける 3-D ボリュームを定義します。 指定できる値は、「none」、「cube」、「sphere」、「cylinder」、「cone」、「torus」のいずれかです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvolumeSweep">
+          <code><b>volumeSweep</b>(<b>vsw</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>angle</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フィールドのボリューム スイープです。 球、円錐、円柱、トーラスにのみ適用されます。モデリングのスイープ アトリビュートと同じエフェクトです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+cmds.uniform( dx=0, dy=1.0, dz=0.5 )
+# Creates a uniform field pushing in direction (0,1,0.5) for every
+# active selection. If there is no active selection, it creates this
+# field at world position (0,0,0).
+
+cmds.uniform( 'uniformF', e=True, att=0.98 )
+# edits the acceleration value of the field uniformF
+cmds.uniform( 'uniformF', q=True, att=1 )
+# queries uniformF for its acceleration value
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

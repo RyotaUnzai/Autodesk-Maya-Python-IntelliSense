@@ -1,0 +1,343 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>bluePencilNode command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-bluePencilNode"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>command</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/bluePencilNode.html">MEL version</a></i></font></td>
+		  </tr><tr>
+		  <td><h1>bluePencilNode <div class="version middle">2023</div></h1></td>
+			<td align="right">In categories: <a href="cat_Animation.html" target="contentFrame">Animation</a>, <a href="cat_Animation.html#BluePencil" target="contentFrame">Blue Pencil</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("bluePencilNode.html");</script>
+      </p>
+      <p>Go to: <a href="#hSynopsis">Synopsis</a>. <a href="#hReturn">Return value</a>. <a href="#hFlags">Flags</a>. <a href="#hExamples">Python examples</a>. </p>
+
+      <h2><a name="hSynopsis">Synopsis</a></h2>
+      <p id="synopsis"> <code>bluePencilNode([<a href="#flagcamera">camera</a>=<i>string</i>], [<a href="#flagexists">exists</a>=<i>boolean</i>], [<a href="#flagframe">frame</a>=<i>boolean</i>], [<a href="#flaglayer">layer</a>=<i>boolean</i>], [<a href="#flaglayerName">layerName</a>=<i>string</i>], [<a href="#flaglayerState">layerState</a>=<i>uint</i>], [<a href="#flagrefresh">refresh</a>=<i>boolean</i>], [<a href="#flagrefreshGhosting">refreshGhosting</a>=<i>boolean</i>]) </code> <br><br><font size="-1"><i>Note: Strings representing object names and arguments must be separated by commas. This is not depicted in the synopsis.</i></font></p>
+      <p>bluePencilNode is undoable, queryable, and <b>NOT editable</b>.</p>
+      Command to create the blue pencil node.
+	  
+      <h2><a name="hReturn">Return value</a></h2>
+      <p><i>None</i></p><p>In query mode, return type is based on queried flag.</p>
+      
+      
+
+      
+    <h2><a name="hFlags">Flags</a></h2>
+      <a href="#flagcamera">camera</a>, <a href="#flagexists">exists</a>, <a href="#flagframe">frame</a>, <a href="#flaglayer">layer</a>, <a href="#flaglayerName">layerName</a>, <a href="#flaglayerState">layerState</a>, <a href="#flagrefresh">refresh</a>, <a href="#flagrefreshGhosting">refreshGhosting</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">Long name (short name)</th>
+          <th bgcolor="#CCCCCC"><i>Argument types</i></th>
+          <th bgcolor="#CCCCCC">Properties</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcamera">
+          <code><b>camera</b>(<b>c</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Specifies the camera on which to create a new layer when creating the node.
+Query returns the name of the active camera.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagexists">
+          <code><b>exists</b>(<b>ex</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Returns true if the blue pencil node has been created.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagframe">
+          <code><b>frame</b>(<b>f</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Creates a new frame when creating the new layer when creating the node.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglayer">
+          <code><b>layer</b>(<b>l</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Create a new layer when creating the node.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglayerName">
+          <code><b>layerName</b>(<b>ln</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Specifies the layer name of the new layer when creating the node.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglayerState">
+          <code><b>layerState</b>(<b>ls</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>uint</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Specifies the layer state of the new layer. 0: Animated, 1: Static.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrefresh">
+          <code><b>refresh</b>(<b>r</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Refresh the viewport of the active camera.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrefreshGhosting">
+          <code><b>refreshGhosting</b>(<b>rg</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Refresh the ghosting information.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                Flag can appear in Create mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                Flag can appear in Edit mode of command
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                Flag can appear in Query mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                Flag can have multiple arguments, passed either as a tuple or a list.
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python examples</a></h2><pre>import maya.cmds as cmds
+
+# Refresh node.
+cmds.bluePencilNode(r=True)
+
+# Check if blue pencil node exists.
+cmds.bluePencilNode(exists=True)
+
+# Get the active camera name.
+cmds.bluePencilNode(q=True, camera=True)
+
+# Create a new node.
+cmds.bluePencilNode(layer=True, c=CameraName, ln=LayerName, ls=1, f=True)
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

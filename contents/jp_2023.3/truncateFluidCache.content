@@ -1,0 +1,83 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>truncateFluidCache command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-truncateFluidCache"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/truncateFluidCache.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>truncateFluidCache </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Effects.html" target="contentFrame">エフェクト</a>, <a href="cat_Effects.html#Fluids" target="contentFrame">流体</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("truncateFluidCache.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hKeywords">キーワード</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>truncateFluidCache() </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>truncateFluidCache は、取り消し可能、照会可能、および編集可能です。</p>
+      このコマンドは、流体キャッシュの終了時間を現在のタイムに設定します。現在のタイムがキャッシュの終了時間より短い場合はキャッシュを切り捨て、現在のタイムを含む、現在のタイムまでの部分のみを保持します。
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <p><i>なし</i></p><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      <h2><a name="hKeywords">キーワード</a></h2>fluid
+      
+
+      
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# Truncate a fluid cache that has a start time of 1
+# and an end time of 25 so that only the first 10
+# frames are preserved and the end time of the
+# cache is set to 10.
+#
+cmds.currentTime( 10 )
+cmds.truncateFluidCache()
+	</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+
