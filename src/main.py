@@ -19,18 +19,14 @@ if __name__ == "__main__":
     document_dir = args.document_dir or cwd / "mayaProductHelps"
 
     maya = cwd / "src" / f"maya{int(float(version))}.yml"
-    with open(create_pyi, "r") as file:
+    with open(create_pyi, "r", encoding="utf-8") as file:
         data = yaml.safe_load(file)
         data["common"]["language"] = language
-    with open(maya, "r") as file:
+    with open(maya, "r", encoding="utf-8") as file:
         maya_data = yaml.safe_load(file)
         maya_data["language"] = language
         maya_data["versioning"] = version
     data["maya"] = maya_data
 
-    mayacmd = CreateMayaCommandPYI(
-        document_root=document_dir,
-        export_path=export_path,
-        option=IntelliSenseOptionModel(**data)
-    )
+    mayacmd = CreateMayaCommandPYI(document_root=document_dir, export_path=export_path, option=IntelliSenseOptionModel(**data))
     mayacmd.run()

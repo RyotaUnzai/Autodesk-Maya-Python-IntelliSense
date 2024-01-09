@@ -693,11 +693,8 @@ URL:
         Note:
             Adjustments made by this method depend on the specific requirements of different versions of Maya documentation.
         """
-        targetDir = self.document_root.parent.parent.with_name("contents") / self.option.maya.versioning
-        
-        # if self.option.maya.versioning == "2023.3" and self.option.common.language == "jp":
-
-            
-        #     / "workspaceControlState.content"
-        #     target = self.document_root / "workspaceControlState.html"
-        #     shutil.copy(target.as_posix(), source.as_posix())
+        sourceDir = self.document_root.parent.parent.with_name("contents") / f"{self.option.maya.language}_{self.option.maya.versioning}"
+        if sourceDir.exists():
+            for content in sourceDir.iterdir():
+                target = self.document_root / f"{content.stem}.html"
+                shutil.copy(content.as_posix(), target.as_posix())
