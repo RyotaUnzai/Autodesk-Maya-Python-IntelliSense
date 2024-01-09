@@ -1,0 +1,1205 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>vectorize command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-vectorize"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/vectorize.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>vectorize </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Rendering.html" target="contentFrame">レンダリング</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("vectorize.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hKeywords">キーワード</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>vectorize([<a href="#flagbrowserView">browserView</a>=<i>boolean</i>], [<a href="#flagbyFrame">byFrame</a>=<i>float</i>], [<a href="#flagcamera">camera</a>=<i>string</i>], [<a href="#flagcombineFillsEdges">combineFillsEdges</a>=<i>boolean</i>], [<a href="#flagcurrentFrame">currentFrame</a>=<i>boolean</i>], [<a href="#flagcurveTolerance">curveTolerance</a>=<i>float</i>], [<a href="#flagcustomExtension">customExtension</a>=<i>string</i>], [<a href="#flagdetailLevel">detailLevel</a>=<i>int</i>], [<a href="#flagedgeColor">edgeColor</a>=<i>[int, int, int]</i>], [<a href="#flagedgeDetail">edgeDetail</a>=<i>boolean</i>], [<a href="#flagedgeStyle">edgeStyle</a>=<i>string</i>], [<a href="#flagedgeWeight">edgeWeight</a>=<i>float</i>], [<a href="#flagendFrame">endFrame</a>=<i>float</i>], [<a href="#flagfilenameFormat">filenameFormat</a>=<i>string</i>], [<a href="#flagfillStyle">fillStyle</a>=<i>string</i>], [<a href="#flagflashVersion">flashVersion</a>=<i>int</i>], [<a href="#flagframeRate">frameRate</a>=<i>int</i>], [<a href="#flagheight">height</a>=<i>int</i>], [<a href="#flaghiddenEdges">hiddenEdges</a>=<i>boolean</i>], [<a href="#flaghighlightLevel">highlightLevel</a>=<i>int</i>], [<a href="#flaghighlights">highlights</a>=<i>boolean</i>], [<a href="#flagimageFormat">imageFormat</a>=<i>string</i>], [<a href="#flaglayer">layer</a>=<i>name</i>], [<a href="#flagminEdgeAngle">minEdgeAngle</a>=<i>float</i>], [<a href="#flagoutlinesAtIntersections">outlinesAtIntersections</a>=<i>boolean</i>], [<a href="#flagoutputFileName">outputFileName</a>=<i>string</i>], [<a href="#flagpixelAspectRatio">pixelAspectRatio</a>=<i>float</i>], [<a href="#flagreflectionDepth">reflectionDepth</a>=<i>int</i>], [<a href="#flagreflections">reflections</a>=<i>boolean</i>], [<a href="#flagrenderLayers">renderLayers</a>=<i>boolean</i>], [<a href="#flagrenderOptimization">renderOptimization</a>=<i>string</i>], [<a href="#flagrenderView">renderView</a>=<i>boolean</i>], [<a href="#flagsecondaryCurveFitting">secondaryCurveFitting</a>=<i>boolean</i>], [<a href="#flagshadows">shadows</a>=<i>boolean</i>], [<a href="#flagshowBackFaces">showBackFaces</a>=<i>boolean</i>], [<a href="#flagstartFrame">startFrame</a>=<i>float</i>], [<a href="#flagsvgAnimation">svgAnimation</a>=<i>string</i>], [<a href="#flagsvgCompression">svgCompression</a>=<i>boolean</i>], [<a href="#flagwidth">width</a>=<i>int</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>vectorize は、<b>取り消し不可能</b>、<b>照会不可能</b>、および<b>編集不可能</b>です。</p>
+      このコマンドでは、Maya ベクター レンダラを使用して、Maya シーンを各種のベクター フォーマットやラスター フォーマットにレンダーします。
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <p><i>なし</i></p>
+      <h2><a name="hKeywords">キーワード</a></h2>vector, graphics, render, flash, swf, svg
+      <h2><a name="hRelated">関連</a></h2><a href="render.html">render</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagbrowserView">browserView</a>, <a href="#flagbyFrame">byFrame</a>, <a href="#flagcamera">camera</a>, <a href="#flagcombineFillsEdges">combineFillsEdges</a>, <a href="#flagcurrentFrame">currentFrame</a>, <a href="#flagcurveTolerance">curveTolerance</a>, <a href="#flagcustomExtension">customExtension</a>, <a href="#flagdetailLevel">detailLevel</a>, <a href="#flagedgeColor">edgeColor</a>, <a href="#flagedgeDetail">edgeDetail</a>, <a href="#flagedgeStyle">edgeStyle</a>, <a href="#flagedgeWeight">edgeWeight</a>, <a href="#flagendFrame">endFrame</a>, <a href="#flagfilenameFormat">filenameFormat</a>, <a href="#flagfillStyle">fillStyle</a>, <a href="#flagflashVersion">flashVersion</a>, <a href="#flagframeRate">frameRate</a>, <a href="#flagheight">height</a>, <a href="#flaghiddenEdges">hiddenEdges</a>, <a href="#flaghighlightLevel">highlightLevel</a>, <a href="#flaghighlights">highlights</a>, <a href="#flagimageFormat">imageFormat</a>, <a href="#flaglayer">layer</a>, <a href="#flagminEdgeAngle">minEdgeAngle</a>, <a href="#flagoutlinesAtIntersections">outlinesAtIntersections</a>, <a href="#flagoutputFileName">outputFileName</a>, <a href="#flagpixelAspectRatio">pixelAspectRatio</a>, <a href="#flagreflectionDepth">reflectionDepth</a>, <a href="#flagreflections">reflections</a>, <a href="#flagrenderLayers">renderLayers</a>, <a href="#flagrenderOptimization">renderOptimization</a>, <a href="#flagrenderView">renderView</a>, <a href="#flagsecondaryCurveFitting">secondaryCurveFitting</a>, <a href="#flagshadows">shadows</a>, <a href="#flagshowBackFaces">showBackFaces</a>, <a href="#flagstartFrame">startFrame</a>, <a href="#flagsvgAnimation">svgAnimation</a>, <a href="#flagsvgCompression">svgCompression</a>, <a href="#flagwidth">width</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbrowserView">
+          <code><b>browserView</b>(<b>bv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+レンダーをブラウザでプレビューするかどうかを指定します。このオプションは swf のみです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbyFrame">
+          <code><b>byFrame</b>(<b>bf</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フレーム増分を指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcamera">
+          <code><b>camera</b>(<b>c</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+レンダーするカメラを指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcombineFillsEdges">
+          <code><b>combineFillsEdges</b>(<b>cfe</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Flash で、フィルまたはエッジを単一のオブジェクトとして結合するかどうかを指定します。このオプションは swf のみです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcurrentFrame">
+          <code><b>currentFrame</b>(<b>cf</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+現在のフレームのみをレンダーするかどうかを指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcurveTolerance">
+          <code><b>curveTolerance</b>(<b>ct</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+カーブ許容値を指定します。有効な値は、0.0 ～ 15.0 です。カーブ許容値によって、接続された一連のライン セグメントを、レンダラがどのくらいアグレッシブにカーブに合わせようとするかが定義されます。値 0.0 では、すべてのライン セグメントがカーブ フィッティングなしで描画されます。値 15.0 では、アグレッシブなカーブ フィッティングが発生します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcustomExtension">
+          <code><b>customExtension</b>(<b>ce</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ファイル名に使用するカスタム拡張子を指定します。空でない任意の文字列が有効です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdetailLevel">
+          <code><b>detailLevel</b>(<b>dl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+詳細レベルを指定します。有効な値は、0 ～ 50 です。値が小さいほど、多くのポリゴンが結合可能になり、小さなファイルが生成されます。大きな値では、レンダーの正確さが高まりますが、ファイル サイズが大きくなり、レンダー時間が長くなります。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagedgeColor">
+          <code><b>edgeColor</b>(<b>ec</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[int, int, int]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+エッジ カラーの赤、緑、青の成分を指定します。有効な値は、各カラー成分に対して 0～255 です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagedgeDetail">
+          <code><b>edgeDetail</b>(<b>ed</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+エッジの詳細をレンダーするかどうかを指定します。これは、1 つのエッジを共有する任意の 2 つの隣接ポリゴンのフェース法線間の角度が、(-mea フラグによって指定される)最小エッジ角度より大きなエッジです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagedgeStyle">
+          <code><b>edgeStyle</b>(<b>es</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+エッジ スタイルを指定します。有効な値は、「Outline」、「EntireMesh」、「None」です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagedgeWeight">
+          <code><b>edgeWeight</b>(<b>ew</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+すべてのエッジの入力ポイントに使用するエッジ ウェイトを指定します。1 インチあたり 72 のポイントがあります。値 0.0 は、極細(Hairline)エッジ ウェイトを指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagendFrame">
+          <code><b>endFrame</b>(<b>ef</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+終了フレームを指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfilenameFormat">
+          <code><b>filenameFormat</b>(<b>ff</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ファイル名フォーマットを指定します。有効な値は、「name」、「name.ext」、「name.#.ext」、「name.ext.#」、「name.#」、「name#.ext」、「name_#.ext」です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfillStyle">
+          <code><b>fillStyle</b>(<b>fs</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+塗り潰しスタイルを指定します。有効な値は、「SingleColor」、「TwoColor」、「FourColor」、「FullColor」、「AverageColor」、「AreaGradient」、「MeshGradient」、「None」です。AreaGradient と MeshGradient は、eps および ai イメージ フォーマットでは使用できません。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagflashVersion">
+          <code><b>flashVersion</b>(<b>fv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+swf 出力の Flash バージョンを指定します。有効な値は、3、4、5 です。このオプションは swf のみです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagframeRate">
+          <code><b>frameRate</b>(<b>fr</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+フレーム レートを指定します。このオプションは、svg と swf のみです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagheight">
+          <code><b>height</b>(<b>h</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+出力イメージの高さを、ピクセル単位で指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghiddenEdges">
+          <code><b>hiddenEdges</b>(<b>he</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+非表示エッジをレンダーするかどうかを指定します。これは、カメラから見えないエッジです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghighlightLevel">
+          <code><b>highlightLevel</b>(<b>hl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ハイライト レベルを指定します。有効な値は、1 ～ 8 です。この値は、オブジェクトのハイライトをレンダーするために使用する同心円の数を指定します。このオプションは、SingleColor、AverageColor、AreaGradient 塗り潰しスタイルのみに使用します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghighlights">
+          <code><b>highlights</b>(<b>hi</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ハイライトをレンダーするかどうかを指定します。このオプションは ai、eps、svg には影響しません。このオプションは、SingleColor、AverageColor、AreaGradient 塗り潰しスタイルのみに使用します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagimageFormat">
+          <code><b>imageFormat</b>(<b>imageFormat</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+レンダーするイメージ形式を指定します。Windows および Mac プラットフォームで有効な値は、「swf」、「eps」、「ai」、「svg」、「jpg」、「iff」、「sgi」、「tga」、「tif」、「bmp」です。Windows の場合に追加で有効な値は、「als」、「cin」、「gif」、「yuv」、「rla」、「si」です。Mac の場合に追加で有効な値は、「pntg」、「ps」、「png」、「pict」、「qtif」、「qt」です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglayer">
+          <code><b>layer</b>(<b>l</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>name</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+        指定したレンダー レイヤをレンダーします。レンダー レイヤのレンダリング可能なアトリビュート値にかかわらず、このレンダー レイヤのみをレンダーします。レイヤ名は出力イメージ ファイル名にアペンドされます。指定したレンダー レイヤは、レンダリング前に現在のレンダー レイヤになり、レンダリング後も現在のレンダー レイヤのままです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagminEdgeAngle">
+          <code><b>minEdgeAngle</b>(<b>mea</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+最小エッジ角度を、度単位で指定します。有効な値は、0.0 ～ 90.0 です。これは、-ed フラグを指定したときにエッジがレンダリングされたかどうかを調べるのに使用される、2 つの隣接ポリゴンのフェース法線間の最小角度です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagoutlinesAtIntersections">
+          <code><b>outlinesAtIntersections</b>(<b>oai</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+2 つのポリゴンがインターセクトするときにエッジを描画するかどうかを指定します。既定ではこのフラグは有効です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagoutputFileName">
+          <code><b>outputFileName</b>(<b>of</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+出力ファイル名を指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpixelAspectRatio">
+          <code><b>pixelAspectRatio</b>(<b>par</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ピクセル アスペクト比を指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreflectionDepth">
+          <code><b>reflectionDepth</b>(<b>rd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+反射深度を指定します。有効な値は、1 ～ 4 です。この値は、適用する反射のレベルを指定します。このオプションは ai、eps、svg には影響しません。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreflections">
+          <code><b>reflections</b>(<b>rf</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+反射をレンダーするかどうかを指定します。このオプションは ai、eps、svg には影響しません。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrenderLayers">
+          <code><b>renderLayers</b>(<b>rl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+レンダー レイヤを独立したファイルとしてレンダーするかどうかを指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrenderOptimization">
+          <code><b>renderOptimization</b>(<b>ro</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+レンダーの最適化を指定します。有効な値は、「無難」、「良好」、「強引」です。「無難」は冗長なジオメトリを除去します。「良好」は冗長なジオメトリと共に、高ディテール領域にズーム インしないと見えないサブピクセル ジオメトリも除去します。「強引」は「良好」が除去するすべてのジオメトリと共に、単一ピクセル レベルより少し上のジオメトリも除去し、影響のある領域にズーム インしなくても、除去されたジオメトリを目視で検出できるようにします。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrenderView">
+          <code><b>renderView</b>(<b>rv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+レンダリング イメージをレンダー ビューに表示するかどうかを指定します。このオプションは、バッチ レンダリング時は適用されません。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagsecondaryCurveFitting">
+          <code><b>secondaryCurveFitting</b>(<b>scf</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+二次カーブ フィッティングを行うかどうかを指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagshadows">
+          <code><b>shadows</b>(<b>sh</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+シャドウをレンダーするかどうかを指定します。このオプションは ai、eps、svg には影響しません。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagshowBackFaces">
+          <code><b>showBackFaces</b>(<b>sb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+バック フェースをレンダーするかどうかを指定します。これは、法線がカメラから遠ざかる方向に向いているフェースです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagstartFrame">
+          <code><b>startFrame</b>(<b>sf</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+開始フレームを指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagsvgAnimation">
+          <code><b>svgAnimation</b>(<b>sa</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+SVG アニメーション タイプを指定します。有効な値は、「Native」、「HTMLScript」です。このオプションは SVG のみです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagsvgCompression">
+          <code><b>svgCompression</b>(<b>sc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+SVG 出力を圧縮するかどうかを指定します。このオプションは SVG のみです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwidth">
+          <code><b>width</b>(<b>w</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+出力イメージの幅を、ピクセル単位で指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# Create a poly sphere.
+cmds.polySphere()
+
+# Now vector render the current frame. The output will be a 320x240
+# swf vector file using the single color fill option, and have
+# &quot;untitled.swf&quot; as its name.
+cmds.vectorize(imageFormat='swf', w=320, h=240, fs='SingleColor',
+               c='persp', cf=True, ff='name.ext', of='untitled')
+	</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

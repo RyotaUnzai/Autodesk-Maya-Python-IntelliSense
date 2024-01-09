@@ -30,7 +30,7 @@
             "command": "python",
             "args": [
                 "-b",
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2024.2\"",
                 "-l",
@@ -47,7 +47,7 @@
             "command": "python",
             "args": [
                 "-b",
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2024.2\"",
             ],
@@ -62,7 +62,7 @@
             "command": "python",
             "args": [
                 "-b",
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2024.1\"",
                 "-l",
@@ -79,7 +79,7 @@
             "command": "python",
             "args": [
                 "-b",
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2024.1\"",
             ],
@@ -94,7 +94,7 @@
             "command": "python",
             "args": [
                 "-b",
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2024\"",
                 "-l",
@@ -111,7 +111,7 @@
             "command": "python",
             "args": [
                 "-b",
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2024\"",
             ],
@@ -125,7 +125,7 @@
             "label": "Maya2023.3 JP",
             "command": "python",
             "args": [
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2023.3\"",
                 "-l",
@@ -141,7 +141,7 @@
             "label": "Maya2023.3 EN",
             "command": "python",
             "args": [
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2023.3\"",
             ],
@@ -155,7 +155,7 @@
             "label": "Maya2023.2 JP",
             "command": "python",
             "args": [
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2023.2\"",
                 "-l",
@@ -171,7 +171,7 @@
             "label": "Maya2023.2 EN",
             "command": "python",
             "args": [
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2023.2\"",
             ],
@@ -185,7 +185,7 @@
             "label": "Maya2023.1 JP",
             "command": "python",
             "args": [
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2023.1\"",
                 "-l",
@@ -201,7 +201,7 @@
             "label": "Maya2023.1 EN",
             "command": "python",
             "args": [
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2023.1\"",
             ],
@@ -215,7 +215,7 @@
             "label": "Maya2023 JP",
             "command": "python",
             "args": [
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2023\"",
                 "-l",
@@ -231,7 +231,7 @@
             "label": "Maya2023 EN",
             "command": "python",
             "args": [
-                "src\\create_pyi.py",
+                "src\\main.py",
                 "-v",
                 "\"2023\"",
             ],

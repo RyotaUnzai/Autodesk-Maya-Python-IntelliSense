@@ -1,0 +1,229 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>uiTemplate command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-uiTemplate"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/uiTemplate.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>uiTemplate </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Language.html" target="contentFrame">言語</a>, <a href="cat_Language.html#Scripting" target="contentFrame">スクリプティング</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("uiTemplate.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>uiTemplate(
+[string]
+    , [<a href="#flagdefineTemplate">defineTemplate</a>=<i>string</i>], [<a href="#flagexists">exists</a>=<i>boolean</i>], [<a href="#flaguseTemplate">useTemplate</a>=<i>string</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>uiTemplate は、取り消し可能、照会可能、および編集可能です。</p>
+      新しいコマンド テンプレート オブジェクトを作成するためのコマンドです。テンプレート オブジェクトによって、複数の UI コマンド用にフラグの既定の引数を保持することが可能です。コマンドの引数を指定するには、個々のコマンドで -defineTemplate フラグと既定にしたいフラグと引数を使用します。<i>setUITemplate</i> コマンドも参照してください。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string</i></td><td>作成された uiTemplate の名前。</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagdefineTemplate">defineTemplate</a>, <a href="#flagexists">exists</a>, <a href="#flaguseTemplate">useTemplate</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdefineTemplate">
+          <code><b>defineTemplate</b>(<b>dt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+他の任意のフラグと引数を解析し、かつ引数で指定したコマンド テンプレートに追加するモードに、コマンドのモードを変更します。 templateName が現在のテンプレートとして設定されていれば、その後コマンドが実行されるたびに、この引数が既定の引数として使用されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagexists">
+          <code><b>exists</b>(<b>ex</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定したオブジェクトが存在するかどうかを返します。他のフラグは無視されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguseTemplate">
+          <code><b>useTemplate</b>(<b>ut</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コマンドに、現在のものとは異なるコマンド テンプレートを使用するように強制します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+#    Create a new template.
+#
+if cmds.uiTemplate( 'ExampleTemplate', exists=True ):
+	cmds.deleteUI( 'ExampleTemplate', uiTemplate=True )
+
+cmds.uiTemplate( 'ExampleTemplate' )
+
+cmds.button( defineTemplate='ExampleTemplate', width=100, height=40, align='left' )
+cmds.frameLayout( defineTemplate='ExampleTemplate', borderVisible=True, labelVisible=False )
+
+#    Create a window and apply the template.
+#
+window = cmds.window()
+cmds.setUITemplate( 'ExampleTemplate', pushTemplate=True )
+cmds.columnLayout( rowSpacing=5 )
+
+cmds.frameLayout()
+cmds.columnLayout()
+cmds.button( label='One' )
+cmds.button( label='Two' )
+cmds.button( label='Three' )
+cmds.setParent( '..' )
+cmds.setParent( '..' )
+
+cmds.frameLayout()
+cmds.columnLayout()
+cmds.button( label='Red' )
+cmds.button( label='Green' )
+cmds.button( label='Blue' )
+cmds.setParent( '..' )
+cmds.setParent( '..' )
+
+cmds.setUITemplate( popTemplate=True )
+
+cmds.showWindow( window )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

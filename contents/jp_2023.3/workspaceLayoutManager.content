@@ -1,0 +1,592 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>workspaceLayoutManager command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-workspaceLayoutManager"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/workspaceLayoutManager.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>workspaceLayoutManager </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Windows.html" target="contentFrame">ウィンドウ</a>, <a href="cat_Windows.html#Layouts" target="contentFrame">レイアウト</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("workspaceLayoutManager.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>workspaceLayoutManager(
+[name]
+    , [<a href="#flagcollapseMainWindowControls">collapseMainWindowControls</a>=<i>[string, boolean]</i>], [<a href="#flagcurrent">current</a>=<i>boolean</i>], [<a href="#flagdelete">delete</a>=<i>string</i>], [<a href="#flagi">i</a>=<i>string</i>], [<a href="#flaglistLayouts">listLayouts</a>=<i>boolean</i>], [<a href="#flaglistModuleLayouts">listModuleLayouts</a>=<i>boolean</i>], [<a href="#flaglistUserLayouts">listUserLayouts</a>=<i>boolean</i>], [<a href="#flagmodified">modified</a>=<i>string</i>], [<a href="#flagparentWorkspaceControl">parentWorkspaceControl</a>=<i>string</i>], [<a href="#flagreset">reset</a>=<i>boolean</i>], [<a href="#flagrestoreMainWindowControls">restoreMainWindowControls</a>=<i>boolean</i>], [<a href="#flagsave">save</a>=<i>boolean</i>], [<a href="#flagsaveAs">saveAs</a>=<i>string</i>], [<a href="#flagsetCurrent">setCurrent</a>=<i>string</i>], [<a href="#flagsetCurrentCallback">setCurrentCallback</a>=<i>string</i>], [<a href="#flagsetModifiedCallback">setModifiedCallback</a>=<i>string</i>], [<a href="#flagtype">type</a>=<i>string</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>workspaceLayoutManager は、取り消し可能、照会可能、および編集可能です。</p>
+      ワークスペース レイアウト マネージャは、ユーザ インタフェースにさまざまなツールバーとウィンドウのレイアウトをロードおよび保存します。このコマンドにより、そのプロパティをリストおよび管理できます。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string[]</i></td><td>引数によって</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagcollapseMainWindowControls">collapseMainWindowControls</a>, <a href="#flagcurrent">current</a>, <a href="#flagdelete">delete</a>, <a href="#flagi">i</a>, <a href="#flaglistLayouts">listLayouts</a>, <a href="#flaglistModuleLayouts">listModuleLayouts</a>, <a href="#flaglistUserLayouts">listUserLayouts</a>, <a href="#flagmodified">modified</a>, <a href="#flagparentWorkspaceControl">parentWorkspaceControl</a>, <a href="#flagreset">reset</a>, <a href="#flagrestoreMainWindowControls">restoreMainWindowControls</a>, <a href="#flagsave">save</a>, <a href="#flagsaveAs">saveAs</a>, <a href="#flagsetCurrent">setCurrent</a>, <a href="#flagsetCurrentCallback">setCurrentCallback</a>, <a href="#flagsetModifiedCallback">setModifiedCallback</a>, <a href="#flagtype">type</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcollapseMainWindowControls">
+          <code><b>collapseMainWindowControls</b>(<b>cmw</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[string, boolean]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+メイン ウィンドウのレイアウトを保存します。サイズに関するコンストレイントがない場合は、指定されたレイアウト(最初のパラメータ)を除く、メイン ウィンドウ内の他のすべてのコントロールを折り畳みます。2 番目のパラメータは、メイン ウィンドウの UI 要素を非表示にするかどうかを指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcurrent">
+          <code><b>current</b>(<b>cu</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+現在のレイアウトの名前を取得します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdelete">
+          <code><b>delete</b>(<b>d</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定されたワークスペースを削除します。文字列は、ファイル名ではなくレイアウトの名前です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagi">
+          <code><b>i</b>(<b>i</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定されたワークスペースのファイルをワークスペース フォルダに読み込みます。文字列は絶対パスです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglistLayouts">
+          <code><b>listLayouts</b>(<b>ll</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+登録されているすべてのレイアウトの名前をリストします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglistModuleLayouts">
+          <code><b>listModuleLayouts</b>(<b>lml</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+モジュールのレイアウトの名前をリストします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglistUserLayouts">
+          <code><b>listUserLayouts</b>(<b>lul</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ユーザのレイアウトの名前をリストします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmodified">
+          <code><b>modified</b>(<b>m</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定されたレイアウトが変更されたかどうかを確認します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagparentWorkspaceControl">
+          <code><b>parentWorkspaceControl</b>(<b>pwc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した UI (パネル)の親ワークスペース コントロールを返します。このコントロールが存在しない場合は、空の文字列を返します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreset">
+          <code><b>reset</b>(<b>rs</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+現在のワークスペースを元のレイアウトにリセットします。ファクトリ レイアウトは既定のレイアウトに戻され、ユーザ レイアウトはディスクから再ロードされます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrestoreMainWindowControls">
+          <code><b>restoreMainWindowControls</b>(<b>rmw</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+メイン ウィンドウのレイアウトを <i>-cmw/-collapseMainWindowControls</i> フラグで保存されたレイアウトに復元します。ワークスペースを復元すると、ロードされたワークスペース ファイルは削除されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagsave">
+          <code><b>save</b>(<b>s</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+現在のレイアウトを保存します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagsaveAs">
+          <code><b>saveAs</b>(<b>sa</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+現在のレイアウトを指定された名前で保存します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagsetCurrent">
+          <code><b>setCurrent</b>(<b>sc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定されたワークスペースをロードします。文字列は、ファイル名ではなくレイアウトの名前です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagsetCurrentCallback">
+          <code><b>setCurrentCallback</b>(<b>scc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+MEL のみ。文字列は、(<i>-setCurrent</i> フラグを使用して)レイアウトが現在のレイアウトとして設定されるたびに呼び出される MEL コールバックとして解釈されます。コールバックの形式は次のとおりです。
+<p>
+global proc MySetCurrentCallback(string $layoutName)
+<p>
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagsetModifiedCallback">
+          <code><b>setModifiedCallback</b>(<b>smc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+MEL のみ。文字列は、レイアウトを変更または復元するたびに、つまり <i>-modified</i> フラグ値を変更するたびに呼び出される MEL コールバックとして解釈されます。コールバックの形式は次のとおりです。
+<p>
+global proc MySetModifiedCallback()
+<p>
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtype">
+          <code><b>type</b>(<b>t</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定したレイアウトのタイプを取得します(FACTORY、FACTORY_OVERRIDE、MODULE、MODULE_OVERRIDE、または USER)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+cmds.workspaceLayoutManager( listLayouts=True )
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

@@ -1,0 +1,474 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>wrinkleContext command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-wrinkleContext"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/wrinkleContext.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>wrinkleContext </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_General.html" target="contentFrame">一般</a>, <a href="cat_General.html#Contexts" target="contentFrame">コンテキスト</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("wrinkleContext.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>wrinkleContext(
+string
+    , [<a href="#flagbranchCount">branchCount</a>=<i>uint</i>], [<a href="#flagbranchDepth">branchDepth</a>=<i>uint</i>], [<a href="#flagexists">exists</a>=<i>boolean</i>], [<a href="#flaghistory">history</a>=<i>boolean</i>], [<a href="#flagimage1">image1</a>=<i>string</i>], [<a href="#flagimage2">image2</a>=<i>string</i>], [<a href="#flagimage3">image3</a>=<i>string</i>], [<a href="#flagname">name</a>=<i>string</i>], [<a href="#flagrandomness">randomness</a>=<i>linear</i>], [<a href="#flagstyle">style</a>=<i>string</i>], [<a href="#flagthickness">thickness</a>=<i>linear</i>], [<a href="#flagwrinkleCount">wrinkleCount</a>=<i>uint</i>], [<a href="#flagwrinkleIntensity">wrinkleIntensity</a>=<i>linear</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>wrinkleContext は、取り消し可能、照会可能、および編集可能です。</p>
+      このコマンドは、リンクルを作成するコンテキストを生成します。
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string</i></td><td>作成されたコンテキストの名前</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagbranchCount">branchCount</a>, <a href="#flagbranchDepth">branchDepth</a>, <a href="#flagexists">exists</a>, <a href="#flaghistory">history</a>, <a href="#flagimage1">image1</a>, <a href="#flagimage2">image2</a>, <a href="#flagimage3">image3</a>, <a href="#flagname">name</a>, <a href="#flagrandomness">randomness</a>, <a href="#flagstyle">style</a>, <a href="#flagthickness">thickness</a>, <a href="#flagwrinkleCount">wrinkleCount</a>, <a href="#flagwrinkleIntensity">wrinkleIntensity</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbranchCount">
+          <code><b>branchCount</b>(<b>brc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>uint</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+radial wrinkle のしわから出る枝の数を設定します。既定は 2 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbranchDepth">
+          <code><b>branchDepth</b>(<b>bd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>uint</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+radial wrinkle の枝分かれの深さを設定します。既定は 0 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagexists">
+          <code><b>exists</b>(<b>ex</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定したオブジェクトが存在するかどうかによって、true または false を返します。他のフラグは無視されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghistory">
+          <code><b>history</b>(<b>ch</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツール コマンドの場合、対象となるツールのコンストラクション ヒストリをオンにします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagimage1">
+          <code><b>image1</b>(<b>i1</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コンテキストに関連付けられているツールを表す 3 つの可能なアイコンの中の最初のアイコンです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagimage2">
+          <code><b>image2</b>(<b>i2</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コンテキストに関連付けられているツールを表す 3 つの可能なアイコンの中の 2 番目のアイコンです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagimage3">
+          <code><b>image3</b>(<b>i3</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コンテキストに関連付けられているツールを表す 3 つの可能なアイコンの中の 3 番目のアイコンです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagname">
+          <code><b>name</b>(<b>n</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+これがツール コマンドの場合、ツールに適切に名前を付けます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrandomness">
+          <code><b>randomness</b>(<b>rnd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リンクル構造の直線とその他の要素からのリンクルの折り目の偏差を設定します。既定は 0.2 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagstyle">
+          <code><b>style</b>(<b>st</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リンクル シェイプを設定します。有効値は「lines」、「radial」、「custom」です。既定は「radial」です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagthickness">
+          <code><b>thickness</b>(<b>th</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リンクルの折り目の太さを、基礎となるワイヤからのドロップオフ距離という形で設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwrinkleCount">
+          <code><b>wrinkleCount</b>(<b>wc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>uint</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リンクルのしわの数を設定します。既定は 3 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwrinkleIntensity">
+          <code><b>wrinkleIntensity</b>(<b>wi</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>linear</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+リンクルのしわの深さを設定します。既定は 0.5 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+cmds.wrinkleContext( 'wrinkleCtx' )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

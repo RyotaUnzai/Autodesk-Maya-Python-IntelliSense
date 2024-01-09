@@ -1,0 +1,315 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>writeTake command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-writeTake"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/writeTake.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>writeTake </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Animation.html" target="contentFrame">アニメーション</a>, <a href="cat_Animation.html#MoCap" target="contentFrame">モーション キャプチャ</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("writeTake.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>writeTake([<a href="#flagangle">angle</a>=<i>string</i>], [<a href="#flagdevice">device</a>=<i>string</i>], [<a href="#flaglinear">linear</a>=<i>string</i>], [<a href="#flagnoTime">noTime</a>=<i>boolean</i>], [<a href="#flagprecision">precision</a>=<i>int</i>], [<a href="#flagtake">take</a>=<i>string</i>], [<a href="#flagvirtualDevice">virtualDevice</a>=<i>string</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>writeTake は、取り消し可能、<b>照会不可能</b>、および<b>編集不可能</b>です。</p>
+      このアクションは、デバイスに記録されたデータを テイク ファイル(.mov)に書き出します。writeTake アクションは仮想デバイス設定にも書き出すことができます。
+<p>
+関連項目: recordDevice、readTake、defineVirtualDevice
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <p><i>なし</i></p>
+      
+      <h2><a name="hRelated">関連</a></h2><a href="applyTake.html">applyTake</a>, <a href="defineDataServer.html">defineDataServer</a>, <a href="defineVirtualDevice.html">defineVirtualDevice</a>, <a href="enableDevice.html">enableDevice</a>, <a href="filter.html">filter</a>, <a href="movIn.html">movIn</a>, <a href="movOut.html">movOut</a>, <a href="readTake.html">readTake</a>, <a href="recordDevice.html">recordDevice</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagangle">angle</a>, <a href="#flagdevice">device</a>, <a href="#flaglinear">linear</a>, <a href="#flagnoTime">noTime</a>, <a href="#flagprecision">precision</a>, <a href="#flagtake">take</a>, <a href="#flagvirtualDevice">virtualDevice</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagangle">
+          <code><b>angle</b>(<b>a</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+テイクで使用する角度単位を設定します。[deg|degree|rad|radian] の文字列が有効です。<br> C: 既定は、現在のユーザ角度単位です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdevice">
+          <code><b>device</b>(<b>d</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+テイクを含むデバイスを指定します。この引数は必須です。デバイスにテイクが入っていない場合、このアクションは失敗します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaglinear">
+          <code><b>linear</b>(<b>l</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+テイクで使用するリニア単位を設定します。有効文字列は、[mm|millimeter|cm|centimeter|m|meter|km|kilometer|in|inch|ft|foot|yd|yard|mi|mile] です。<br> C: 既定は、現在のユーザ長さ単位です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnoTime">
+          <code><b>noTime</b>(<b>nt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+テイク ファイル(.mov)ファイルにタイム スタンプを含めないようにします。<br> C: 既定では、テイク ファイルにはタイム スタンプが入ります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagprecision">
+          <code><b>precision</b>(<b>pre</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+テイク ファイルの小数部分の数字の桁数を設定します。<br> C: 既定は 6 です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtake">
+          <code><b>take</b>(<b>t</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定した名前でテイクを書き出します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvirtualDevice">
+          <code><b>virtualDevice</b>(<b>vd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+仮想デバイス設定を、指定した名前で MEL スクリプトに書き出します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+#    Record data from the clock device and write out the virtual
+#    device definition and take file.
+cmds.recordDevice( device='clock' )
+cmds.recordDevice( device='clock', stop=True )
+cmds.writeTake( device='clock', take='clock.mov', virtualDevice='virtualClock.mel' )
+
+#    Read the virtualClock and virtualClock take data.
+maya.mel.eval(&quot;virtualClock&quot;)
+cmds.readTake( device='virtualClock', take='clock.mov' )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

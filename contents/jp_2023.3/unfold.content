@@ -1,0 +1,418 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>unfold command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-unfold"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/unfold.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>unfold </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Modeling.html" target="contentFrame">モデリング</a>, <a href="cat_Modeling.html#Polygons" target="contentFrame">ポリゴン</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("unfold.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hKeywords">キーワード</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>unfold([<a href="#flagapplyToShell">applyToShell</a>=<i>boolean</i>], [<a href="#flagareaWeight">areaWeight</a>=<i>float</i>], [<a href="#flagglobalBlend">globalBlend</a>=<i>float</i>], [<a href="#flagglobalMethodBlend">globalMethodBlend</a>=<i>float</i>], [<a href="#flagiterations">iterations</a>=<i>int</i>], [<a href="#flagoptimizeAxis">optimizeAxis</a>=<i>int</i>], [<a href="#flagpinSelected">pinSelected</a>=<i>boolean</i>], [<a href="#flagpinUvBorder">pinUvBorder</a>=<i>boolean</i>], [<a href="#flagscale">scale</a>=<i>float</i>], [<a href="#flagstoppingThreshold">stoppingThreshold</a>=<i>float</i>], [<a href="#flaguseScale">useScale</a>=<i>boolean</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>unfold は、取り消し可能、<b>照会不可能</b>、および<b>編集不可能</b>です。</p>
+      なし
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>int</i></td><td>実行するリラックス反復の回数</td></tr></table>
+      <h2><a name="hKeywords">キーワード</a></h2>poly, uv, map, border, relax
+      <h2><a name="hRelated">関連</a></h2><a href="polyClipboard.html">polyClipboard</a>, <a href="polyCylindricalProjection.html">polyCylindricalProjection</a>, <a href="polyEditUV.html">polyEditUV</a>, <a href="polyForceUV.html">polyForceUV</a>, <a href="polyMapCut.html">polyMapCut</a>, <a href="polyMapDel.html">polyMapDel</a>, <a href="polyMapSew.html">polyMapSew</a>, <a href="polyMoveFacetUV.html">polyMoveFacetUV</a>, <a href="polyMoveUV.html">polyMoveUV</a>, <a href="polyPlanarProjection.html">polyPlanarProjection</a>, <a href="polyProjection.html">polyProjection</a>, <a href="polySphericalProjection.html">polySphericalProjection</a>, <a href="polyUVSet.html">polyUVSet</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagapplyToShell">applyToShell</a>, <a href="#flagareaWeight">areaWeight</a>, <a href="#flagglobalBlend">globalBlend</a>, <a href="#flagglobalMethodBlend">globalMethodBlend</a>, <a href="#flagiterations">iterations</a>, <a href="#flagoptimizeAxis">optimizeAxis</a>, <a href="#flagpinSelected">pinSelected</a>, <a href="#flagpinUvBorder">pinUvBorder</a>, <a href="#flagscale">scale</a>, <a href="#flagstoppingThreshold">stoppingThreshold</a>, <a href="#flaguseScale">useScale</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagapplyToShell">
+          <code><b>applyToShell</b>(<b>applyToShell</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+選択したコンポーネントが、選択または固定された項目があるシェルのみに作用するように指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagareaWeight">
+          <code><b>areaWeight</b>(<b>aw</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+サーフェス ドリブンの重要性です。0: すべてのフェースを同等に扱います。1: 大きいフェースを重視します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagglobalBlend">
+          <code><b>globalBlend</b>(<b>gb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ローカルの最適化方法(globalBlend = 0.0)とグローバルの最適化方法(globalBlend = 1.0)をブレンドできるようになります。ローカルな最適化方法では、オブジェクト上の三角ポリゴンと UV 空間の三角ポリゴンの比率を見ます。ただし、テーパの問題を引き起こす可能性があります。グローバルの最適化はより時間がかかりますが、UV 配置を最適化するときにオブジェクト全体を考慮します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagglobalMethodBlend">
+          <code><b>globalMethodBlend</b>(<b>gmb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+グローバルの最適化方法は、最小化の計算に 2 つの関数を使用します。1 番目の関数は XYZ と UV 間のエッジの長さを使用してエッジ伸長を制御します。2 番目の関数は、三角ポリゴンがオーバーラップする構成を防ぐことで、1 番目の関数にペナルティを科します。すべてのサーフェスに、適切な応答を返す 2 つの関数の組み合わせが存在します。値が 1.0 に近いほど、エッジの長さ関数が重視されます。0.0 に近づくほど、サーフェス領域が重視されます。既定値は 0.5 で、これら 2 つの値の均等な組み合わせです。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagiterations">
+          <code><b>iterations</b>(<b>i</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+接続された各 UV ピースの反復の最大数です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagoptimizeAxis">
+          <code><b>optimizeAxis</b>(<b>oa</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+最適化の自由度です。0=自由に最適化、1=垂直方向のみに移動、2=水平方向のみに移動
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpinSelected">
+          <code><b>pinSelected</b>(<b>ps</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+選択されていないコンポーネントではなく、選択したコンポーネントを固定するように指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpinUvBorder">
+          <code><b>pinUvBorder</b>(<b>pub</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ソルバの実行時に UV 境界を固定するかどうかを指定します。既定では、非選択のコンポーネントのみが固定されます。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagscale">
+          <code><b>scale</b>(<b>s</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+2D 空間と 3D 空間の比率です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagstoppingThreshold">
+          <code><b>stoppingThreshold</b>(<b>ss</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+2 つのステップ間における、歪み改善の最小値(%)です。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguseScale">
+          <code><b>useScale</b>(<b>us</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+スケールを調整するかどうかを指定します。
+			
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# Create a sphere and select it.
+cmds.polySphere()
+
+# Optimise the position of some Uvs
+cmds.unfold( 'pSphere1.map[189:398]' )
+	</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

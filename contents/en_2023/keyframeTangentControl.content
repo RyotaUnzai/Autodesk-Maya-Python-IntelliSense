@@ -1,0 +1,928 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>keyframeTangentControl command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-keyframeTangentControl"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>command</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/keyframeTangentControl.html">MEL version</a></i></font></td>
+		  </tr><tr>
+		  <td><h1>keyframeTangentControl <div class="version middle">2023</div></h1></td>
+			<td align="right">In categories: <a href="cat_Animation.html" target="contentFrame">Animation</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("keyframeTangentControl.html");</script>
+      </p>
+      <p>Go to: <a href="#hSynopsis">Synopsis</a>. <a href="#hReturn">Return value</a>. <a href="#hFlags">Flags</a>. <a href="#hExamples">Python examples</a>. </p>
+
+      <h2><a name="hSynopsis">Synopsis</a></h2>
+      <p id="synopsis"> <code>keyframeTangentControl(
+string
+    , [<a href="#flagannotation">annotation</a>=<i>string</i>], [<a href="#flagbackgroundColor">backgroundColor</a>=<i>[float, float, float]</i>], [<a href="#flagdefineTemplate">defineTemplate</a>=<i>string</i>], [<a href="#flagdocTag">docTag</a>=<i>string</i>], [<a href="#flagdragCallback">dragCallback</a>=<i>script</i>], [<a href="#flagdropCallback">dropCallback</a>=<i>script</i>], [<a href="#flagenable">enable</a>=<i>boolean</i>], [<a href="#flagenableBackground">enableBackground</a>=<i>boolean</i>], [<a href="#flagenableKeyboardFocus">enableKeyboardFocus</a>=<i>boolean</i>], [<a href="#flagexists">exists</a>=<i>boolean</i>], [<a href="#flagfullPathName">fullPathName</a>=<i>boolean</i>], [<a href="#flagheight">height</a>=<i>int</i>], [<a href="#flaghighlightColor">highlightColor</a>=<i>[float, float, float]</i>], [<a href="#flagisObscured">isObscured</a>=<i>boolean</i>], [<a href="#flagmanage">manage</a>=<i>boolean</i>], [<a href="#flagnoBackground">noBackground</a>=<i>boolean</i>], [<a href="#flagnumberOfPopupMenus">numberOfPopupMenus</a>=<i>boolean</i>], [<a href="#flagparent">parent</a>=<i>string</i>], [<a href="#flagpopupMenuArray">popupMenuArray</a>=<i>boolean</i>], [<a href="#flagprecision">precision</a>=<i>int</i>], [<a href="#flagpreventOverride">preventOverride</a>=<i>boolean</i>], [<a href="#flagstatusBarMessage">statusBarMessage</a>=<i>string</i>], [<a href="#flaguseTemplate">useTemplate</a>=<i>string</i>], [<a href="#flagvisible">visible</a>=<i>boolean</i>], [<a href="#flagvisibleChangeCommand">visibleChangeCommand</a>=<i>script</i>], [<a href="#flagwidth">width</a>=<i>int</i>]) </code> <br><br><font size="-1"><i>Note: Strings representing object names and arguments must be separated by commas. This is not depicted in the synopsis.</i></font></p>
+      <p>keyframeTangentControl is undoable, queryable, and editable.</p>
+      This command creates, edits, queries a keyframe tangent control.
+The control displays fields for modifying the selected keyframe's tangent
+angle and weight.
+<p>
+	  
+      <h2><a name="hReturn">Return value</a></h2>
+      <table><tr><td valign="top"><i>string</i></td><td>The name of the tangent control.</td></tr></table><p>In query mode, return type is based on queried flag.</p>
+      
+      
+
+      
+    <h2><a name="hFlags">Flags</a></h2>
+      <a href="#flagannotation">annotation</a>, <a href="#flagbackgroundColor">backgroundColor</a>, <a href="#flagdefineTemplate">defineTemplate</a>, <a href="#flagdocTag">docTag</a>, <a href="#flagdragCallback">dragCallback</a>, <a href="#flagdropCallback">dropCallback</a>, <a href="#flagenable">enable</a>, <a href="#flagenableBackground">enableBackground</a>, <a href="#flagenableKeyboardFocus">enableKeyboardFocus</a>, <a href="#flagexists">exists</a>, <a href="#flagfullPathName">fullPathName</a>, <a href="#flagheight">height</a>, <a href="#flaghighlightColor">highlightColor</a>, <a href="#flagisObscured">isObscured</a>, <a href="#flagmanage">manage</a>, <a href="#flagnoBackground">noBackground</a>, <a href="#flagnumberOfPopupMenus">numberOfPopupMenus</a>, <a href="#flagparent">parent</a>, <a href="#flagpopupMenuArray">popupMenuArray</a>, <a href="#flagprecision">precision</a>, <a href="#flagpreventOverride">preventOverride</a>, <a href="#flagstatusBarMessage">statusBarMessage</a>, <a href="#flaguseTemplate">useTemplate</a>, <a href="#flagvisible">visible</a>, <a href="#flagvisibleChangeCommand">visibleChangeCommand</a>, <a href="#flagwidth">width</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">Long name (short name)</th>
+          <th bgcolor="#CCCCCC"><i>Argument types</i></th>
+          <th bgcolor="#CCCCCC">Properties</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagannotation">
+          <code><b>annotation</b>(<b>ann</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Annotate the control with an extra string value.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagbackgroundColor">
+          <code><b>backgroundColor</b>(<b>bgc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The background color of the control. The arguments correspond
+to the red, green, and blue color components. Each component ranges
+in value from 0.0 to 1.0.
+<br>When setting backgroundColor, the background is automatically
+enabled, unless enableBackground is also specified with a false
+value.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdefineTemplate">
+          <code><b>defineTemplate</b>(<b>dt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Puts the command in a mode where any other flags and arguments are
+parsed and added to the command template specified in the argument.
+They will be used as default arguments in any subsequent
+invocations of the command when templateName is set as the
+current template.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdocTag">
+          <code><b>docTag</b>(<b>dtg</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Add a documentation flag to the control.  The documentation flag
+has a directory structure.
+(e.g., -dt render/multiLister/createNode/material)
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdragCallback">
+          <code><b>dragCallback</b>(<b>dgc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Adds a callback that is called when the middle mouse button
+is pressed.  The MEL version of the callback is of the form:
+<p>
+global proc string[] callbackName(string $dragControl, int $x, int $y, int $mods)
+<p>
+The proc returns a string array that is transferred to the drop site.
+By convention the first string in the array describes the user settable
+message type.  Controls that are application defined drag sources may
+ignore the callback. $mods allows testing for the key modifiers CTRL and
+SHIFT. Possible values are 0 == No modifiers, 1 == SHIFT, 2 == CTRL,
+3 == CTRL + SHIFT.
+<p>
+In Python, it is similar, but there are two ways to specify the callback.  The
+recommended way is to pass a Python function object as the argument.  In that
+case, the Python callback should have the form:
+<p>
+def callbackName( dragControl, x, y, modifiers ):
+<p>
+The values of these arguments are the same as those for the MEL version above.
+<p>
+The other way to specify the callback in Python is to specify a string to be
+executed.  In that case, the string will have the values substituted into it
+via the standard Python format operator.  The format values are passed in a
+dictionary with the keys &quot;dragControl&quot;, &quot;x&quot;, &quot;y&quot;, &quot;modifiers&quot;.  The
+&quot;dragControl&quot; value is a string and the other values are integers (eg the
+callback string could be &quot;print '%(dragControl)s %(x)d %(y)d %(modifiers)d'&quot;)
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdropCallback">
+          <code><b>dropCallback</b>(<b>dpc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Adds a callback that is called when a drag and drop
+operation is released above the drop site.  The MEL version of the callback is
+of the form:
+<p>
+global proc callbackName(string $dragControl, string $dropControl, string $msgs[], int $x, int $y, int $type)
+<p>
+The proc receives a string array that is transferred from the drag source.
+The first string in the msgs array describes the user defined message type.
+Controls that are application defined drop sites may ignore the
+callback. $type can have values of 1 == Move, 2 == Copy, 3 == Link.
+<p>
+In Python, it is similar, but there are two ways to specify the callback.  The
+recommended way is to pass a Python function object as the argument.  In that
+case, the Python callback should have the form:
+<p>
+def pythonDropTest( dragControl, dropControl, messages, x, y, dragType ):
+<p>
+The values of these arguments are the same as those for the MEL version above.
+<p>
+The other way to specify the callback in Python is to specify a string to be
+executed.  In that case, the string will have the values substituted into it
+via the standard Python format operator.  The format values are passed in a
+dictionary with the keys &quot;dragControl&quot;, &quot;dropControl&quot;, &quot;messages&quot;, &quot;x&quot;, &quot;y&quot;,
+&quot;type&quot;.  The &quot;dragControl&quot; value is a string and the other values are integers
+(eg the callback string could be
+&quot;print '%(dragControl)s %(dropControl)s %(messages)r %(x)d %(y)d %(type)d'&quot;)
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenable">
+          <code><b>enable</b>(<b>en</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The enable state of the control.  By default, this flag is
+set to true and the control is enabled.  Specify false and the control
+will appear dimmed or greyed-out indicating it is disabled.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenableBackground">
+          <code><b>enableBackground</b>(<b>ebg</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Enables the background color of the control.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagenableKeyboardFocus">
+          <code><b>enableKeyboardFocus</b>(<b>ekf</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+If enabled, the user can navigate to the control with the tab key and select values with the keyboard or mouse.
+This flag would typically be used to turn off focus support from controls that get it by default, like Edit and List controls.
+If disabled, text in text fields can still be selected with the mouse but cannot be copied (except on Linux when &quot;Middle Click Paste&quot; is enabled).
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagexists">
+          <code><b>exists</b>(<b>ex</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Returns whether the
+specified object exists or not. Other flags are ignored.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfullPathName">
+          <code><b>fullPathName</b>(<b>fpn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Return the full path name of the widget, which includes all the parents.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagheight">
+          <code><b>height</b>(<b>h</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The height of the control.  The control will attempt to
+be this size if it is not overruled by parent layout conditions.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghighlightColor">
+          <code><b>highlightColor</b>(<b>hlc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The highlight color of the control. The arguments correspond
+to the red, green, and blue color components. Each component ranges
+in value from 0.0 to 1.0.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagisObscured">
+          <code><b>isObscured</b>(<b>io</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Return whether the control can actually be seen by the user.
+The control will be obscured if its state is invisible, if it is
+blocked (entirely or partially) by some other control, if it or a
+parent layout is unmanaged, or if the control's window is
+invisible or iconified.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmanage">
+          <code><b>manage</b>(<b>m</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Manage state of the control.  An unmanaged control is
+not visible, nor does it take up any screen real estate.  All
+controls are created managed by default.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnoBackground">
+          <code><b>noBackground</b>(<b>nbg</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Clear/reset the control's background.
+Passing true means the background should not be drawn at all, false means the background should be drawn.  The state of this flag is inherited by children of this control.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnumberOfPopupMenus">
+          <code><b>numberOfPopupMenus</b>(<b>npm</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Return the number of popup menus attached to this control.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagparent">
+          <code><b>parent</b>(<b>p</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The parent layout for this control.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpopupMenuArray">
+          <code><b>popupMenuArray</b>(<b>pma</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Return the names of all the popup menus attached to this
+control.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagprecision">
+          <code><b>precision</b>(<b>pre</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Controls the number of digits to the right of the decimal
+point that will be displayed.
+Default is 3. Queried, returns an int.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpreventOverride">
+          <code><b>preventOverride</b>(<b>po</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+If true, this flag prevents overriding the control's
+attribute via the control's right mouse button menu.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagstatusBarMessage">
+          <code><b>statusBarMessage</b>(<b>sbm</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Extra string to display in the status bar when the mouse is over the control.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaguseTemplate">
+          <code><b>useTemplate</b>(<b>ut</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Forces the command to use a command template other than
+the current one.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvisible">
+          <code><b>visible</b>(<b>vis</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The visible state of the control.  A control is created
+visible by default.  Note that a control's actual appearance is
+also dependent on the visible state of its parent layout(s).
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagvisibleChangeCommand">
+          <code><b>visibleChangeCommand</b>(<b>vcc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>script</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Command that gets executed when visible state of the control changes.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwidth">
+          <code><b>width</b>(<b>w</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>int</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The width of the control.  The control will attempt to
+be this size if it is not overruled by parent layout conditions.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                Flag can appear in Create mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                Flag can appear in Edit mode of command
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                Flag can appear in Query mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                Flag can have multiple arguments, passed either as a tuple or a list.
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python examples</a></h2><pre>import maya.cmds as cmds
+
+cmds.window()
+cmds.formLayout()
+cmds.keyframeTangentControl(precision=2)
+cmds.showWindow()
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

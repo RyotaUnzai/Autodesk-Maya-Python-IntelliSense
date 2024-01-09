@@ -1,0 +1,473 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>walkCtx command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-walkCtx"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/walkCtx.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>walkCtx </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_General.html" target="contentFrame">一般</a>, <a href="cat_General.html#Contexts" target="contentFrame">コンテキスト</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("walkCtx.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>walkCtx([<a href="#flagalternateContext">alternateContext</a>=<i>boolean</i>], [<a href="#flagcrouchCount">crouchCount</a>=<i>float</i>], [<a href="#flagexists">exists</a>=<i>boolean</i>], [<a href="#flaghistory">history</a>=<i>boolean</i>], [<a href="#flagimage1">image1</a>=<i>string</i>], [<a href="#flagimage2">image2</a>=<i>string</i>], [<a href="#flagimage3">image3</a>=<i>string</i>], [<a href="#flagname">name</a>=<i>string</i>], [<a href="#flagtoolName">toolName</a>=<i>string</i>], [<a href="#flagwalkHeight">walkHeight</a>=<i>float</i>], [<a href="#flagwalkSensitivity">walkSensitivity</a>=<i>float</i>], [<a href="#flagwalkSpeed">walkSpeed</a>=<i>float</i>], [<a href="#flagwalkToolHud">walkToolHud</a>=<i>boolean</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>walkCtx は、取り消し可能、照会可能、および編集可能です。</p>
+      このコマンドは、ウォーク コンテキストの作成、編集、または照会に使用できます。
+<p>
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string</i></td><td>コンテキストの名前</td></tr></table><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagalternateContext">alternateContext</a>, <a href="#flagcrouchCount">crouchCount</a>, <a href="#flagexists">exists</a>, <a href="#flaghistory">history</a>, <a href="#flagimage1">image1</a>, <a href="#flagimage2">image2</a>, <a href="#flagimage3">image3</a>, <a href="#flagname">name</a>, <a href="#flagtoolName">toolName</a>, <a href="#flagwalkHeight">walkHeight</a>, <a href="#flagwalkSensitivity">walkSensitivity</a>, <a href="#flagwalkSpeed">walkSpeed</a>, <a href="#flagwalkToolHud">walkToolHud</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagalternateContext">
+          <code><b>alternateContext</b>(<b>ac</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+[Alt]+MMB および[Alt]+[Shift]+MMBでこのコンテキストを参照するように設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcrouchCount">
+          <code><b>crouchCount</b>(<b>wcc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+カメラのしゃがむ回数。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagexists">
+          <code><b>exists</b>(<b>ex</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+指定したオブジェクトが存在するかどうかによって、true または false を返します。他のフラグは無視されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaghistory">
+          <code><b>history</b>(<b>ch</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ツール コマンドの場合、対象となるツールのコンストラクション ヒストリをオンにします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagimage1">
+          <code><b>image1</b>(<b>i1</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コンテキストに関連付けられているツールを表す 3 つの可能なアイコンの中の最初のアイコンです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagimage2">
+          <code><b>image2</b>(<b>i2</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コンテキストに関連付けられているツールを表す 3 つの可能なアイコンの中の 2 番目のアイコンです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagimage3">
+          <code><b>image3</b>(<b>i3</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+コンテキストに関連付けられているツールを表す 3 つの可能なアイコンの中の 3 番目のアイコンです。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagname">
+          <code><b>name</b>(<b>n</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+これがツール コマンドの場合、ツールに適切に名前を付けます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtoolName">
+          <code><b>toolName</b>(<b>tn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+このコマンドが参照する特定のツールの名前です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwalkHeight">
+          <code><b>walkHeight</b>(<b>wh</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+カメラの初期の高さ。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwalkSensitivity">
+          <code><b>walkSensitivity</b>(<b>wsv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+カメラの回転感度。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwalkSpeed">
+          <code><b>walkSpeed</b>(<b>ws</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+カメラの移動スピード。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagwalkToolHud">
+          <code><b>walkToolHud</b>(<b>wth</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ウォーク ツール HUD を表示するかどうかをコントロールします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+cmds.walkCtx( 'walkContext', ws=2.0 )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

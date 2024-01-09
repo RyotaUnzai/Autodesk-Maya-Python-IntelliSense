@@ -1,9 +1,10 @@
 from argparse import ArgumentParser
 from enum import Enum
+from functools import cached_property
 from pathlib import Path
 from typing import Any, Optional
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, root_validator, validator
 from typing_extensions import Self
 
 
@@ -30,11 +31,41 @@ class NewTypes(BaseModel):
     items: list[NewType]
 
 
+class HtmlContens(BaseModel):
+    synopsis_word: str = Field(alias="synopsis word")
+    synopsis_note_text: str = Field(alias="synopsis note text")
+    flags_word: str = Field(alias="flags word")
+    return_word: str = Field(alias="return word")
+    return_none_word: str = Field(alias="return none word")
+    example_word: str = Field(alias="example word")
+    properties_word: str = Field(alias="properties word")
+    property_mode: dict[str, str] | None = Field(alias="property mode")
+    queryable: str
+    not_queryable: str = Field(alias="not queryable")
+
+    class Config:
+        populate_by_name = True
+
+    @validator("property_mode", pre=True)
+    def create_property_mode(cls, v: Any) -> Any:
+        if isinstance(v, dict):
+            return v
+        else:
+            return None
+
+    def get_property_mode(self, property: str) -> str:
+        if self.property_mode is None:
+            return property
+        return self.property_mode[property]
+
+
 class Common(BaseModel):
+    language: str
     ignore: list[str]
     new_types: NewTypes = Field(alias="new types")
     maya_argments: dict[str, str] = Field(alias="maya argments")
     all_definition: list[str] = Field(alias="__all__")
+    html_contens: HtmlContens = Field(alias="html contens")
 
     class Config:
         populate_by_name = True
@@ -44,9 +75,18 @@ class Common(BaseModel):
         return {"items": [NewType(name=item[0], type=item[1]) for item in v]}
 
 
-class Docs(BaseModel):
-    jp: str
-    en: str
+    @validator("html_contens", pre=True)
+    def create_html_contens(cls, v: Any) -> HtmlContens:
+        return HtmlContens(**v)
+
+    @root_validator(pre=True)
+    def set_ignore_based_on_language(cls, values: Any) -> Any:
+        language = values.get("language")
+        html_contens = values.get("html contens", {})
+
+        if language and isinstance(html_contens, dict):
+            values["html contens"] = html_contens.get(language, "")
+        return values
 
 
 class Maya(BaseModel):
@@ -54,7 +94,9 @@ class Maya(BaseModel):
     python: str
     help_url: Path = Field(alias="help url")
     imports: list[str]
-    documents: dict[str, Docs]
+    documents: str
+    language: str
+    versioning: str
 
     class Config:
         populate_by_name = True
@@ -67,12 +109,15 @@ class Maya(BaseModel):
     def create_help_url(cls, v: str) -> Path:
         return Path(v)
 
-    @validator("documents", pre=True)
-    def create_base_documents(cls, v: dict[str, dict[str, str]]) -> dict[str, Docs]:
-        docs: dict[str, Docs] = {}
-        for key, value in v.items():
-            docs[str(key)] = Docs(**value)
-        return docs
+    @root_validator(pre=True)
+    def set_base_documents(cls, values: dict[str, Any]) -> dict[str, Any]:
+        language = values.get("language")
+        versioning = float(values.get("versioning"))
+        documents = values.get("documents", {})
+        if language and isinstance(documents, dict):
+            values["documents"] = documents.get(versioning, "").get(language, "")
+
+        return values
 
 
 class IntelliSenseOptionModel(BaseModel):

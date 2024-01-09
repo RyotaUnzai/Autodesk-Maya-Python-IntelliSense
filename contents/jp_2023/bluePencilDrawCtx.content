@@ -1,0 +1,82 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>bluePencilDrawCtx command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-bluePencilDrawCtx"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/bluePencilDrawCtx.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>bluePencilDrawCtx <div class="version middle">2023</div></h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Animation.html" target="contentFrame">アニメーション</a>, <a href="cat_Animation.html#BluePencil" target="contentFrame">Blue Pencil</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("bluePencilDrawCtx.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>bluePencilDrawCtx() </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>bluePencilDrawCtx は、取り消し可能、照会可能、および編集可能です。</p>
+      Blue Pencil 描画コンテキストを作成するためのコマンド。
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <p><i>なし</i></p><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      
+
+      
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+// Create blue pencil draw context.
+cmds.bluePencilDrawCtx('contextName')
+
+// Flag the draw context as dirty.
+cmds.bluePencilDrawCtx(e=True, 'contextName')
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

@@ -1,4 +1,32 @@
 common:
+    language: en
+    html contens:
+        en:
+            synopsis word: Synopsis
+            synopsis note text: "Note: Strings representing object names and arguments must be separated by commas. This is not depicted in the synopsis."
+            flags word: Flags
+            return word: Return
+            return none word: None
+            example word: Example
+            properties word: properties
+            property mode: None
+            queryable: "queryable"
+            not queryable: "NOT queryable"
+        jp:
+            synopsis word: 概要
+            synopsis note text: "注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。"
+            flags word: フラグ
+            return word: 戻り値
+            return none word: なし
+            example word: 例
+            properties word: プロパティ
+            queryable: "照会可能"
+            not queryable: "照会不可能"
+            property mode:
+                create: 作成
+                query: 照会
+                edit: 編集
+                multiuse: 複数
     ignore:
         - blank
         - cat_Animation

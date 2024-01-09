@@ -1,0 +1,360 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>componentTag command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-componentTag"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>command</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/componentTag.html">MEL version</a></i></font></td>
+		  </tr><tr>
+		  <td><h1>componentTag </h1></td>
+			<td align="right">In categories: <a href="cat_Animation.html" target="contentFrame">Animation</a>, <a href="cat_Animation.html#Deformation" target="contentFrame">Deformation</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("componentTag.html");</script>
+      </p>
+      <p>Go to: <a href="#hSynopsis">Synopsis</a>. <a href="#hReturn">Return value</a>. <a href="#hRelated">Related</a>. <a href="#hFlags">Flags</a>. <a href="#hExamples">Python examples</a>. </p>
+
+      <h2><a name="hSynopsis">Synopsis</a></h2>
+      <p id="synopsis"> <code>componentTag(
+[objects]
+    , [<a href="#flagcreate">create</a>=<i>boolean</i>], [<a href="#flagdelete">delete</a>=<i>boolean</i>], [<a href="#flaginjectionLocation">injectionLocation</a>=<i>string</i>], [<a href="#flagmodify">modify</a>=<i>string</i>], [<a href="#flagnewTagName">newTagName</a>=<i>string</i>], [<a href="#flagqueryEdit">queryEdit</a>=<i>boolean</i>], [<a href="#flagrename">rename</a>=<i>boolean</i>], [<a href="#flagtagName">tagName</a>=<i>string</i>]) </code> <br><br><font size="-1"><i>Note: Strings representing object names and arguments must be separated by commas. This is not depicted in the synopsis.</i></font></p>
+      <p>componentTag is undoable, <b>NOT queryable</b>, and <b>NOT editable</b>.</p>
+      This command allows you to create, delete and modify component tags
+	  
+      <h2><a name="hReturn">Return value</a></h2>
+      <table><tr><td valign="top"><i>Any</i></td><td>The name of the created componentTag, or whether the command succeeded or the information
+about what can be edited</td></tr></table>
+      
+      <h2><a name="hRelated">Related</a></h2><a href="deformableShape.html">deformableShape</a>, <a href="geometryAttrInfo.html">geometryAttrInfo</a>
+
+      
+    <h2><a name="hFlags">Flags</a></h2>
+      <a href="#flagcreate">create</a>, <a href="#flagdelete">delete</a>, <a href="#flaginjectionLocation">injectionLocation</a>, <a href="#flagmodify">modify</a>, <a href="#flagnewTagName">newTagName</a>, <a href="#flagqueryEdit">queryEdit</a>, <a href="#flagrename">rename</a>, <a href="#flagtagName">tagName</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">Long name (short name)</th>
+          <th bgcolor="#CCCCCC"><i>Argument types</i></th>
+          <th bgcolor="#CCCCCC">Properties</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcreate">
+          <code><b>create</b>(<b>cr</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+This creates a componentTag on the geometry. The name can be specified with the
+-newTagName option. If no new name is specified one will be generated.
+The name of the created tag is returned
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdelete">
+          <code><b>delete</b>(<b>d</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+This deletes the componentTags specified with the -tagName option.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flaginjectionLocation">
+          <code><b>injectionLocation</b>(<b>il</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The name of the injection node at which the componentTag will be edited.
+This is only necessary in the rare case where a particular componentTag
+can be altered at multiple injection locations.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmodify">
+          <code><b>modify</b>(<b>m</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+This modifies the componentTag specified with the -tagName option.
+The mode determines whether components are, replaced, cleared, added or removed.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagnewTagName">
+          <code><b>newTagName</b>(<b>ntn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The name of the new componentTag to be created or the new name
+of the componentTag that is being renamed.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagqueryEdit">
+          <code><b>queryEdit</b>(<b>qe</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+This returns what edits are allowed with the given parameters. When the command
+is issued in Python a dictionary object containing what is allowed is returned.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrename">
+          <code><b>rename</b>(<b>rn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+This renames the componentTag specified with the -tagName option to the
+name specified with the -newTagName option
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtagName">
+          <code><b>tagName</b>(<b>tn</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+The name(s) of the componentTags to be edited. THis can be a single name or
+a list of names. The names can contain wildcard like '*' to match multiple
+existing componentTags.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                Flag can appear in Create mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                Flag can appear in Edit mode of command
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                Flag can appear in Query mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                Flag can have multiple arguments, passed either as a tuple or a list.
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python examples</a></h2><pre>import maya.cmds as cmds
+
+    # Make a geometry
+    import maya.cmds as cmds
+    cmds.polyCylinder(ch=True, o=True, r=3.0, h=8.0, sc=1, sx=6, sy=9, cuv=3, name='cyl')
+
+    # Create some tags
+    cmds.componentTag(['cyl.f[0:17]'], cr=True, ntn='bottomSection')
+    cmds.componentTag(['cyl.f[36:53]'], cr=True, ntn='topSection')
+
+    # Edit a tag
+    cmds.componentTag(['cyl.f[18:35]'], tn='bottomSection', m='add')
+
+    # Rename the tag
+    cmds.componentTag('cyl', rn=True, tn='bottomSection', ntn='lowerSection')
+
+    # Delete tags (using a wild card)
+    cmds.componentTag('cyl', d=True, tn='*Section')
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

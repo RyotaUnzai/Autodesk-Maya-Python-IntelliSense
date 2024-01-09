@@ -1,0 +1,82 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>bluePencilDrawCtx command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-bluePencilDrawCtx"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>command</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/bluePencilDrawCtx.html">MEL version</a></i></font></td>
+		  </tr><tr>
+		  <td><h1>bluePencilDrawCtx <div class="version middle">2023</div></h1></td>
+			<td align="right">In categories: <a href="cat_Animation.html" target="contentFrame">Animation</a>, <a href="cat_Animation.html#BluePencil" target="contentFrame">Blue Pencil</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("bluePencilDrawCtx.html");</script>
+      </p>
+      <p>Go to: <a href="#hSynopsis">Synopsis</a>. <a href="#hReturn">Return value</a>. <a href="#hExamples">Python examples</a>. </p>
+
+      <h2><a name="hSynopsis">Synopsis</a></h2>
+      <p id="synopsis"> <code>bluePencilDrawCtx() </code> <br><br><font size="-1"><i>Note: Strings representing object names and arguments must be separated by commas. This is not depicted in the synopsis.</i></font></p>
+      <p>bluePencilDrawCtx is undoable, queryable, and editable.</p>
+      Command to create the blue pencil drawing context.
+	  
+      <h2><a name="hReturn">Return value</a></h2>
+      <p><i>None</i></p><p>In query mode, return type is based on queried flag.</p>
+      
+      
+
+      
+
+<h2><a name="hExamples">Python examples</a></h2><pre>import maya.cmds as cmds
+
+// Create blue pencil draw context.
+cmds.bluePencilDrawCtx('contextName')
+
+// Flag the draw context as dirty.
+cmds.bluePencilDrawCtx(e=True, 'contextName')
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

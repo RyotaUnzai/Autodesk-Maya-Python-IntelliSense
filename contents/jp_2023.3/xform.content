@@ -1,0 +1,1135 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>xform command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-xform"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/xform.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>xform </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_General.html" target="contentFrame">一般</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("xform.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hNotes">注</a>. <a href="#hReturn">戻り値</a>. <a href="#hRelated">関連</a>. <a href="#hFlags">フラグ</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>xform(
+[objects...]
+    , [<a href="#flagabsolute">absolute</a>=<i>boolean</i>], [<a href="#flagboundingBox">boundingBox</a>=<i>boolean</i>], [<a href="#flagboundingBoxInvisible">boundingBoxInvisible</a>=<i>boolean</i>], [<a href="#flagcenterPivots">centerPivots</a>=<i>boolean</i>], [<a href="#flagcenterPivotsOnComponents">centerPivotsOnComponents</a>=<i>boolean</i>], [<a href="#flagdeletePriorHistory">deletePriorHistory</a>=<i>boolean</i>], [<a href="#flageuler">euler</a>=<i>boolean</i>], [<a href="#flagmatrix">matrix</a>=<i>[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]</i>], [<a href="#flagobjectSpace">objectSpace</a>=<i>boolean</i>], [<a href="#flagpivots">pivots</a>=<i>[linear, linear, linear]</i>], [<a href="#flagpreserve">preserve</a>=<i>boolean</i>], [<a href="#flagpreserveUV">preserveUV</a>=<i>boolean</i>], [<a href="#flagreflection">reflection</a>=<i>boolean</i>], [<a href="#flagreflectionAboutBBox">reflectionAboutBBox</a>=<i>boolean</i>], [<a href="#flagreflectionAboutOrigin">reflectionAboutOrigin</a>=<i>boolean</i>], [<a href="#flagreflectionAboutX">reflectionAboutX</a>=<i>boolean</i>], [<a href="#flagreflectionAboutY">reflectionAboutY</a>=<i>boolean</i>], [<a href="#flagreflectionAboutZ">reflectionAboutZ</a>=<i>boolean</i>], [<a href="#flagreflectionTolerance">reflectionTolerance</a>=<i>float</i>], [<a href="#flagrelative">relative</a>=<i>boolean</i>], [<a href="#flagrotateAxis">rotateAxis</a>=<i>[angle, angle, angle]</i>], [<a href="#flagrotateOrder">rotateOrder</a>=<i>string</i>], [<a href="#flagrotatePivot">rotatePivot</a>=<i>[linear, linear, linear]</i>], [<a href="#flagrotateTranslation">rotateTranslation</a>=<i>[linear, linear, linear]</i>], [<a href="#flagrotation">rotation</a>=<i>[angle, angle, angle]</i>], [<a href="#flagscale">scale</a>=<i>[float, float, float]</i>], [<a href="#flagscalePivot">scalePivot</a>=<i>[linear, linear, linear]</i>], [<a href="#flagscaleTranslation">scaleTranslation</a>=<i>[linear, linear, linear]</i>], [<a href="#flagshear">shear</a>=<i>[float, float, float]</i>], [<a href="#flagtranslation">translation</a>=<i>[linear, linear, linear]</i>], [<a href="#flagworldSpace">worldSpace</a>=<i>boolean</i>], [<a href="#flagworldSpaceDistance">worldSpaceDistance</a>=<i>boolean</i>], [<a href="#flagzeroTransformPivots">zeroTransformPivots</a>=<i>boolean</i>]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>xform は、取り消し可能、照会可能、および<b>編集不可能</b>です。</p>
+      <p>
+このコマンドは、変換ノードにおける、あらゆる要素の照会/設定に使用できます。また、変換行列やバウンディング ボックスのような、直接設定できない値を照会することもできます。ピボット ポイントを設定することもできます。
+<p>
+すべての値は、変換の座標(アトリビュート - スペース)で指定します。
+<p>
+また、アトリビュートは「フラグ」セクションに記述された順番に適用され、値を返します。(この順番は下記の変換行列に表示されている順序に対応しています。)
+<p>
+<b>関連項目:</b> move、rotate、scale
+<p>
+	  <h2><a name="hNotes">注</a></h2>
+ノードに対する変換行列は、指定した順序で次の行列を後で掛け合わせて作成されます(注: 回転は回転順序パラメータに従って適用されます。以下にはこの 6 種類の回転は示されていません) 
+<pre>
+-1                       -1
+[M]  = [sp]x[s]x[sh]x[sp]x[st]x[rp]x[ar]x[ro]x[rp]x[rt]x[t]
+<p>
+ここで:
+<p>
+[sp] = |  1      0        0       0 | = スケール ピボット行列
+|  0      1        0       0 |
+|  0      0        1       0 |
+| -spx   -spy     -spz     1 |
+<p>
+<p>
+[s]  = |  sx     0        0       0 | = スケール行列
+|  0      sy       0       0 |
+|  0      0        sz      0 |
+|  0      0        0       1 |
+<p>
+<p>
+[sh] = |  1      0        0       0 | = シア行列
+|  xy     1        0       0 |
+|  xz     yz       1       0 |
+|  0      0        0       1 |
+<p>
+-1
+[sp] = |  1       0       0       0 | = スケール ピボット逆行列
+|  0       1       0       0 |
+|  0       0       1       0 |
+|  spx     spy     spz     1 |
+<p>
+<p>
+[st] = |  1       0       0       0 | = スケール移動行列
+|  0       1       0       0 |
+|  0       0       1       0 |
+|  stx     sty     stz     1 |
+<p>
+<p>
+[rp] = |  1       0       0       0 | = 回転ピボット行列
+|  0       1       0       0 |
+|  0       0       1       0 |
+| -rpx    -rpy    -rpz     1 |
+<p>
+<p>
+[ar] = |  *       *       *       0 | = 軸回転行列
+|  *       *       *       0 |   (合成回転、詳細は
+|  *       *       *       0 |    以下の[rx]、
+|  0       0       0       1 |    [ry]、[rz]を参照)
+<p>
+<p>
+[rx] = |  1       0       0       0 | = 回転 X 行列
+|  0       cos(x)  sin(x)  0 |
+|  0      -sin(x)  cos(x)  0 |
+|  0       0       0       1 |
+<p>
+<p>
+[ry] = |  cos(y)  0      -sin(y)  0 | = 回転 Y 行列 
+|  0       1       0       0 |
+|  sin(y)  0       cos(y)  0 |
+|  0       0       0       1 |
+<p>
+<p>
+[rz] = |  cos(z)  sin(z)  0       0 | = 回転 Z 行列
+| -sin(z)  cos(z)  0       0 |
+|  0       0       1       0 |
+|  0       0       0       1 |
+<p>
+-1
+[rp] = |  1       0       0       0 | = 回転ピボット行列
+|  0       1       0       0 |
+|  0       0       1       0 |
+|  rpx     rpy     rpz     1 |
+<p>
+<p>
+[rt] = |  1       0       0       0 | = 回転移動行列
+|  0       1       0       0 |
+|  0       0       1       0 |
+|  rtx     rty     rtz     1 |
+<p>
+<p>
+[t]  = |  1       0       0       0 | =  移動行列
+|  0       1       0       0 |
+|  0       0       1       0 |
+|  tx      ty      tz      1 |
+</pre>
+<p>
+  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <p><i>なし</i></p><p>照会モードでは、戻り値のタイプは照会されたフラグに基づきます。</p>
+      
+      <h2><a name="hRelated">関連</a></h2><a href="move.html">move</a>, <a href="rotate.html">rotate</a>, <a href="scale.html">scale</a>
+
+      
+    <h2><a name="hFlags">フラグ</a></h2>
+      <a href="#flagabsolute">absolute</a>, <a href="#flagboundingBox">boundingBox</a>, <a href="#flagboundingBoxInvisible">boundingBoxInvisible</a>, <a href="#flagcenterPivots">centerPivots</a>, <a href="#flagcenterPivotsOnComponents">centerPivotsOnComponents</a>, <a href="#flagdeletePriorHistory">deletePriorHistory</a>, <a href="#flageuler">euler</a>, <a href="#flagmatrix">matrix</a>, <a href="#flagobjectSpace">objectSpace</a>, <a href="#flagpivots">pivots</a>, <a href="#flagpreserve">preserve</a>, <a href="#flagpreserveUV">preserveUV</a>, <a href="#flagreflection">reflection</a>, <a href="#flagreflectionAboutBBox">reflectionAboutBBox</a>, <a href="#flagreflectionAboutOrigin">reflectionAboutOrigin</a>, <a href="#flagreflectionAboutX">reflectionAboutX</a>, <a href="#flagreflectionAboutY">reflectionAboutY</a>, <a href="#flagreflectionAboutZ">reflectionAboutZ</a>, <a href="#flagreflectionTolerance">reflectionTolerance</a>, <a href="#flagrelative">relative</a>, <a href="#flagrotateAxis">rotateAxis</a>, <a href="#flagrotateOrder">rotateOrder</a>, <a href="#flagrotatePivot">rotatePivot</a>, <a href="#flagrotateTranslation">rotateTranslation</a>, <a href="#flagrotation">rotation</a>, <a href="#flagscale">scale</a>, <a href="#flagscalePivot">scalePivot</a>, <a href="#flagscaleTranslation">scaleTranslation</a>, <a href="#flagshear">shear</a>, <a href="#flagtranslation">translation</a>, <a href="#flagworldSpace">worldSpace</a>, <a href="#flagworldSpaceDistance">worldSpaceDistance</a>, <a href="#flagzeroTransformPivots">zeroTransformPivots</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">ロング ネーム(ショート ネーム)</th>
+          <th bgcolor="#CCCCCC"><i>引数タイプ</i></th>
+          <th bgcolor="#CCCCCC">プロパティ</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagabsolute">
+          <code><b>absolute</b>(<b>a</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+絶対値による変換を実行します(既定)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagboundingBox">
+          <code><b>boundingBox</b>(<b>bb</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+オブジェクトのバウンディング ボックスを返します。戻り値は次の順序で戻されます: x の最小値、y の最小値、z の最小値、x の最大値、y の最大値、z の最大値
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagboundingBoxInvisible">
+          <code><b>boundingBoxInvisible</b>(<b>bbi</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+オブジェクトのバウンディング ボックスを返します。boundingBox フラグを使用した場合は、含まれないすべての非表示の子のバウンディング ボックスも含まれます。戻り値は次の順序で返されます。x の最小値、y の最小値、z の最小値、x の最大値、y の最大値、z の最大値
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcenterPivots">
+          <code><b>centerPivots</b>(<b>cp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ピボット ポイントを、オブジェクトのバウンディング ボックスの中心に設定します(-p フラグを参照)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcenterPivotsOnComponents">
+          <code><b>centerPivotsOnComponents</b>(<b>cpc</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ピボット ポイントを、コンポーネントのバウンディング ボックスの中心に設定します(-p フラグを参照)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdeletePriorHistory">
+          <code><b>deletePriorHistory</b>(<b>dph</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+true の場合、操作が実行される前にコンストラクション ヒストリが削除されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flageuler">
+          <code><b>euler</b>(<b>eu</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+回転値を指定する -relative フラグの修飾子で、現在の XYZ 回転値に加算されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagmatrix">
+          <code><b>matrix</b>(<b>m</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[float, float, float, float, float, float, float, float, float, float, float, float, float, float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+変換行列を作成または返します。＊注＊ 行列は、列の順番で指定される 16 個の double 型の引数で表されます。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagobjectSpace">
+          <code><b>objectSpace</b>(<b>os</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+(ピボット、移動、回転、回転軸、行列、バウンディング ボックス フラグのみに有効な)オブジェクト空間の変換値として値を扱います。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpivots">
+          <code><b>pivots</b>(<b>piv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+回転とピボットのスケールを同時に変更する便利な方法です(詳細は -rp -sp フラグを参照)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpreserve">
+          <code><b>preserve</b>(<b>p</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+変換全体を保持します。またピボットや回転順序の変更時に、オブジェクトが「ジャンプ」するのを防ぐために使用されます。既定値は true です ( -sp、-rp、-roo、-cp、-ra フラグとともに使用)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagpreserveUV">
+          <code><b>preserveUV</b>(<b>puv</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+true の場合、回転されるコンポーネント上の UV 値は、3D 空間の回転から投影されます。小さな編集では、これによりワールド空間のオブジェクト上のテクスチャ マッピングがフリーズします。false の場合は、選択した頂点の UV 値は変更されません。既定は false です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreflection">
+          <code><b>reflection</b>(<b>rfl</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+対応する対称的なコンポーネントも移動します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreflectionAboutBBox">
+          <code><b>reflectionAboutBBox</b>(<b>rab</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+対称軸の位置をジオメトリのバウンディング ボックスに設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreflectionAboutOrigin">
+          <code><b>reflectionAboutOrigin</b>(<b>rao</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+原点に対称軸の位置を設定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreflectionAboutX">
+          <code><b>reflectionAboutX</b>(<b>rax</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+X=0 を対称プレーンとして指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreflectionAboutY">
+          <code><b>reflectionAboutY</b>(<b>ray</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Y=0 を対称プレーンとして指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreflectionAboutZ">
+          <code><b>reflectionAboutZ</b>(<b>raz</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Z=0 を対称プレーンとして指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagreflectionTolerance">
+          <code><b>reflectionTolerance</b>(<b>rft</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>float</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+対応する対称コンポーネントを見つける許容値を指定します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrelative">
+          <code><b>relative</b>(<b>r</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+相対値による変換を実行します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrotateAxis">
+          <code><b>rotateAxis</b>(<b>ra</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[angle, angle, angle]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+回転軸の方向です(-p フラグとともに使用する場合は、回転全体における、軸回転の補正のために回転に変更が加えられるのを防ぎます)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrotateOrder">
+          <code><b>rotateOrder</b>(<b>roo</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+回転の順番です(-p フラグとともに使用する場合は、ローカル回転にオリジナルのものと同等になるよう修正を加え、変換全体を保持します)。このフラグに対する有効な値は、&lt;xyz | yzx | zxy | xzy | yxz | zyx&gt; です。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrotatePivot">
+          <code><b>rotatePivot</b>(<b>rp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ピボット ポイントで回転変換します(-p フラグとともに使用する場合は、変換全体の回転変換に変更が加えられるのを防ぎます)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrotateTranslation">
+          <code><b>rotateTranslation</b>(<b>rt</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+回転移動します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagrotation">
+          <code><b>rotation</b>(<b>ro</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[angle, angle, angle]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+回転変換します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagscale">
+          <code><b>scale</b>(<b>s</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+スケール変換します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagscalePivot">
+          <code><b>scalePivot</b>(<b>sp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+ピボット ポイントでスケール変換します(-p フラグとともに使用する場合は、トランスフォーム全体のスケール変換に変更が加えられるのを防ぎます)。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagscaleTranslation">
+          <code><b>scaleTranslation</b>(<b>st</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+スケール移動します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagshear">
+          <code><b>shear</b>(<b>sh</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[float, float, float]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+シア変換します。値はシアの &lt;xy,xz,yz&gt; を表します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagtranslation">
+          <code><b>translation</b>(<b>t</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>[linear, linear, linear]</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+移動します。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagworldSpace">
+          <code><b>worldSpace</b>(<b>ws</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+(ピボット、移動、回転、回転軸、行列、バウンディング ボックス フラグに対して有効。)スケールの照会時は、この計算は累積的なものであり、すべてが均等スケールで回転がない場合のみ有効になることに注意してください。不均等スケールと回転のある階層の場合、この値は認識されたグローバル スケールと正確に一致しない場合があります。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagworldSpaceDistance">
+          <code><b>worldSpaceDistance</b>(<b>wd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+-sp、-rp、-st、-rt、-t、-piv フラグの値は、ローカル軸に沿って動くワールド空間の距離として扱われます。ローカル軸は、コマンドがローカル空間、またはオブジェクト空間で機能しているかどうかによって異なります。このフラグは、ワールド空間では効果がありません。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagzeroTransformPivots">
+          <code><b>zeroTransformPivots</b>(<b>ztp</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/create.gif" alt="create" title="create" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+移動チャネルにこれらの値を適用することにより、行列全体を変更せずにピボット ポイントとピボットの移動をリセットします。
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                フラグはコマンドの作成モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                フラグはコマンドの編集モードで表示できます
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                フラグはコマンドの照会モードで表示できます
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                フラグに複数の引数を指定し、タプルまたはリストとして渡すことができます。
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+# create object to manipulate
+cmds.sphere( n='sphere1' )
+
+# set rotation of sphere
+cmds.xform( r=True, ro=(0, 90, 0) )
+
+# change the rotate order but preserve the overall transformation
+cmds.xform( p=True, roo='yzx' )
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

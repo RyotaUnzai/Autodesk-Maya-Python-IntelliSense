@@ -1,0 +1,335 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>proximityWrap command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-proximityWrap"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>command</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/proximityWrap.html">MEL version</a></i></font></td>
+		  </tr><tr>
+		  <td><h1>proximityWrap </h1></td>
+			<td align="right">In categories: <a href="cat_Animation.html" target="contentFrame">Animation</a>, <a href="cat_Animation.html#Deformation" target="contentFrame">Deformation</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("proximityWrap.html");</script>
+      </p>
+      <p>Go to: <a href="#hSynopsis">Synopsis</a>. <a href="#hReturn">Return value</a>. <a href="#hFlags">Flags</a>. <a href="#hExamples">Python examples</a>. </p>
+
+      <h2><a name="hSynopsis">Synopsis</a></h2>
+      <p id="synopsis"> <code>proximityWrap(
+[objects]
+    , [<a href="#flagaddDrivers">addDrivers</a>=<i>string</i>], [<a href="#flagapplyUserDefaults">applyUserDefaults</a>=<i>boolean</i>], [<a href="#flagcanBeAdded">canBeAdded</a>=<i>string</i>], [<a href="#flagdriverIndices">driverIndices</a>=<i>boolean</i>], [<a href="#flagdumpInfo">dumpInfo</a>=<i>boolean</i>], [<a href="#flagfreeDriverIndex">freeDriverIndex</a>=<i>boolean</i>], [<a href="#flagremoveDrivers">removeDrivers</a>=<i>string</i>]) </code> <br><br><font size="-1"><i>Note: Strings representing object names and arguments must be separated by commas. This is not depicted in the synopsis.</i></font></p>
+      <p>proximityWrap is undoable, queryable, and editable.</p>
+      This command creates a proximityWrap deformer, which deforms geometry based on the
+distance from its drivers.
+<p>
+	  
+      <h2><a name="hReturn">Return value</a></h2>
+      <table><tr><td valign="top"><i>string[]</i></td><td>(the proximityWrap node name)</td></tr></table><p>In query mode, return type is based on queried flag.</p>
+      
+      
+
+      
+    <h2><a name="hFlags">Flags</a></h2>
+      <a href="#flagaddDrivers">addDrivers</a>, <a href="#flagapplyUserDefaults">applyUserDefaults</a>, <a href="#flagcanBeAdded">canBeAdded</a>, <a href="#flagdriverIndices">driverIndices</a>, <a href="#flagdumpInfo">dumpInfo</a>, <a href="#flagfreeDriverIndex">freeDriverIndex</a>, <a href="#flagremoveDrivers">removeDrivers</a>
+      <table width="100%">
+        <tr>
+          <th bgcolor="#CCCCCC">Long name (short name)</th>
+          <th bgcolor="#CCCCCC"><i>Argument types</i></th>
+          <th bgcolor="#CCCCCC">Properties</th>
+        </tr>
+        <tr bgcolor="#DDDDDD"><td colspan="3"><u></u></td></tr>
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagaddDrivers">
+          <code><b>addDrivers</b>(<b>ad</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Add connect new drivers to the proximityWrap node
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagapplyUserDefaults">
+          <code><b>applyUserDefaults</b>(<b>aud</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Flag used in with the addDriver flag. When set, new drivers will set the
+user default attributes from the option var settings. When the flag is not set,
+the user default attributes will not be set.
+Default is on.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagcanBeAdded">
+          <code><b>canBeAdded</b>(<b>cba</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Returns true if all listed shapes can be added as drivers. The reason for an item
+returning false would be that it is already connected as a driver, it is connected
+as the deformed geometry or it represents in invalid object.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdriverIndices">
+          <code><b>driverIndices</b>(<b>di</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+List connected driver indices
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagdumpInfo">
+          <code><b>dumpInfo</b>(<b>dui</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Return a python dictionary containing information relating to the proximityWrap
+node. Some information is returned in string form in mel but the flag is meant to be used
+in python.
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagfreeDriverIndex">
+          <code><b>freeDriverIndex</b>(<b>fdi</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>boolean</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/query.gif" alt="query" title="query" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Returns the first index which has no driver connected
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+
+    <tr bgcolor="#EEEEEE">
+      <td valign="top">
+        <a name="flagremoveDrivers">
+          <code><b>removeDrivers</b>(<b>rd</b>)</code></a> 
+      </td>
+      <td valign="top">
+        <code><i>string</i></code>
+      </td>
+      <td valign="top">
+<img src="../gfx/edit.gif" alt="edit" title="edit" width="13" height="16" hspace="2" vspace="2"><img src="../gfx/multiuse.gif" alt="multiuse" title="multiuse" width="13" height="16" hspace="2" vspace="2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <table width="100%">
+          <tr>
+        <td width="5%"></td>
+          <td>
+
+Remove connected drivers
+      
+          </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+      </table>
+      <hr>
+        <table border="0" cellspacing="1" cellpadding="4" bgcolor="#EEEEEE">
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/create.gif">
+                Flag can appear in Create mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/edit.gif">
+                Flag can appear in Edit mode of command
+            </td>
+          </tr>
+          <tr>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/query.gif">
+                Flag can appear in Query mode of command
+            </td>
+            <td valign="top"><img hspace="2" height="16" width="14" src="../gfx/multiuse.gif">
+                Flag can have multiple arguments, passed either as a tuple or a list.
+            </td>
+          </tr>
+        </table>
+
+
+<h2><a name="hExamples">Python examples</a></h2><pre>import maya.cmds as cmds
+
+# Add drivers to the proximityWrap
+cmds.proximityWrap('proximityWrap1', edit=True, addDrivers=['driverShape1', 'driverShape2'])
+
+# Add driver to the proximityWrap and skip setting the initial attributes
+cmds.proximityWrap('proximityWrap1', edit=True, applyUserDefaults=True, addDrivers=['driverShape2'])
+
+# Remove drivers
+cmds.proximityWrap('proximityWrap1', edit=True, removeDrivers=['driverShape1', 'driverShape2')
+
+# List driver indices (returns [0, 1])
+cmds.proximityWrap('proximityWrap1', query=True, driverIndices=True)
+
+# List free driver index (returns 2)
+cmds.proximityWrap('proximityWrap1', query=True, freeDriverIndex=True)
+
+# Query can be added
+cmds.proximityWrap('proximityWrap1', query=True, canBeAdded=['driverShape1'])
+
+# Dump info
+cmds.proximityWrap('proximityWrap1', query=True, dumpInfo= proximityWrap1)
+
+
+  </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+

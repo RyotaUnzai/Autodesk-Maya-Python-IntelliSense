@@ -1,0 +1,77 @@
+<!-- saved from url=(0024)http://docs.autodesk.com -->
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>ubercam command</title>
+      <meta name="section" content="Commands">
+      <meta name="module" content="MEL and expressions">
+      <script src="../style/tech.js">.</script>
+      <script src="../style/document.js">.</script>
+      <link rel="StyleSheet" href="../style/tech.css" type="text/css" media="all">
+    <meta name="contextid" content="CommandsPython-ubercam"></head>
+    <body class="command" onload="highLightSearch();">
+      <div id="banner">
+		<table width="100%"><tr>
+			<td><font size="-1"><b>コマンド</b> (Python)</font></td>
+			<td align="right"><font size="-1"><i><a href="../Commands/ubercam.html">MEL バージョン</a></i></font></td>
+		  </tr><tr>
+			<td><h1>ubercam </h1></td>
+			<td align="right">カテゴリ内: <a href="cat_Animation.html" target="contentFrame">アニメーション</a></td>
+		  </tr></table>
+      </div>
+      <p class="toolbar" align="right">
+		<script>toolbar("ubercam.html");</script>
+      </p>
+      <p>ジャンプ先: <a href="#hSynopsis">概要</a>. <a href="#hReturn">戻り値</a>. <a href="#hKeywords">キーワード</a>. <a href="#hExamples">Python 例</a>. </p>
+
+      <h2><a name="hSynopsis">概要</a></h2>
+      <p id="synopsis"> <code>ubercam([string]) </code> <br><br><font size="-1"><i>注: オブジェクトの名前と引数を表す文字列は、カンマで区切る必要があります。これはシノプシスに示されていません。</i></font></p>
+      <p>ubercam は、取り消し可能、<b>照会不可能</b>、および<b>編集不可能</b>です。</p>
+      シーケンサのショットで使用されるすべてのカメラと同等の動作をする&quot;ubercam&quot; を作成します。
+	  
+      <h2><a name="hReturn">戻り値</a></h2>
+      <table><tr><td valign="top"><i>string</i></td><td>Ubercam name</td></tr></table>
+      <h2><a name="hKeywords">キーワード</a></h2>sequencer, shot, camera
+      
+
+      
+
+<h2><a name="hExamples">Python 例</a></h2><pre>import maya.cmds as cmds
+
+camera = cmds.shot('myUbercam');
+	</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+  </html>
+  
+
