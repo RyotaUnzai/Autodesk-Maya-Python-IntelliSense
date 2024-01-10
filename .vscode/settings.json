@@ -25,13 +25,13 @@
     "python.envFile": "${workspaceFolder}/.env",
     "python.autoComplete.extraPaths": [
         "${workspaceFolder}\\.venv\\Lib",
-        "${workspaceFolder}\\jp_maya2024.2\\typings",
-        "C:\\Program Files\\Autodesk\\jp_maya2024.2\\Python\\Lib\\site-packages",
+        "${workspaceFolder}\\en_maya2024.2\\typings",
+        "C:\\Program Files\\Autodesk\\en_maya2024.2\\Python\\Lib\\site-packages",
     ],
     "python.analysis.extraPaths": [
         "${workspaceFolder}\\.venv\\Lib",
-        "${workspaceFolder}\\jp_maya2024.2\\typings",
-        "C:\\Program Files\\Autodesk\\jp_maya2024.2\\Python\\Lib\\site-packages",
+        "${workspaceFolder}\\en_maya2024.2\\typings",
+        "C:\\Program Files\\Autodesk\\en_maya2024.2\\Python\\Lib\\site-packages",
     ],
     "python.analysis.diagnosticSeverityOverrides": {
         "reportShadowedImports": "none"
