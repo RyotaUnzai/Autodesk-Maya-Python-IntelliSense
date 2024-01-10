@@ -13,8 +13,11 @@ Autodesk Maya Python IntelliSense is a stub file for static type checking in Pyt
 |                        |     | 
 | ---------------------- | --- | 
 | Argument and return type hints | ![](img/Intellisense_hint.png) | 
+| Return Type Hints | ![](img/Intellisense_return.png)|
 | Synopsis of command | ![](img/Intellisense_docs.png) | 
-| hyperlink | ![](img/Intellisense_url.png) | 
+| Hyperlink | ![](img/Intellisense_url.png) | 
+| Syntaxhighlight | ![](img/Intellisense_syntaxhighlight.png)|
+| Quaryable | ![](img/Intellisense_query.png)|
 
 ## What is required for introduction
 To use it, you need to load the stub file and configure mypy in your IDE. Please make the necessary settings when installing. This repository is a good reference for setting up VSCode.
@@ -35,7 +38,8 @@ If you want to build it yourself, clone this repository.
     
 | argument  | Description | Default values | 
 | --- | --- | --- | 
-| version | Specify Maya version such as 2023, 2024.2 | 2024 | 
-| export_path | Define the folder destination you want to output to | ${workspaceFolder}\\maya2024 | 
-| document_dir | Specify the document directory to be referenced.You need to download the document from the [official page](https://www.autodesk.com/support/technical/article/caas/tsarticles/ts/6hGHDwrHzKBq8zd65p4LpK.html). Please download and deploy the corresponding documentation, including minor versions. Maya Creative is not supported. | ${workspaceFolder}\\mayaProductHelps|
+| version | Specify Maya version such as 2023, 2024.2 | 2024.2 | 
+| language | Language setting, en or jp | en | 
+| export_path | Define the folder destination you want to output to | ${workspaceFolder}\\en_maya2024.2 | 
+| document_dir | Specify the document directory to be referenced.You need to download the document from the [official page](https://www.autodesk.com/support/technical/article/caas/tsarticles/ts/6hGHDwrHzKBq8zd65p4LpK.html). Please download and deploy the corresponding documentation, including minor versions. Maya Creative is not supported. | ${workspaceFolder}\\mayaProductHelps |
 
