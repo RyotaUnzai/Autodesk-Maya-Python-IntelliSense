@@ -74,7 +74,6 @@ class Common(BaseModel):
     def create_new_type_list(cls, v: Any) -> dict[str, list[NewType]]:
         return {"items": [NewType(name=item[0], type=item[1]) for item in v]}
 
-
     @validator("html_contens", pre=True)
     def create_html_contens(cls, v: Any) -> HtmlContens:
         return HtmlContens(**v)
@@ -89,6 +88,29 @@ class Common(BaseModel):
         return values
 
 
+class OpenMaya1(BaseModel):
+    folder: str
+    documents: str
+    OpenMaya: Path
+    OpenMayaAnim: Path
+    OpenMayaFX: Path
+    OpenMayaRender: Path
+    OpenMayaUI: Path
+    FunctionSet: Path
+    Proxy: Path
+
+    class Config:
+        populate_by_name = True
+
+    @root_validator(pre=True)
+    def create_html_code(cls, v: dict[str, Any]) -> dict[str, Any]:
+        folder = v.get("folder")
+        for key, value in v.items():
+            if key not in ["folder", "documents"]:
+                v[key] = Path(folder) / f"{value}.html"
+        return v
+
+
 class Maya(BaseModel):
     version: int
     python: str
@@ -97,6 +119,7 @@ class Maya(BaseModel):
     documents: str
     language: str
     versioning: str
+    openmaya1: OpenMaya1 = Field(alias="OpenMaya1")
 
     class Config:
         populate_by_name = True
@@ -117,6 +140,9 @@ class Maya(BaseModel):
         if language and isinstance(documents, dict):
             values["documents"] = documents.get(versioning, "").get(language, "")
 
+        openmaya1 = values.get("OpenMaya1", {})
+        if isinstance(openmaya1, dict):
+            openmaya1["documents"] = openmaya1.get("documents", "").get(versioning, "")
         return values
 
 
@@ -133,6 +159,15 @@ class HTags(Enum):
     hExamples = "hExamples"
     hRelated = "hRelated"
     hNotes = "hNotes"
+
+
+class OpenMayaAPI1(Enum):
+    OpenMaya = "OpenMaya"
+    OpenMayaAnim = "OpenMayaAnim"
+    OpenMayaFX = "OpenMayaFX"
+    OpenMayaMPx = "OpenMayaMPx"
+    OpenMayaRender = "OpenMayaRender"
+    OpenMayaUI = "OpenMayaUI"
 
 
 class Arguments(BaseModel):

@@ -18,3 +18,19 @@ documents:
       Autodesk Maya User Guide 2024.2 (ADE 2.1)=en
     jp:
       Autodesk Maya User Guide 2024.2 (ADE 2.1)=ja
+OpenMaya1:
+  folder: cpp_ref
+  documents:
+    2024:
+      maya-2024-developer-help-enu
+    2024.1:
+      maya-2024.1-developer-help-enu
+    2024.2:
+      maya-2024-developer-help-enu
+  OpenMaya: group___open_maya
+  OpenMayaAnim: group___open_maya_anim
+  OpenMayaFX: group___open_maya_f_x
+  OpenMayaRender: group___open_maya_render
+  OpenMayaUI: group___open_maya_u_i
+  FunctionSet: group___m_fn
+  Proxy: group___m_px
