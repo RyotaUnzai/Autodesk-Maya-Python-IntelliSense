@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any
 
 import autopep8
-from bs4 import BeautifulSoup, NavigableString, Tag
+from bs4 import BeautifulSoup, NavigableString, Tag, element
 
 from models import (
     ArgumentData,
@@ -38,17 +38,47 @@ class CreateOpenMayaPYI:
 
     def __init__(
         self,
-        # document_root: str | Path,
+        document_root: str | Path,
         # export_path: str | Path,
         option: IntelliSenseOptionModel,
     ) -> None:
         self.option = option
-        self.document_root = r"D:\development\github\Autodesk-Maya-Python-IntelliSense\mayaProductHelps\maya-2024-developer-help-enu"
-        base = r"D:/development/github/Autodesk-Maya-Python-IntelliSense/mayaProductHelps/maya-2024-developer-help-enu/index.html#!/url=./cpp_ref/group___open_maya.html"
+        if isinstance(document_root, str):
+            document_root = Path(document_root)
+        self.document_root = document_root
+        # base = r"D:/development/github/Autodesk-Maya-Python-IntelliSense/mayaProductHelps/maya-2024-developer-help-enu/index.html#!/url=./cpp_ref/group___open_maya.html"
 
         # Path(document_root) / self.option.maya.documents / "CommandsPython"
         # self.export_path = Path(export_path)
         self.commands_data = {}
+
+    @cached_property
+    def openMayaPath(self) -> Path:
+        return self.document_root / "cpp_ref/group___open_maya.html"
+
+    @cached_property
+    def openMayaAnimPath(self) -> Path:
+        return self.document_root / "cpp_ref/group___open_maya_anim.html"
+
+    @cached_property
+    def openMayaFXPath(self) -> Path:
+        return self.document_root / "cpp_ref/group___open_maya_f_x.html"
+
+    @cached_property
+    def openMayaRenderPath(self) -> Path:
+        return self.document_root / "cpp_ref/group___open_maya_render.html"
+
+    @cached_property
+    def openMayaUIPath(self) -> Path:
+        return self.document_root / "cpp_ref/group___open_maya_u_i.html"
+
+    @cached_property
+    def functionSetPath(self) -> Path:
+        return self.document_root / "cpp_ref/group___m_fn.html"
+
+    @cached_property
+    def proxyPath(self) -> Path:
+        return self.document_root / "cpp_ref/group___m_px.html"
 
     def __init_export_dir(self) -> None:
         self.export_path.mkdir(exist_ok=True)
@@ -60,48 +90,32 @@ class CreateOpenMayaPYI:
         maya_dir.mkdir(exist_ok=True)
         return maya_dir
 
+    def get_html_content(self, path: Path) -> str:
+        with open(path, "r") as file:
+            return file.read()
 
-def main() -> None:
-    rootDir = Path(r"D:/development/github/Autodesk-Maya-Python-IntelliSense/mayaProductHelps/maya-2024-developer-help-enu")
-    openMaya = "cpp_ref/group___open_maya.html"
-    openMayaAnim = "cpp_ref/group___open_maya_anim.html"
-    openMayaFX = "cpp_ref/group___open_maya_f_x.html"
-    openMayaRender = "cpp_ref/group___open_maya_render.html"
-    openMayaUI = "cpp_ref/group___open_maya_u_i.html"
-    functionSet = "cpp_ref/group___m_fn.html"
-    proxy = "cpp_ref/group___m_px.html"
-    # macros = "cpp_ref/group___macros.html"
+    def _get_modules_files(self, resultSet: element.ResultSet) -> list[Path]:
+        files = []
+        for result in resultSet:
+            href = result.get("href")
+            if href:
+                modulefile = self.document_root / href.replace("#!/url=./", "")
+                if "class" in modulefile.name:
+                    files.append(modulefile)
+        return files
 
-    file_path = Path(rootDir) / openMaya
+    def __create_openMaya(self) -> None:
+        root_html_content = self.get_html_content(self.openMayaPath)
+        soup = BeautifulSoup(root_html_content, "html.parser")
+        memberdecls = soup.find("div", class_="contents")
+        links = memberdecls.find_all("a", class_="el")
+        files = self._get_modules_files(links)
 
-    print(OpenMayaAPI1.OpenMaya.name)
+        for file in files:
+            print(file)
 
-    with open(file_path, "r") as file:
-        html_content = file.read()
-
-    soup = BeautifulSoup(html_content, "html.parser")
-
-    memberdecls = soup.find("div", class_="contents")
-    links = memberdecls.find_all("a", class_="el")
-    # links = memberdecls.find_all("a", class_="href")
-
-    modules = []
-    hrefs = []
-    for link in links:
-        # module = link.text
-        href = link.get("href")
-        if href:
-            hrefs.append(href)
-            print(href)
-
-        # if "<" in module:
-        #     module = module.split(" ")[0]
-        # if ":" in module:
-        #     module = module.split(":")[0]
-
-        # modules.append(module)
-    # for module in modules:
-    #     print(module)
+    def run(self) -> None:
+        self.__create_openMaya()
 
 
 if __name__ == "__main__":
@@ -121,9 +135,5 @@ if __name__ == "__main__":
         maya_data["language"] = language
         maya_data["versioning"] = version
     data["maya"] = maya_data
-    main()
-    option = IntelliSenseOptionModel(**data)
-    print(option.maya.openmaya1.documents)
-    print(option.maya.openmaya1.OpenMaya)  # cpp_ref\group___open_maya.html
-
-    # TODO: 各ModuleのHTML情報を取得できるようになったところ
+    omPYI = CreateOpenMayaPYI(document_root=r"D:/development/github/Autodesk-Maya-Python-IntelliSense/mayaProductHelps/maya-2024-developer-help-enu", option=IntelliSenseOptionModel(**data))
+    omPYI.run()
