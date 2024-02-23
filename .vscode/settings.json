@@ -33,9 +33,9 @@
         "${workspaceFolder}\\en_maya2024.2\\typings",
         "C:\\Program Files\\Autodesk\\en_maya2024.2\\Python\\Lib\\site-packages",
     ],
-    "python.analysis.diagnosticSeverityOverrides": {
-        "reportShadowedImports": "none"
-    },
+    "python.analysis.exclude": [
+        ".\\bin",
+    ],
     "flake8.path": [
         "${workspaceFolder}\\.venv\\Scripts\\pflake8.exe"
     ],
