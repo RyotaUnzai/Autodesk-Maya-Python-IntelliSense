@@ -34,7 +34,7 @@
         "C:\\Program Files\\Autodesk\\en_maya2024.2\\Python\\Lib\\site-packages",
     ],
     "python.analysis.exclude": [
-        "**\\bin",
+        ".\\bin",
     ],
     "flake8.path": [
         "${workspaceFolder}\\.venv\\Scripts\\pflake8.exe"
