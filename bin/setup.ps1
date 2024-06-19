@@ -9,7 +9,6 @@ $nuGetExe = Join-Path $binDir "nuget.exe"
 $pythonDir = Join-Path $binDir "python"
 $pythonPath = Join-Path $pythonDir "tools\python.exe"
 
-
 function InstallPython {
     $psi = New-Object System.Diagnostics.ProcessStartInfo
     $psi.FileName = $nuGetExe
@@ -20,10 +19,10 @@ function InstallPython {
     $p.WaitForExit()
 }
 
-
 if (Test-Path $pythonDir) {
     Remove-Item $pythonDir -Recurse -Force
 }
 
+Write-Output "Start Python installation."
 InstallPython
-Write-Output "Installed Python"
+Write-Output "Python installation is complete."

@@ -25,6 +25,11 @@ max-complexity = 10
 profile = "black"
 
 [tool.mypy]
+warn_unreachable = true
+pretty = true
+allow_redefinition = true
+allow_untyped_globals = true
+color_output = true
 plugins = ["pydantic.mypy"]
 python_version = "3.11"
 mypy_path = "$MYPY_CONFIG_FILE_DIR/.venv/Lib,$MYPY_CONFIG_FILE_DIR/src,$MYPY_CONFIG_FILE_DIR/maya2024/typings"
