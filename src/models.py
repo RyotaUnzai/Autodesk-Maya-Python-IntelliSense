@@ -74,7 +74,6 @@ class Common(BaseModel):
     def create_new_type_list(cls, v: Any) -> dict[str, list[NewType]]:
         return {"items": [NewType(name=item[0], type=item[1]) for item in v]}
 
-
     @validator("html_contens", pre=True)
     def create_html_contens(cls, v: Any) -> HtmlContens:
         return HtmlContens(**v)
@@ -93,6 +92,7 @@ class Maya(BaseModel):
     version: int
     python: str
     help_url: Path = Field(alias="help url")
+    index_name: str = Field(alias="index name")
     imports: list[str]
     documents: str
     language: str
@@ -104,6 +104,10 @@ class Maya(BaseModel):
     @validator("imports", pre=True)
     def create_imports_list(cls, v: Any) -> list[str]:
         return v or []
+
+    @validator("index_name", pre=True)
+    def create_help_url(cls, v: str) -> str:
+        return v or ""
 
     @validator("help_url", pre=True)
     def create_help_url(cls, v: str) -> Path:
@@ -140,6 +144,7 @@ class Arguments(BaseModel):
     export_path: Optional[Path] = Field(alias="export_path", default=None)
     document_dir: Optional[Path] = Field(alias="document_dir", default=None)
     language: Optional[str] = Field(alias="language", default=None)
+    use_online_source: Optional[bool] = Field(alias="use_online_source", default=True)
 
     class Config:
         populate_by_name = True
@@ -150,6 +155,8 @@ class Arguments(BaseModel):
         for k in cls.model_json_schema()["properties"].keys():
             if k in ["export_path", "document_dir"]:
                 parser.add_argument(f"-{k[0:1]}", f"--{k}", type=Path)
+            elif k in ["use_online_source"]:
+                parser.add_argument(f"-{k[0:1]}", f"--{k}", type=bool)
             else:
                 parser.add_argument(f"-{k[0:1]}", f"--{k}")
         return cls.model_validate(parser.parse_args().__dict__)

@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 import autopep8
+import requests
 from bs4 import BeautifulSoup, NavigableString, Tag
 
 from models import ArgumentData, FunctionData, HTags, IntelliSenseOptionModel
@@ -698,3 +699,52 @@ URL:
             for content in sourceDir.iterdir():
                 target = self.document_root / f"{content.stem}.html"
                 shutil.copy(content.as_posix(), target.as_posix())
+
+
+class CreateMayaCommandPYIOnline(CreateMayaCommandPYI):
+    document_root: Path
+    export_path: Path
+    code_text: str
+    code_texts: dict[str, dict[str, str]]
+    html_content: str
+    commands_data: dict[str, FunctionData]
+    function_name: str
+    argument_data: list[ArgumentData]
+    current_letter: str | None = None
+
+    def __init__(
+        self,
+        document_root: str | Path,
+        export_path: str | Path,
+        option: IntelliSenseOptionModel,
+    ) -> None:
+        super(CreateMayaCommandPYIOnline, self).__init__(document_root, export_path, option)
+
+        self.document_root = Path(document_root)
+
+        self.document_index_url = self.document_root / self.option.maya.index_name
+
+        self.commands_urls: dict[str, list[str]] = self.get_online_command_urls()
+
+        self.document_root.as_posix()
+
+        for alphabet, command_urls in self.commands_urls.items():
+            for command_url in command_urls:
+                url = f"https://{(self.document_root / command_url).as_posix()}"
+
+    def get_online_command_urls(self) -> dict[str, list[str]]:
+        url: str = "https://" + self.document_index_url.as_posix()
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        related_links_div = soup.find("div", class_="related-links")
+        a_tags = related_links_div.find_all("a")
+
+        commands_urls: dict[str, list[str]] = {}
+        for a_tag in a_tags:
+            href = a_tag.get("href")
+            text = a_tag.text
+
+            commands_urls.setdefault(text[:1], []).append(href)
+
+        return commands_urls
